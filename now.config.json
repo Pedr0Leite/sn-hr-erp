@@ -1,0 +1,6 @@
+{
+    "scope": "x_335329_sn_hr_erp",
+    "scopeId": "f5a9e167140b4883b0fc301112c0f2bb",
+    "name": "SN HR&ERP",
+    "tsconfigPath": "./src/server/tsconfig.json"
+}

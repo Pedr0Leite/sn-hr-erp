@@ -1,0 +1,612 @@
+/* L5 §4.4. Horizon tokens via <sdk:now-ux-globals>, so a customer theme still applies: every
+   custom token below falls back to a Horizon token first and a literal only as the last resort.
+
+   COLOUR IS THE LAST DISTINCTION, NEVER THE ONLY ONE. Each state carries its own sentence and
+   its own glyph; tone is applied to a border, never as the sole carrier of meaning. Deleting
+   every rule in this file leaves every state readable, and that property is a requirement, not
+   a nicety — it is what makes the four-state contract survive a stylesheet failure.
+
+   THEMING. Three states, in the order CSS resolves them:
+     1. `:root`                              — the light palette, always defined.
+     2. `@media (prefers-color-scheme: dark)` — the OS preference, guarded so an explicit
+                                                light choice still wins.
+     3. `[data-theme="dark"|"light"]`         — the in-page toggle, which beats both.
+   No colour is defined ONLY inside a media query, so a token can never resolve to nothing. */
+
+:root {
+    color-scheme: light;
+
+    /* Surfaces. `raised` is the card; `sunken` is the page behind it. The page being darker
+       than the card is what makes a card read as a card without a heavy border. */
+    --hub-bg: rgb(var(--now-color_background--secondary, 244, 246, 247));
+    --hub-surface: rgb(var(--now-container--color, 255, 255, 255));
+    --hub-surface-raised: rgb(255, 255, 255);
+    --hub-border: rgb(var(--now-container--border-color, 216, 222, 225));
+    --hub-border-strong: rgb(var(--now-container--border-color, 176, 186, 190));
+
+    /* Text. Three levels, matching the three type levels below. */
+    --hub-text: rgb(var(--now-color_text--primary, 16, 23, 26));
+    --hub-muted: rgb(var(--now-color_text--secondary, 91, 103, 108));
+    --hub-faint: rgb(var(--now-color_text--tertiary, 128, 140, 145));
+
+    /* State tones. Each is used on a border or a small glyph — never as a text colour that
+       carries meaning on its own, and never as a fill behind body text. */
+    --hub-positive: rgb(var(--now-color--positive-1, 22, 105, 62));
+    --hub-warning: rgb(var(--now-color--warning-1, 158, 106, 0));
+    --hub-critical: rgb(var(--now-color--critical-1, 176, 0, 32));
+    --hub-accent: rgb(var(--now-color--primary-1, 22, 92, 158));
+
+    /* Elevation. Deliberately restrained: two levels, both low. A dashboard that leans on
+       drop shadows to separate cards stops working the moment there are forty of them. */
+    --hub-shadow: 0 1px 2px rgba(16, 23, 26, 0.06), 0 1px 3px rgba(16, 23, 26, 0.04);
+    --hub-shadow-lift: 0 2px 4px rgba(16, 23, 26, 0.08), 0 4px 12px rgba(16, 23, 26, 0.06);
+
+    /* Spacing scale. Space is what makes dense data calm — the 2026 dashboard consensus is
+       more breathing room and larger radii, not tighter packing. */
+    --hub-space-xxs: 0.125rem;
+    --hub-space-xs: 0.25rem;
+    --hub-space-sm: 0.5rem;
+    --hub-space-md: 0.75rem;
+    --hub-space: 1rem;
+    --hub-space-lg: 1.5rem;
+    --hub-space-xl: 2rem;
+
+    --hub-radius: 0.75rem;
+    --hub-radius-sm: 0.375rem;
+    --hub-radius-lg: 1rem;
+    --hub-radius-pill: 999px;
+
+    /* Band + chip grounds. Kept as tokens so the dark blocks only redefine, never invent. */
+    --hub-band-from: rgb(238, 243, 248);
+    --hub-band-to: rgb(248, 250, 251);
+    --hub-chip-bg: rgba(16, 23, 26, 0.03);
+}
+
+/* OS preference. Guarded so an explicit in-page LIGHT choice is not overridden by a dark OS. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        color-scheme: dark;
+
+        --hub-bg: rgb(13, 17, 20);
+        --hub-surface: rgb(22, 28, 32);
+        --hub-surface-raised: rgb(28, 35, 40);
+        --hub-border: rgb(48, 58, 64);
+        --hub-border-strong: rgb(74, 87, 94);
+
+        --hub-text: rgb(233, 238, 240);
+        --hub-muted: rgb(160, 173, 179);
+        --hub-faint: rgb(124, 138, 145);
+
+        /* Lifted for contrast against a dark surface: the light-mode values fail WCAG here. */
+        --hub-positive: rgb(78, 190, 128);
+        --hub-warning: rgb(226, 170, 60);
+        --hub-critical: rgb(240, 116, 136);
+        --hub-accent: rgb(120, 176, 235);
+
+        /* Shadow does almost no work on a dark ground — the border carries separation. */
+        --hub-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        --hub-shadow-lift: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+        --hub-band-from: rgb(24, 32, 38);
+        --hub-band-to: rgb(18, 23, 27);
+        --hub-chip-bg: rgba(255, 255, 255, 0.04);
+    }
+}
+
+/* The in-page toggle. Beats the OS preference in both directions. */
+:root[data-theme='dark'] {
+    color-scheme: dark;
+
+    --hub-bg: rgb(13, 17, 20);
+    --hub-surface: rgb(22, 28, 32);
+    --hub-surface-raised: rgb(28, 35, 40);
+    --hub-border: rgb(48, 58, 64);
+    --hub-border-strong: rgb(74, 87, 94);
+
+    --hub-text: rgb(233, 238, 240);
+    --hub-muted: rgb(160, 173, 179);
+    --hub-faint: rgb(124, 138, 145);
+
+    --hub-positive: rgb(78, 190, 128);
+    --hub-warning: rgb(226, 170, 60);
+    --hub-critical: rgb(240, 116, 136);
+    --hub-accent: rgb(120, 176, 235);
+
+    --hub-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --hub-shadow-lift: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+    --hub-band-from: rgb(24, 32, 38);
+    --hub-band-to: rgb(18, 23, 27);
+    --hub-chip-bg: rgba(255, 255, 255, 0.04);
+}
+
+/* ------------------------------------------------------------------ shell */
+
+.hub {
+    /* Body text 15px: the 14–16px band, chosen at the top of it because these are figures. */
+    font-family: var(--now-font-family, 'Inter', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--hub-text);
+    background: var(--hub-bg);
+    padding: var(--hub-space-lg);
+    min-block-size: 100vh;
+    box-sizing: border-box;
+}
+
+/* The branded band. A tinted surface rather than an image: it separates chrome from data at a
+   glance, survives a customer theme, and costs nothing to load. */
+.hub__band {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--hub-space);
+    background: linear-gradient(135deg, var(--hub-band-from), var(--hub-band-to));
+    border: 1px solid var(--hub-border);
+    border-radius: var(--hub-radius-lg);
+    padding: var(--hub-space-lg);
+    margin-block-end: var(--hub-space);
+}
+
+.hub__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--hub-space);
+    min-inline-size: 0;
+}
+
+.hub__mark {
+    display: grid;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    flex: none;
+    border-radius: var(--hub-radius);
+    background: var(--hub-accent);
+    color: rgb(255, 255, 255);
+    font-size: 1.25rem;
+}
+
+/* Type level 1 of 3. Size and weight do the scanning work, not colour. */
+.hub__title {
+    font-size: 1.625rem;
+    font-weight: 680;
+    letter-spacing: -0.025em;
+    margin: 0;
+}
+
+.hub__subtitle {
+    color: var(--hub-muted);
+    font-size: 0.8125rem;
+    margin: var(--hub-space-xxs) 0 0 0;
+}
+
+/* The tab strip sits on its own surface so the active tab reads as a place, not a link. */
+.hub__tabs {
+    background: var(--hub-surface);
+    border: 1px solid var(--hub-border);
+    border-radius: var(--hub-radius);
+    padding: var(--hub-space-xs) var(--hub-space-sm);
+    margin-block-end: var(--hub-space);
+    overflow-x: auto;
+}
+
+/* --------------------------------------------------------------- census */
+
+/* The state census. Count first, word second — the count is what the eye lands on, and the word
+   is what makes it mean something. Tone is the third encoding, never the first. */
+.hub-census {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--hub-space-sm);
+    margin-block: var(--hub-space);
+}
+
+.hub-census__item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--hub-space-xs);
+    background: var(--hub-surface-raised);
+    border: 1px solid var(--hub-border);
+    border-block-end-width: 2px;
+    border-radius: var(--hub-radius-sm);
+    padding: var(--hub-space-sm) var(--hub-space-md);
+    font-size: 0.8125rem;
+    color: var(--hub-muted);
+}
+
+.hub-census__count {
+    font-size: 1.125rem;
+    font-weight: 680;
+    font-variant-numeric: tabular-nums;
+    color: var(--hub-text);
+}
+
+.hub-census__item--live { border-block-end-color: var(--hub-positive); }
+.hub-census__item--stale,
+.hub-census__item--partial { border-block-end-color: var(--hub-warning); }
+.hub-census__item--failed { border-block-end-color: var(--hub-critical); }
+.hub-census__item--not_configured,
+.hub-census__item--restricted { border-block-end-color: var(--hub-border-strong); }
+
+/* -------------------------------------------------------------- sections */
+
+.hub-section {
+    font-size: 0.75rem;
+    font-weight: 680;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--hub-faint);
+    margin: var(--hub-space-xl) 0 var(--hub-space-sm) 0;
+    padding-block-end: var(--hub-space-sm);
+    border-block-end: 1px solid var(--hub-border);
+}
+
+/* ----------------------------------------------------------------- chips */
+
+.hub-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--hub-space-xs);
+    font-size: 0.6875rem;
+    font-weight: 620;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--hub-muted);
+    background: var(--hub-chip-bg);
+    border: 1px solid var(--hub-border);
+    border-radius: var(--hub-radius-pill);
+    padding: 0.125rem var(--hub-space-sm);
+    margin-block-end: var(--hub-space-sm);
+}
+
+.hub-chip__dot {
+    inline-size: 0.4375rem;
+    block-size: 0.4375rem;
+    border-radius: 50%;
+    background: currentColor;
+    flex: none;
+}
+
+.hub-chip--live { color: var(--hub-positive); border-color: var(--hub-positive); }
+.hub-chip--stale,
+.hub-chip--partial { color: var(--hub-warning); border-color: var(--hub-warning); }
+.hub-chip--failed,
+.hub-chip--unknown { color: var(--hub-critical); border-color: var(--hub-critical); }
+.hub-chip--not_configured,
+.hub-chip--restricted { color: var(--hub-muted); border-color: var(--hub-border-strong); }
+
+.hub__theme {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--hub-space-xs);
+    font: inherit;
+    font-size: 0.8125rem;
+    color: var(--hub-muted);
+    background: var(--hub-surface);
+    border: 1px solid var(--hub-border);
+    border-radius: var(--hub-radius-pill);
+    padding: var(--hub-space-xs) var(--hub-space-md);
+    cursor: pointer;
+}
+
+.hub__theme:hover {
+    color: var(--hub-text);
+    border-color: var(--hub-border-strong);
+}
+
+.hub__theme:focus-visible,
+.hub-tab__refresh button:focus-visible {
+    outline: 2px solid var(--hub-accent);
+    outline-offset: 2px;
+}
+
+.hub__loading {
+    color: var(--hub-muted);
+    padding: var(--hub-space) 0;
+}
+
+/* ------------------------------------------------------------------- grid */
+
+.hub-grid {
+    display: grid;
+    gap: var(--hub-space);
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    margin-block: var(--hub-space);
+}
+
+/* The card. Modular, generous radius, low contrast against the page — the pattern the 2026
+   dashboard write-ups converge on for making a lot of tiles scannable rather than noisy. */
+.hub-grid > * {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--hub-surface-raised);
+    border: 1px solid var(--hub-border);
+    border-radius: var(--hub-radius);
+    padding: var(--hub-space-lg) var(--hub-space);
+    box-shadow: var(--hub-shadow);
+    transition: box-shadow 120ms ease, border-color 120ms ease, transform 120ms ease;
+    overflow: hidden;
+}
+
+/* A hairline of state tone along the card's top edge. Redundant with the chip and the border —
+   deliberately so: it is what lets a reader take in twenty tiles' health in one sweep without
+   reading any of them, while the chip's WORD still carries the meaning up close. */
+.hub-grid > *::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 3px;
+    background: var(--hub-border);
+}
+
+.hub-grid > *:hover {
+    box-shadow: var(--hub-shadow-lift);
+    border-color: var(--hub-border-strong);
+    transform: translateY(-1px);
+}
+
+.hub-grid > *:has(.hub-state--live)::before { background: var(--hub-positive); }
+.hub-grid > *:has(.hub-state--stale)::before,
+.hub-grid > *:has(.hub-state--partial)::before { background: var(--hub-warning); }
+.hub-grid > *:has(.hub-state--failed)::before,
+.hub-grid > *:has(.hub-state--unknown)::before { background: var(--hub-critical); }
+
+/* An unconfigured tile is a TASK, not a fault. The dashed edge says "nothing is broken here,
+   something is missing" — and the tile already names the map to create. */
+.hub-grid > *:has(.hub-state--not_configured) {
+    border-style: dashed;
+    background: var(--hub-surface);
+}
+
+.hub-grid > *:has(.hub-state--not_configured)::before {
+    background: repeating-linear-gradient(
+        90deg,
+        var(--hub-border-strong) 0 6px,
+        transparent 6px 12px
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hub-grid > * {
+        transition: none;
+    }
+}
+
+/* ------------------------------------------------------------- tab heading */
+
+.hub-tab__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--hub-space-md);
+    margin-block-start: var(--hub-space-lg);
+}
+
+/* Type level 2 of 3. */
+.hub-tab__title {
+    font-size: 1.1875rem;
+    font-weight: 620;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.hub-tab__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--hub-space-md);
+    color: var(--hub-faint);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.hub-tab__note,
+.hub-tab__refresh,
+.hub-list__caveat {
+    background: var(--hub-surface);
+    border: 1px solid var(--hub-border);
+    border-inline-start-width: 0.1875rem;
+    border-radius: var(--hub-radius-sm);
+    padding: var(--hub-space-md);
+    margin-block: var(--hub-space-md);
+    color: var(--hub-muted);
+    font-size: 0.875rem;
+}
+
+.hub-tab__refresh button {
+    font: inherit;
+    color: var(--hub-text);
+    background: var(--hub-surface-raised);
+    border: 1px solid var(--hub-border-strong);
+    border-radius: var(--hub-radius-sm);
+    padding: var(--hub-space-xs) var(--hub-space-md);
+    cursor: pointer;
+}
+
+/* --------------------------------------------------------------- tile body */
+
+/* Type level 3 of 3 — the tile label. */
+.hub-tile__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--hub-muted);
+    letter-spacing: 0.01em;
+    margin: 0 0 var(--hub-space-sm) 0;
+}
+
+.hub-tile__note,
+.hub-tile__sys {
+    color: var(--hub-faint);
+    font-size: 0.75rem;
+    margin: var(--hub-space-xs) 0 0 0;
+}
+
+/* The figure. `tabular-nums` is the one typographic detail that matters most here: without it,
+   a column of figures does not align on the decimal and the eye cannot compare them. */
+.hub-state__figure {
+    font-size: 1.875rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+}
+
+.hub-state__line {
+    margin: var(--hub-space-xs) 0 0 0;
+    font-size: 0.875rem;
+}
+
+.hub-state__glyph {
+    display: inline-block;
+    min-inline-size: 1.25rem;
+}
+
+.hub-state__detail {
+    color: var(--hub-muted);
+    font-size: 0.8125rem;
+    margin: var(--hub-space-xxs) 0 0 0;
+}
+
+/* Inside a card the top hairline already carries tone, so the left border would be a third
+   redundant encoding and visual noise. Charts and lists are NOT in the grid and keep it. */
+.hub-state {
+    padding-inline-start: var(--hub-space-md);
+    border-inline-start: 0.1875rem solid var(--hub-border);
+}
+
+.hub-grid .hub-state {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+}
+
+/* The system list, as small pills rather than a comma-separated run-on. A tile fed by four ERPs
+   is common, and "Systems: A, B, C, D" is the line a reader skips. */
+.hub-tile__sys {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--hub-space-xs);
+    align-items: center;
+    margin-block-start: auto;
+    padding-block-start: var(--hub-space-md);
+}
+
+.hub-state--live { border-inline-start-color: var(--hub-positive); }
+.hub-state--stale { border-inline-start-color: var(--hub-warning); }
+.hub-state--partial { border-inline-start-color: var(--hub-warning); }
+.hub-state--failed { border-inline-start-color: var(--hub-critical); }
+.hub-state--not_configured { border-inline-start-color: var(--hub-border-strong); }
+.hub-state--restricted { border-inline-start-color: var(--hub-border-strong); }
+.hub-state--unknown { border-inline-start-color: var(--hub-critical); }
+
+.hub-tile__sys-label {
+    color: var(--hub-faint);
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.hub-pill {
+    display: inline-block;
+    background: var(--hub-chip-bg);
+    border: 1px solid var(--hub-border);
+    border-radius: var(--hub-radius-pill);
+    padding: 0.0625rem var(--hub-space-sm);
+    font-size: 0.6875rem;
+    color: var(--hub-muted);
+    max-inline-size: 12rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------ tables */
+
+.hub-scroll {
+    overflow-x: auto;
+    margin-block-start: var(--hub-space-md);
+}
+
+.hub-table {
+    border-collapse: collapse;
+    inline-size: 100%;
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.hub-table th {
+    color: var(--hub-muted);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    border-block-end: 1px solid var(--hub-border-strong);
+}
+
+.hub-table th,
+.hub-table td {
+    border-block-end: 1px solid var(--hub-border);
+    padding: var(--hub-space-sm) var(--hub-space-md);
+    text-align: start;
+    white-space: nowrap;
+}
+
+.hub-table tbody tr:last-child td {
+    border-block-end: 0;
+}
+
+/* ------------------------------------------------------------------ charts */
+
+.hub-chart__svg {
+    inline-size: 100%;
+    max-inline-size: 40rem;
+    block-size: auto;
+}
+
+.hub-chart__axes line {
+    stroke: var(--hub-border);
+    stroke-width: 1;
+}
+
+/* The zero line, drawn only when a series goes negative (BUG-007). Stronger than an axis
+   gridline on purpose: it is the reference the negative bars hang from. */
+.hub-chart__zero {
+    stroke: var(--hub-border-strong);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+}
+
+.hub-chart__axes text,
+.hub-chart__legend {
+    fill: var(--hub-faint);
+    font-size: 0.65rem;
+}
+
+.hub-chart__hole {
+    fill: var(--hub-surface-raised);
+}
+
+/* ------------------------------------------------------------------ errors */
+
+.hub-error {
+    background: var(--hub-surface);
+    border: 1px solid var(--hub-critical);
+    border-inline-start-width: 0.1875rem;
+    border-radius: var(--hub-radius);
+    padding: var(--hub-space);
+    margin-block: var(--hub-space);
+}
+
+.hub-error h2 {
+    font-size: 1rem;
+    font-weight: 620;
+    margin: 0 0 var(--hub-space-xs) 0;
+}
+
+.hub-error p {
+    margin: var(--hub-space-xs) 0 0 0;
+    color: var(--hub-muted);
+    font-size: 0.875rem;
+}
