@@ -1,5 +1,5 @@
 import { Table, StringColumn, ChoiceColumn, ReferenceColumn, BooleanColumn, IntegerColumn, DateTimeColumn, UrlColumn } from '@servicenow/sdk/core'
-import { VENDOR_CHOICES } from './choices'
+import { VENDOR_CHOICES, AUTH_TYPE_CHOICES, ENVIRONMENT_CHOICES } from './choices'
 
 // L1-3. erp_system -- the connection registry. docs/l1-control-tower-design.md §3.
 //
@@ -42,11 +42,7 @@ export const x_335329_sn_hr_erp_erp_system = Table({
             label: 'Auth type',
             mandatory: true,
             dropdown: 'none',
-            choices: {
-                basic: 'Basic',
-                oauth2: 'OAuth 2.0',
-                mutual: 'Mutual TLS',
-            },
+            choices: AUTH_TYPE_CHOICES,
         }),
         auth_profile_basic: ReferenceColumn({
             label: 'Basic auth profile',
@@ -62,6 +58,87 @@ export const x_335329_sn_hr_erp_erp_system = Table({
             label: 'Mutual TLS profile',
             maxLength: 32,
             hint: 'sys_id of the mutual-auth profile. String, not a reference: sys_auth_profile_mutual does not exist on this instance.',
+        }),
+        // ---- NV-1 (TRD §2 Authentication) -------------------------------------------------
+        // `environment` is mandatory because the two rules that depend on it are both refusals:
+        // production Basic auth needs a recorded, EXPIRING exception (OD46), and Unit4 states
+        // non-production <-> production mapping as "not supported or allowed" (NV-15).
+        environment: ChoiceColumn({
+            label: 'Environment',
+            mandatory: true,
+            dropdown: 'none',
+            choices: ENVIRONMENT_CHOICES,
+        }),
+        auth_exception_ref: StringColumn({
+            label: 'Auth exception reference',
+            maxLength: 200,
+            hint: 'Required to save auth_type=basic with environment=production. The ticket or decision that recorded the exception -- TRD §2 forbids Basic in production.',
+        }),
+        // OD46: an exception with no expiry is how a tracked weakness becomes permanent.
+        auth_exception_expires: DateTimeColumn({
+            label: 'Auth exception expires',
+            hint: 'Mandatory whenever auth_exception_ref is set. A production Basic-auth exception must have a remediation date.',
+        }),
+        // ---- NV-6 (TRD §2 Versioning) -----------------------------------------------------
+        api_version: StringColumn({
+            label: 'API version',
+            maxLength: 40,
+            hint: 'The vendor API version this connection is pinned to. Empty renders "API version not recorded" -- never silently blank.',
+        }),
+        version_source_note: StringColumn({
+            label: 'API version source',
+            maxLength: 500,
+            hint: 'Citation for api_version and deprecation_notice_days. Blank beats wrong (repo rule 5).',
+        }),
+        // NO DEFAULT, deliberately. Empty means "the vendor did not state a policy"; 0 means the
+        // vendor stated zero notice. Those are different findings and only one of them is a fact.
+        deprecation_notice_days: IntegerColumn({
+            label: 'Deprecation notice (days)',
+            hint: 'Empty renders "Deprecation policy not stated by vendor". 0 means the vendor stated zero notice.',
+        }),
+        deprecation_policy_url: UrlColumn({ label: 'Deprecation policy URL', maxLength: 1024 }),
+        // ---- NV-11 (TRD §5 Attachment size/type limits) ------------------------------------
+        // All three ship EMPTY. A guessed limit is the invented-field-name failure wearing a
+        // different hat, and NV-11 refuses to render an upload control until they are set.
+        max_attachment_bytes: IntegerColumn({
+            label: 'Max attachment bytes',
+            hint: 'Per-file ceiling, from the vendor. Empty means attachments are unavailable, not unlimited.',
+        }),
+        // Unit4 publishes BOTH a per-file limit (58,368 KB) and an account-wide 350 MB/min
+        // ceiling. Ten files each under the per-file limit can breach the second one.
+        max_throughput_bytes_per_min: IntegerColumn({
+            label: 'Max throughput (bytes/min)',
+            hint: 'Rolling-window ceiling across all transfers. A per-file check alone does not satisfy the vendor limit.',
+        }),
+        allowed_mime_types: StringColumn({
+            label: 'Allowed MIME types',
+            maxLength: 500,
+            hint: 'Comma-separated, from the vendor. Empty means attachments are unavailable.',
+        }),
+        attachment_limits_source_note: StringColumn({
+            label: 'Attachment limits source',
+            maxLength: 500,
+        }),
+        // ---- NV-16 (TRD §2 Throughput / §6) ------------------------------------------------
+        rate_limit_per_min: IntegerColumn({
+            label: 'Rate limit (per minute)',
+            hint: 'Vendor-stated. Empty means no client-side throttle -- a guessed throttle fails NV-16.',
+        }),
+        // Unit4 SUSPENDS every request for a full minute once the limit trips, so a breach is a
+        // tenant-wide outage rather than a slow queue for one caller. Throttle below the stated
+        // figure by default.
+        rate_limit_safety_pct: IntegerColumn({
+            label: 'Rate limit safety (%)',
+            default: 80,
+            hint: 'Throttle at this percentage of rate_limit_per_min. A breach suspends ALL traffic for one minute on some vendors.',
+        }),
+        expected_latency_ms: IntegerColumn({ label: 'Expected latency (ms)' }),
+        throughput_source_note: StringColumn({ label: 'Throughput source', maxLength: 500 }),
+        // ---- NV-3 (TRD §2 Write pattern) ---------------------------------------------------
+        confirm_timeout_ms: IntegerColumn({
+            label: 'Write confirmation timeout (ms)',
+            default: 900000,
+            hint: 'An asynchronous write still in `sent` beyond this becomes `failed`, never `confirmed`.',
         }),
         use_mid_server: BooleanColumn({ label: 'Use MID Server', default: false }),
         // Read at runtime with getDisplayValue(): setMIDServer() takes the NAME, not the sys_id.

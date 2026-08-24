@@ -1020,3 +1020,463 @@ row's warning that `$format=json` returns HTTP 500 on that service (SAP KBA 3366
 
 **None of this has executed.** OD18 still governs: no connector call has ever run on this
 instance. Nine verified endpoints are nine better guesses, not nine working syncs.
+
+## OD38 — Unit4 ERPx made connectable. Raised and closed 2026-08-17.
+
+New evidence: the **Unit4 ERP Integration Compendium** (17 Aug 2026), which documents a *working*
+ServiceNow ↔ Unit4 integration (`unit4dev1`) rather than vendor marketing. It is implementation
+evidence, and it corrects OD37's research in two places and closes a real connector gap.
+
+### The connector gap it exposed — `source_field` could not express a Unit4 path
+
+Unit4 writes property paths with **slashes**, and returns coded look-ups as an **array** keyed by
+`relationId`. The documented live mapping is literally:
+
+```
+"currency":    "relatedValues[relationId=A2]/description",
+"full_name_fx":"customFieldGroups/hrna0102/full_name_fx"
+```
+
+`walkPath` split on `.` only. Every such mapping would have resolved to nothing, the field would
+have gone absent, and — for anything summed — the tile would have quietly dropped a contribution.
+Not a loud failure. The four-state rule leaking through a door it does not watch, again.
+
+`walkPath` now accepts **three syntaxes in one walker**: dots (`d.results`), slashes
+(`invoice/currencyCode`), and an array predicate (`relatedValues[relationId=A2]/description`)
+that selects the element whose key matches, then continues. A predicate matching nothing returns
+null — the same answer as a missing property, which is right: both are UNAVAILABLE and neither
+may become a zero. Dots and slashes are interchangeable; no vendor uses both to mean different
+things.
+
+**Rejected:** a per-vendor path dialect on `erp_system`. It is configuration nobody would get
+right before their first failed sync, to distinguish syntaxes that cannot collide.
+
+Checked: 13 cases against the real source (flat, dotted, slashed, nested custom field groups,
+matching and non-matching predicates, missing intermediates, empty path).
+
+### Two corrections to `docs/vendor-integration-research.md` §2.2.2
+
+1. **Basic auth is not off the table.** §2.2.2 says "Basic auth: not offered for ERPx". The
+   compendium records the deployed employee REST integration authenticating with **"Password
+   (2-Way) through Connection Alias"** — a ServiceNow Basic Auth credential. The Developer Portal
+   still documents OAuth 2.0 client credentials via U4IDS as the machine-to-machine path. **Both
+   are printed in `docs/unit4-integration.md` §2 rather than resolved**, because one is vendor
+   documentation and the other is an observed deployment, and they are evidence of different
+   things.
+2. **A real base-URL shape.** `https://eu01.erpx-api.unit4rd.com` — region prefix, `.erpx-api.`,
+   environment domain. `unit4rd.com` is non-production; Unit4's connectivity guidance names
+   `unit4cloud.com` and subdomains. Ask the tenant contact; do not infer.
+
+### Confirmed rather than changed
+
+- `/objects/<plural>`, `companyId`, OData `filter`, `select` — all as already configured.
+- **Response root empty.** The compendium says the employee response is a JSON array and index
+  `[0]` is the record. Independent confirmation that the body *is* the array.
+- **`limit` + `offset`.** Unchanged.
+- **HTTP 429 + `Retry-After`, 500 requests/minute per environment, 350 MB/minute.** The connector
+  already classifies 429 as retryable and honours `Retry-After` (D15). No change needed — recorded
+  so it is not re-investigated.
+- ERPx public API gateway timeout **240 s**; `timeout_ms` default of 30 s is a deliberate client
+  choice, not an oversight.
+
+### One new seed row
+
+`tmpl-unit4-fixed-asset` → `/v1/objects/asset-objects`, verified. **The first vendor template for
+any ASSETS object.** L1-D5 withheld one because nobody had seen a real fixed-asset payload — but
+that reasoning was about invented *field* names, and this row carries none. Correct plumbing plus
+an empty `field_map` yields a `not_configured` tile that names what to map, which is what L1-D5
+wanted in the first place.
+
+### What was deliberately NOT built
+
+The compendium documents a far larger surface. Employee **PATCH** (`application/json-patch+json`),
+the contract/rates **SOAP** `AddFlexiFieldRows` write, and sending generated documents *to* Unit4
+are all **writes**. D3 defers write-back and `erp_system.read_only` exists to make it structural.
+Building any of them because a document describes them would reverse a logged decision by
+accident.
+
+The compendium's employee field mapping is **not seeded**, and this is the load-bearing judgement
+of OD38. `hrna0102`, `cia00hr07`, `hrc0100` are **custom field group IDs belonging to that
+tenant** — the compendium itself notes country-specific builders use different groups
+(`hrc0116` for Belgium). Seeding them would ship values that look verified because they came
+from a real system, and are wrong everywhere else. That is OD37's mistake wearing better
+evidence. They appear in `docs/unit4-integration.md` §8 as a worked example of the *syntax*,
+under a warning not to copy them.
+
+### Still unexecuted
+
+`call_log` is 0 rows. OD18 governs. This is a well-evidenced plan against a real integration's
+documentation — not a tested one.
+
+---
+
+## OD39 — Salesforce enabled as a test data source, and only that (2026-08-18)
+
+**Why Salesforce, on an app specified to carry no CRM content.** Because it is the one live
+third-party REST endpoint the owner holds credentials for. Every layer of this application has
+been built and none has executed. A fixture proves nothing; a real server answering a real query
+proves the connector, the engine, the provenance columns and the four-state contract at once.
+Salesforce is not being adopted as an ERP — it is being used as a **target to fire at**.
+
+**What was added.** Two things, both data:
+
+| Change | Kind |
+|---|---|
+| `salesforce` in `VENDOR_CHOICES` | **ADD**, never a rename. L1-1 AC6 |
+| `map_tmpl` row `salesforce` / `fixed_asset` | seed, `verified = false` |
+
+No table, no tab, no connector or engine code. Build clean; `Now.ID` generated the sys_id.
+
+**Why this seed carries a real `field_map` when OD37 emptied twelve.** The fifth rule is *never
+seed an invented endpoint or field name* — not *never seed a field name*. `Id`, `Name`,
+`SerialNumber`, `Price`, `Status`, `UsageEndDate` are read from the published Salesforce Object
+Reference for `Asset` and cited in `source_note`. Unit4's and SAP's property names are not
+publicly reachable at all, which is why theirs are blank. The rule tracks evidence, not caution.
+
+`verified` still ships **false**: verified means confirmed against a real endpoint, and no
+Salesforce call has been made from this instance.
+
+**Two fields left unmapped on purpose.** `lifecycle_stage` — `AssetLevel` is a hierarchy depth
+integer, not a stage, and `Status` is already taken. `currency` — `CurrencyIsoCode` exists only
+in multi-currency orgs, and naming it in the SOQL on a single-currency org fails the **entire
+query** with `INVALID_FIELD`, which would present as a total failure of a mapping that is
+otherwise correct.
+
+**Rejected alternative: seed more objects.** `stock_item`, `maintenance_schedule`, `work_order`
+and `invoice` all have plausible Salesforce sources, but each needs a licence a bare Developer
+Edition org may not carry, and their field API names were never verified. One verified object
+proves the pipeline exactly as well as five unverified ones, and cannot mislead.
+
+**Two ceilings accepted rather than fixed.** `pagination_style = none` with `LIMIT 2000` in the
+SOQL. Salesforce paginates with `nextRecordsUrl`, which `nextUrlFrom()` does not look for, and
+whose value is a **relative path** — so `hostOf()` returns `''` and §4.5's host-confinement
+correctly refuses it. Both would need fixing for a real tenant. Neither is reachable in a DE org
+holding tens of rows, and fixing dead code before the first call has ever succeeded is the wrong
+order of work. Recorded in `docs/salesforce-integration-design.md` §4 as a **known** ceiling —
+past 2000 rows the set truncates silently with `done:false`, which is the failure mode this
+application exists to refuse, and it is written down rather than discovered.
+
+**What blocks this, and it is not code.** Six items, all requiring a human: the SDK credential
+store (a masked prompt no pipe survives), a Salesforce External Client App and its secret, a
+ServiceNow OAuth entity profile, the `erp_system` / `object_map` / `field_map` rows, and an answer
+to **OD32**. Listed as a table in `docs/salesforce-integration-design.md` §1.
+
+**OD32 is now load-bearing.** `src/server/api/tabs.ts` filters by logical object and never by
+`erp_system`, so an active Salesforce `fixed_asset` map blends CRM `Asset` rows into the Tab 4
+KPI with every other ERP's fixed assets. Provenance survives; the number does not. The row ships
+`active = false` and the runbook refuses to advise flipping it before that question is answered.
+
+**Still unexecuted.** `call_log` is 0 rows. OD18 governs.
+
+---
+
+## OD42 — Write-back is un-deferred, narrowly, for the Noviq employee-services scope (2026-08-23)
+
+**This reverses DL-D3.** Story NV-3's first acceptance criterion requires that the reversal be
+logged before a line of the write path is built, and this is that entry. The owner authorised
+development of NV-1…NV-10 on 2026-08-23; NV-3 is the write path and cannot be built under DL-D3.
+
+**What DL-D3 said.** ERP write-back is deferred to L7, unapproved. `erp_system.read_only` makes the
+refusal structural rather than a convention. Nothing in the app writes to an ERP.
+
+**What changes, and what deliberately does not.** The reversal is **scoped to the Noviq
+requirement set** — R2 personal/banking, R3 leave, R4 expenses, R5 document archival, R6
+compensation, R7 onboarding, R8 offboarding, R9 benefits, R10 timesheets — reaching the ERP through
+one governed path (`erp_write` + the dispatcher). **Tab 2's requisition write-back stays deferred
+and stays unrendered.** D3's original subject was an Approve/Reject control on a procurement tile,
+and nothing in this backlog asks for it. Un-deferring the general capability is not permission to
+draw that button.
+
+**`read_only` survives the reversal and gains teeth.** It stays on `erp_system`, it stays defaulted
+to `true`, and a write against a read-only system is refused **before dispatch** with its own state
+value (`blocked_readonly`) rather than being collapsed into a generic failure. A system becomes
+writable by an admin decision recorded on the record, not by the code losing the ability to refuse.
+
+**Rejected alternative: build the write path outside the connector.** A dispatcher issuing its own
+`RESTMessageV2` would have been perhaps sixty lines shorter. It would also have forfeited retry
+classification, exponential backoff, the circuit breaker, `Retry-After` handling and per-attempt
+`call_log` telemetry — which is to say the entire TRD §2 error-semantics pass, the one area
+`docs/noviq-brd-trd-alignment.md` §2 scores as beyond-compliant. Every write goes through
+`rest-client.ts`. A second HTTP path in this app is a defect, not a shortcut.
+
+**Rejected alternative: reverse D3 wholesale.** Silence on Tab 2 would have been read as permission
+later, by someone who was not in this conversation.
+
+---
+
+## OD43 — A retrieved document is spooled and shredded, because "streamed" is not achievable (2026-08-23)
+
+**The requirement.** BRD R1 says a payslip PDF is *"retrieved on demand … and streamed to the
+employee — never stored at rest in ServiceNow."* Story NV-5 and NV-25 carry it as an absolute.
+
+**Why it cannot be built as written.** ServiceNow's only supported route for a binary response body
+out of `RESTMessageV2` is `saveResponseBodyAsAttachment()`. There is no supported API that hands a
+scoped application a binary stream it can pipe to the client without the platform first
+materialising it. The architect found this reading the platform (V13); the second brain confirms it
+from the opposite direction — the Unit4 compendium §8 shows the only known working ServiceNow ↔
+Unit4 document integration moving every document as a `sys_attachment` record.
+
+**The decision.** The document is written to a temporary attachment, delivered, and **deleted in the
+same transaction**, with the deletion asserted rather than assumed. `sys_attachment` row count is
+unchanged across a successful retrieval — the promise the requirement is actually making — but the
+bytes do touch disk for the duration of one request, and **the runbook says so in those words.**
+
+**Rejected alternative: claim the stream.** Writing "streamed, never stored" into a design that
+demonstrably spools would put a false statement in front of a DPO. The requirement's *intent* —
+no accumulating copy of payroll documents in ServiceNow — is met exactly. Its literal wording is
+not, and the gap is disclosed rather than papered over. OQ-17 asks the DPO to accept the transient
+copy explicitly.
+
+**Rejected alternative: keep the attachment and rely on retention.** A retention job is a promise
+about the future; a same-transaction delete with a post-condition assertion is a fact about the
+present. Retention jobs are also the thing that silently stops running.
+
+---
+
+## OD44 — The approval gate is two-layer, because a `before` rule cannot be trusted to hold it (2026-08-23)
+
+**The trap.** CLAUDE.md trap 5, established live on this instance: **a `before` business rule that
+throws is swallowed and the record saves.** A crashed rule and an approving rule are
+indistinguishable from the record's state. Story NV-9 originally placed the approval gate in a
+`before` rule on `erp_write`.
+
+**The decision.** The gate is enforced twice, by two mechanisms that fail in different ways:
+
+1. A `before insert` rule on `erp_write` refuses the row when no approved `sysapproval_approver`
+   record exists whose `sys_updated_on` precedes `first_sent_at`. This is the layer that gives a
+   readable message.
+2. **The dispatcher re-checks independently, immediately before the HTTP call**, and refuses to
+   dispatch. This layer cannot be swallowed by a rule crash, because it is not a rule.
+
+**The test that proves it is worth the duplication.** T9-8 deliberately breaks the business rule —
+introduces a throw — and asserts the write still does not reach the ERP. A single-layer gate passes
+every ordinary test and fails exactly once, in production, on the one write that matters.
+
+**Rejected alternative: an ACL instead of the second layer.** A Shape A deny refusal is *silent*
+(trap 4) — HTTP 200, normal body, field unchanged. A silent refusal is right for a field write and
+wrong for a governance gate that must produce a stated reason.
+
+---
+
+## OD45 — `auth_type` gains three values rather than renaming its existing three (2026-08-23)
+
+TRD §2 requires token-based, credential-scoped authentication and names OAuth 2.0 client
+credentials. The app ships `basic` | `oauth2` | `mutual`. Story NV-1 names
+`oauth2_client_credentials`, `oauth2_jwt`, `mutual_tls`, `basic`.
+
+**ADD, never rename** (story L1-1 AC6): a renamed choice orphans every `call_log` row, `sync_run`
+and `field_map` keyed on the old value. The three new values are added alongside the three
+existing ones. `rest-client.ts` resolves `oauth2` and `oauth2_client_credentials` and `oauth2_jwt`
+to the same OAuth profile branch, and `mutual` and `mutual_tls` to the same mTLS branch — the new
+values carry more information for a human reading the record, and behave identically.
+
+**Rejected alternative: rename and migrate.** A migration script against a table with zero rows
+today would work today and be wrong the first time this app is installed over an existing instance.
+
+---
+
+## OD46 — A production Basic-auth exception must expire (2026-08-23)
+
+TRD §2: *"Basic Auth with a shared username/password is not acceptable for production."* OD38
+records a **working** ServiceNow ↔ Unit4 integration using exactly that. NV-1 implements a recorded
+exception path rather than picking a side.
+
+**The second brain settled which side is right.** The Unit4 compendium's own §13 security backlog
+lists *"Employee REST uses Password (2-Way)"* as an **open finding**, action *"Validate credential
+rotation, ACLs and alias/environment separation"*, beside *"Discovery endpoint has no
+authentication"*. The deployment is not defending Basic auth; it is tracking it as debt. TRD §2 and
+that deployment **agree**.
+
+**Therefore the exception carries an expiry.** `auth_exception_ref` alone would let a tracked
+weakness become permanent through nobody's decision. A row with `auth_type=basic`,
+`environment=production` and an exception reference but no `auth_exception_expires` is refused.
+
+**Rejected alternative: block production Basic auth outright.** It would make this app unable to
+model the one integration in the estate that demonstrably works, which is how a rule gets bypassed
+rather than met.
+
+---
+
+## OD47 — The documented URL prefill mechanism is refused for the personal-data form (2026-08-24)
+
+**Raised by NV-31.** The platform's supported way to prefill a catalog item is
+`sysparm_variable_values={...}` in the URL
+(`servicenow-platform/service-catalog/prefill-variable-values-catalog-item-form.md`, confirmed in
+the second brain). It works, it is the vendor's own answer, and it is refused here.
+
+A URL prefill puts every prefilled value **in the URL** — browser history, the `Referer` header,
+and every proxy and web-server access log between the employee and the instance. NV-31 AC3
+requires that the full IBAN never appear in the page payload, and a value in the query string is
+in the page payload with extra distribution. The prefill is therefore server-side
+(`src/server/ess/prefill.ts`, read by a catalog client script), and the URL mechanism is banned
+for any field that module marks `masked`.
+
+**Rejected alternative: use the URL mechanism for the non-sensitive fields only.** Two prefill
+paths on one form, with the split held in place by whoever remembers which field is which. The
+first field moved between them is a silent leak.
+
+---
+
+## OD48 — `erp_write` gains `policy_key`, because one object-operation pair carries two gates (2026-08-24)
+
+**Raised while building NV-32 against NV-33.** The approval gate derived its policy key from
+`logical_object + '.' + operation`. An address change and a banking change are **both**
+`employee_profile.update`. Under that derivation the BRD's mandated banking gate could only be
+implemented by gating every address change in the company — or by not gating banking at all.
+
+`erp_write.policy_key` is now written by the caller and wins over the derivation when present:
+NV-33 sets `employee_profile.bank_account_iban`, NV-32 sets nothing and stays ungated by design,
+and NV-40 reuses the same seam for `document.salary_certificate`. One column, three gates, no
+code branch per flow.
+
+**Rejected alternative: a field-list column on the policy and a subset check in the gate.** The
+gate would then need the payload to decide — and the payload is deliberately not stored (D2), so
+the check would have to run somewhere that *does* hold the values. That is the shadow database
+arriving through the gate's own back door.
+
+---
+
+## OD49 — The archival shares the dispatcher's pre-flight, because a transport exception is not a governance exception (2026-08-24)
+
+**Raised by NV-37.** Archival uploads a PDF, which `erp-connector.fetch()` cannot carry — trap 15
+means the JSON path and the binary path cannot share a response reader. That forced a second
+transport (OD43, `binary-client.ts`), and a second transport is exactly what OD42 forbids as a
+second HTTP path.
+
+The resolution splits the two claims OD42 actually makes. The **decision** path is shared:
+`preflight()` was extracted from `dispatch()` and both callers run it, so read-only, the approval
+gate, the payroll cut-off, idempotency and the throttle apply identically to a PDF and to a JSON
+body. Only the **transport** differs, and it logs to `call_log` like every other attempt.
+
+**Rejected alternative: let `archiveDocument()` do its own checks.** Five gates re-implemented in
+a second file, drifting from the first the moment one is changed — and the gate that silently
+stopped matching would be discovered by an unapproved salary certificate reaching an ERP.
+
+---
+
+## OD50 — The L2 fixture credential is a named certification blocker, not a suppressed one (2026-08-24)
+
+**Found by `scripts/check-store-readiness.mjs` on its first run** (NV-49). `src/fluent/data/l2-fixtures.now.ts`
+seeds a `sys_auth_profile_basic` record with the literal `postman` / `password` against the public
+postman-echo service.
+
+It is **not a secret** — postman-echo publishes those credentials — but it **is a credential stored
+in an app record**, which is exactly what NV-49 AC2 forbids and exactly how a Store reviewer will
+read it. Deleting it would disarm the L2 gate driver that `docs/DEFERRED.md` §1 calls the
+highest-value unblock in the repo, so it stays.
+
+What it does **not** get is a pattern-level suppression. The check carries a one-entry
+`KNOWN_BLOCKERS` list naming this file, and prints
+`! CERTIFICATION BLOCKER (OD50)` **on every run**. Before submission the fixture must move to a
+Connection & Credential Alias resolved at install time, or the L2 fixtures must ship separately
+from the app.
+
+**Rejected alternative: relax the secret pattern so this stops matching.** The pattern would then
+also stop matching the next real credential someone adds, and nobody would see it happen. A check
+with an invisible exception is worse than no check, because it is trusted.
+
+**Second-brain confirmation, same session:** `t_PublishAppsToTheServiceNowStore.md` states that
+**applications in the global scope cannot be published to the Store at all**, and that
+certification additionally requires Technology Partner Program membership. NV-49 AC1's "zero
+Global records" is therefore a hard publish gate rather than hygiene, and TPP membership is a
+commercial prerequisite no code in this repo can satisfy — recorded as an open question for the
+deploying organisation.
+
+---
+
+## OD51 — `object_map` gains an `operation` qualifier, because a read and a write are not one row (2026-08-24)
+
+**Found by a full-application bug pass, 2026-08-24.** `object_map` carried a unique index on
+`(erp_system, logical_object)` — one row per object, one `endpoint_path`, one `http_method`. Every
+NV write therefore resolved the **read** map.
+
+The failure chain, all of it confirmed in source:
+
+1. `employee_profile` must be `get`, because the NV-31 prefill, the NV-45 read-back and
+   `read-service` all read it.
+2. `dispatcher.dispatch()` called `fetch()`, which loaded that map.
+3. `rest-client` set the verb from `map.httpMethod` → `get`, and its guard
+   `if (verb !== 'get' && params.body)` **dropped the request body**.
+4. The GET returned the employee record. `extractAck()` looked for `id` — and found it, in the
+   read's own response.
+5. The write was marked **`confirmed`**, with an acknowledgement reference taken from a record it
+   had not changed.
+
+An employee is told their IBAN was updated. Nothing left the instance. This is the four-state
+rule's worst failure arriving through a door nothing was watching, and it defeats
+"a 2xx is never success on its own" from underneath — there was no request to judge.
+
+**The fix.** `object_map.operation` (`read` | `create` | `update`), the unique index widened to
+`(erp_system, logical_object, operation)`, `loadMap()` operation-aware, and `FetchParams.operation`
+threaded through the connector. The dispatcher now resolves the write's **own** map and refuses
+before dispatch if it is missing (`not configured`, naming the map to create) or if its verb is
+`get`. Blank operation is treated as `read` **for reads only** — a write gets no legacy fallback,
+because inheriting a read row is the defect itself.
+
+**Rejected alternative: keep one row and derive the verb from the operation.** The verb was never
+the whole problem — the **endpoint** differs too. `GET /employees/{id}` and
+`PATCH /employees/{id}/bank` are not one row with two verbs, and pretending otherwise would have
+fixed the symptom this pass happened to notice while leaving every write pointed at the read's URL.
+
+**Guarded against regression.** `check-store-readiness.mjs` rule 8a fails the build on any
+`fetch()` that passes a `body` without an `operation`. Verified to fire on the pre-fix call shape.
+
+---
+
+## OD52 — The payroll cut-off applies to `employee_profile` by policy key, not by object (2026-08-24)
+
+`isPayrollAffecting()` returned true for the whole of `employee_profile`, so an address or phone
+correction was refused whenever no `payroll_calendar` covered the date — and an absent calendar
+refuses absolutely (NV-7, correctly).
+
+Banking details and a termination land in a pay run. A phone number does not. Blocking an employee
+from fixing their emergency contact because nobody has configured a payroll calendar is not the
+control NV-7 was written for; it is collateral from applying it at the wrong granularity.
+
+`isPayrollAffecting(logicalObject, policyKey)` now returns true for `employee_profile` only under
+`employee_profile.bank_account_iban` or `employee_profile.terminate`. **The refusal itself is
+unchanged** for every write that does reach payroll.
+
+**Rejected alternative: a `payroll_affecting` flag on `field_map`.** It puts a payroll-governance
+decision on a mapping row that an admin edits while wiring up an endpoint, which is the wrong
+surface for it and the wrong person to ask.
+
+---
+
+## OD53 — One country fallback rule, two steps, no third (2026-08-24)
+
+**NV-51 AC3 is unusually specific: three different fallback rules FAIL the story.** When the story
+was picked up there were exactly three, none of them wrong on its own —
+
+- `write_approval_policy`: an exact match on the country (after the OD-era fix),
+- `doc_tmpl`: a three-step ladder of its own (country+language → country → agnostic),
+- `payroll_calendar`: an exact match with **no fallback at all**.
+
+Together they meant "what does this application do for a country it has no row for?" had three
+answers, and nobody could state which one applied where.
+
+`src/server/country.ts` now holds the only definition:
+
+1. the row whose `country` equals the employee's payroll country,
+2. the row whose `country` is blank — the deliberate jurisdiction-neutral default,
+3. **nothing.**
+
+**Step 3 is the decision.** A configuration written for another jurisdiction is not a fallback; it
+is a wrong answer in the shape of a right one — the wrong legal wording on a certificate, the
+wrong cut-off on a pay run, the wrong approver on a banking change. All five country-aware tables
+(`object_map`, `field_map`, `payroll_calendar`, `doc_tmpl`, `write_approval_policy`) now resolve
+through `countryOrder()`, and `check-store-readiness.mjs` rule 8c fails any module that queries by
+`country` without it.
+
+`country.ts` imports **nothing**. `config-loader` needs the rule, the dispatcher needs
+`config-loader`, and the AC4 mismatch check needs the dispatcher's assignment-group resolver — so
+keeping the side-effecting half in the same file would have closed a cycle that a bundler resolves
+to `undefined` at module-init time rather than to an error. It lives in `write/country-check.ts`.
+
+**Rejected alternative: a `country` fallback chain configurable per table.** It answers a question
+nobody has asked, and the first time two tables were configured differently the application would
+be back to the state this decision exists to end.
+
+**Rejected alternative: fall back to a "nearest" country (same language, same region).** Every
+version of this is a guess about law. Portugal's wording is not Brazil's, and an employee holding a
+certificate that cites the wrong statute has a worse problem than one holding no certificate.

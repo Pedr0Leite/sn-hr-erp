@@ -68,11 +68,19 @@ L4  Scripted REST API — one fat GET /data per tab, batched IN queries, never N
 L5  BYOUI page — bundled React 18.2.0 SPA, five tabs
 L6  HR document generation
 L7  requisition write-back — DEFERRED, unapproved (D3)
+
+NV  Noviq employee services — the first ERP WRITES in this repo (OD42)
 ```
+
+`NV` is an increment on top of L0–L6, built from a client BRD/TRD: payslip retrieval, leave,
+personal and banking data, HR documents and the write-back they need. It reverses D3 **for that
+scope only** — Tab 2's requisition write-back stays deferred and no Approve/Reject control is
+drawn anywhere. See `docs/noviq/`.
 
 ```
 src/fluent/    tables, ACLs, roles, properties, navigation   (.now.ts metadata-as-code)
 src/server/    connector/ sync/ api/ hr/ contract/            (runtime modules)
+src/server/    write/ ess/                                   (NV: the governed write path + reads)
 src/client/    React SPA bundled into the BYOUI page
 docs/          spec, per-layer designs, decisions, build reports
 ```
@@ -111,11 +119,11 @@ date format, response root, error shape, and what a human must supply per vendor
 
 | Vendor | Fit |
 |---|---|
-| **Unit4 ERPx** | Clean. OAuth2 client credentials, ObjectAPI `limit`/`offset`, bare-array body |
+| **Unit4 ERPx** | Clean, and the best-evidenced. ObjectAPI `limit`/`offset`, bare-array body. Runbook: `docs/unit4-integration.md` |
 | **SAP S/4HANA** | Clean. OData V2 `d.results`, `$skip`/`$top`, `A_`-prefixed entity sets |
 | **Oracle Fusion ERP** | Fits |
 | **Dynamics 365 F&O** | Fits (OData). Needs `cross-company=true` or it silently reports one legal entity |
-| **Salesforce** | Fits as a data source; not an ERP shape |
+| **Salesforce** | Data source only, not an ERP shape. Enabled as the live test target (OD39). Runbook: `docs/salesforce-integration-design.md` |
 | **NetSuite** | **Auth does not fit** — signed-JWT / OAuth 1.0a, which the connector cannot perform (OD35) |
 | **Infor CloudSuite, Workday Financials** | Dropped — documentation behind a customer login |
 
@@ -130,12 +138,33 @@ either is publicly reachable, and a guessed one renders a confident wrong number
 
 ---
 
+## The write path
+
+`NV` is the first thing here that changes data in someone else's system, so it is built to refuse
+rather than to succeed. Five properties hold it up:
+
+| Property | Why it exists |
+|---|---|
+| Every write goes through the existing connector | Retry classification, backoff, circuit breaker, `Retry-After` and per-attempt telemetry already live there. A second HTTP path would forfeit all of it |
+| **A 2xx is never success on its own** | No confirmable identifier in the response means `failed`. "Accepted my request" and "recorded my change" are different claims |
+| Three distinct `blocked_*` states | Read-only, payroll cut-off and missing approval are different reasons. One generic `blocked` destroys the only thing the auditor needs |
+| The approval gate is enforced twice | A `before` business rule that throws is silently swallowed on this platform. The second layer is not a rule, so a crash cannot lift it |
+| No payload value is ever stored | The audit row keeps a hash, never the body. A salary in the audit table is the shadow database this app exists to avoid |
+
+An **absent payroll calendar refuses the write** rather than assuming no cut-off applies. An
+absence is never read as a permission — the same rule as `0` never standing in for "unknown".
+
 ## Status
 
 All six build layers are **deployed**. **Almost none of the code has ever executed**: `call_log`
 is 0 rows, `erp_staging` and `sync_run` are empty, and no layer gate or test has been run.
 
-**All 11 scheduled jobs ship `on_demand` + `active: false`.** Nothing runs until a human runs it.
+The **NV increment is under construction and is roughly a third built** — six tables, 21 ACLs, the
+dispatcher and nine server modules compile clean; business rules, seed data and every UI surface
+are outstanding. `docs/noviq/BUILD-LOG-21-30.md` is the honest per-story state; trust it over any
+summary, including this one.
+
+**All 10 scheduled jobs ship `on_demand` + `active: false`.** Nothing runs until a human runs it.
 "Nothing happened" is the designed default, not a fault — and a driver must never be left armed.
 
 **There is a deploy backlog.** Recent work — the styling and theme pass, nine bug fixes, and the
@@ -164,3 +193,6 @@ works, and it takes about a minute.
 | `docs/api-contract.md` | The binding L4↔L5 payload shape |
 | `docs/stories.md` | 38 stories, 189 acceptance criteria |
 | `docs/vendor-integration-research.md` | Per-vendor ERP integration profiles |
+| `docs/noviq/stories.md` | The 52-story Noviq backlog, with falsifiable acceptance criteria |
+| `docs/noviq/architecture.md` | Technical design; §0 lists what the story coverage matrix hid |
+| `docs/noviq/BUILD-LOG*.md` | What is actually built, per session, per story |

@@ -305,6 +305,14 @@ All read 2026-08-14. Nothing below is reconstructed from a blog post.
 
 ### 2.2.2 Auth — OAuth2 client credentials against Unit4 Identity Services
 
+> **CORRECTED 2026-08-17 by OD38.** The last line of this section — *"Basic auth: not offered for
+> ERPx"* — is contradicted by implementation evidence. The Unit4 ERP Integration Compendium
+> records a **working** ServiceNow ↔ Unit4 employee REST integration authenticating with
+> **"Password (2-Way) through Connection Alias"**, i.e. a ServiceNow Basic Auth credential. The
+> OAuth 2.0 / U4IDS path below remains what the Developer Portal documents. Both are printed in
+> `docs/unit4-integration.md` §2 rather than resolved: one is vendor documentation, the other is
+> an observed deployment. Ask the tenant contact which their environment accepts.
+
 Unit4 ERPx uses **U4IDS** (Unit4 Identity Services), OpenID Connect over OAuth 2.0, issuing JWTs
 validated by the ERPx API host. For machine-to-machine integration the documented flow is
 **client credentials**: client ID + client secret + `grant_type=client_credentials` +

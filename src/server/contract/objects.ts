@@ -149,7 +149,144 @@ export const LOGICAL_OBJECTS: { [name: string]: LogicalObjectDef } = {
             'employment_start_date',
             'employment_status',
             'erp_id',
+            // NV-17 -- the six TRD §3 Employee fields the contract was missing. The seven names
+            // above are UNCHANGED: renaming one orphans every field_map row keyed on it.
+            // `bank_account_iban` is the most sensitive field in this application. It is excluded
+            // from call_log, erp_write, doc_audit and every payload except the single live render
+            // that needs it -- NV-17 AC3 greps all four tables for a seeded IBAN.
+            'employment_end_date',
+            'cost_centre',
+            'address',
+            'phone',
+            'emergency_contact',
+            'bank_account_iban',
+            'contract_type',
         ],
+    },
+    // -------------------------------------------------------------------------------------
+    // NV-18 to NV-21 -- the nine TRD §3 entities the contract did not carry.
+    //
+    // `category: null` ON ALL OF THEM IS THE ENFORCEMENT, NOT A PLACEHOLDER. engine.ts selects
+    // objects to stage by matching a real ERP category; an object with a null category cannot be
+    // reached by that query, so it can never be written to erp_staging. That is how BRD O3 ("no
+    // shadow master data") and DL-D2 are held by the schema rather than by a convention.
+    // -------------------------------------------------------------------------------------
+    payslip_document: {
+        category: null,
+        fields: [
+            'employee_id',
+            'period_label',
+            'period_start',
+            'period_end',
+            'issue_date',
+            'document_reference',
+            'document_available',
+            'retrieval_path',
+            'erp_id',
+        ],
+    },
+    income_statement: {
+        category: null,
+        fields: [
+            'employee_id',
+            'tax_year',
+            'gross_annual',
+            'net_annual',
+            // A `0` here is the sharpest one in the backlog: a zero tax-withheld figure on a tax
+            // return is acted upon by a tax authority. NV-26 renders it only under a successful
+            // response that genuinely contained zero.
+            'tax_withheld',
+            'statutory_contributions',
+            'currency',
+            'document_reference',
+            'erp_id',
+        ],
+    },
+    leave_balance: {
+        category: null,
+        // `balance_unit` is mandatory in the render, not merely present: a balance of "5" that
+        // does not say days or hours is a number nobody can act on. NV-19 renders no figure at
+        // all when the unit is unmapped.
+        fields: ['employee_id', 'leave_type', 'balance_value', 'balance_unit', 'as_of_date', 'erp_id'],
+    },
+    leave_request: {
+        category: null,
+        fields: [
+            'employee_id',
+            'leave_type',
+            'start_date',
+            'end_date',
+            'status',
+            'approver',
+            'submitted_date',
+            'erp_request_reference',
+            'erp_id',
+        ],
+    },
+    leave_type_ref: {
+        category: null,
+        fields: ['code', 'label', 'unit', 'active', 'erp_id'],
+    },
+    expense_claim: {
+        category: null,
+        fields: [
+            'employee_id',
+            'claim_date',
+            'status',
+            'total_amount',
+            'currency',
+            'erp_claim_reference',
+            'erp_id',
+        ],
+    },
+    erp_attachment: {
+        category: null,
+        fields: [
+            'parent_entity_type',
+            'parent_external_id',
+            'document_type_category',
+            'file_name',
+            'mime_type',
+            'uploaded_by',
+            'uploaded_date',
+            'erp_attachment_reference',
+            'erp_id',
+        ],
+    },
+    compensation_change: {
+        category: null,
+        // `new_value` carries a salary and is treated exactly like bank_account_iban: excluded
+        // from every log and audit table (NV-21 AC5).
+        fields: [
+            'employee_id',
+            'change_type',
+            'effective_date',
+            'old_value',
+            'new_value',
+            'currency',
+            'approval_reference',
+            'erp_id',
+        ],
+    },
+    benefit_enrollment: {
+        category: null,
+        fields: [
+            'employee_id',
+            'benefit_type',
+            'plan_option',
+            'contribution_amount',
+            'currency',
+            'effective_date',
+            'erp_id',
+        ],
+    },
+    timesheet_entry: {
+        category: null,
+        fields: ['employee_id', 'entry_date', 'cost_centre_or_project_ref', 'hours', 'entry_status', 'erp_id'],
+    },
+    cost_centre_project_ref: {
+        category: null,
+        fields: ['code', 'name', 'active', 'erp_id'],
     },
     payroll_record: {
         category: null,

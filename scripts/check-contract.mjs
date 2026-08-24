@@ -6,7 +6,10 @@ import { LOGICAL_OBJECTS, isLogicalField, stagedObjectNames } from '../src/serve
 import { LOGICAL_FIELD_CHOICES, OBJECT_CHOICES } from '../src/fluent/tables/choices.ts'
 
 const names = Object.keys(LOGICAL_OBJECTS)
-assert.equal(names.length, 16, `expected 16 logical objects, got ${names.length}`)
+// 16 shipped at L1 (spec §2.1); 11 added by Noviq NV-18..NV-21, all `category: null` and so
+// unstageable by construction. The count is asserted rather than derived so that ADDING an object
+// is a deliberate edit here, not a side effect of editing objects.ts.
+assert.equal(names.length, 27, `expected 27 logical objects, got ${names.length}`)
 assert.equal(stagedObjectNames().length, 14, 'expected 14 staged objects (2 are live-only, D2)')
 
 // No duplicate field name within an object.

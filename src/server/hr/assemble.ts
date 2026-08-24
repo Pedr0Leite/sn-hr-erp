@@ -3,6 +3,8 @@ import { loadMap } from '../connector/config-loader.ts'
 import { fetch } from '../connector/erp-connector.ts'
 import { mapResponse } from '../connector/field-mapper.ts'
 import { DocumentContext, probePdf, renderHtml, resolveFormat } from './render.ts'
+import { releaseAllowed } from './release-gate.ts'
+import { payrollCountryOf, resolveTemplate } from './template-resolver.ts'
 
 // L6-9 / L6-10 / L6-11 / L6-13. docs/l6-document-design.md §5.
 //
@@ -68,6 +70,23 @@ function parseRequirements(raw: string): Requirement[] {
     return out
 }
 
+/** `field=literal` pairs. A pair with no `=`, or an empty field name, is ignored. */
+function parseDefaults(raw: string): { [field: string]: string } {
+    const out: { [field: string]: string } = {}
+    const parts = String(raw || '').split(',')
+    for (let i = 0; i < parts.length; i++) {
+        const eq = parts[i].indexOf('=')
+        if (eq > 0) {
+            const field = parts[i].substring(0, eq).replace(/\s+/g, '')
+            const literal = parts[i].substring(eq + 1).trim()
+            if (field && literal) {
+                out[field] = literal
+            }
+        }
+    }
+    return out
+}
+
 function distinctObjects(reqs: Requirement[], declared: string): string[] {
     const out: string[] = []
     const parts = String(declared || '').split(',')
@@ -109,6 +128,33 @@ export function generate(requestSysId: string): void {
         return
     }
 
+    // --- 2b. NV-40. A GATED DOCUMENT IS NOT GENERATED UNTIL IT IS RELEASED, so the PDF does not
+    // exist anywhere before the approval -- not hidden, not ACL-protected, ABSENT. A pending
+    // approval leaves the request `pending`, which is a wait, not a failure: the next drain pass
+    // picks it up once the approval lands.
+    const release = releaseAllowed(
+        requestSysId,
+        String(type.getValue('code') || ''),
+        String(req.getValue('subject_employee') || ''),
+    )
+    if (!release.allowed) {
+        if (release.reason === 'Approval rejected') {
+            fail(req, 'Approval rejected')
+        }
+        return
+    }
+
+    // --- 2c. NV-43. THE TEMPLATE IS RESOLVED BEFORE THE PRE-FLIGHT, not at render time, because
+    // a jurisdiction may declare a DIFFERENT mandatory field set (AC4) -- and a pre-flight run
+    // against the wrong field set validates the wrong document. The country comes from the ERP
+    // link, never from the ServiceNow user's location.
+    const country = payrollCountryOf(String(req.getValue('subject_employee') || ''))
+    const template = resolveTemplate(type.getUniqueValue(), typeName, country, '')
+    if (!template.ok) {
+        fail(req, template.message)
+        return
+    }
+
     // --- 3. The cross-reference. No xref, no ERP-side identity, no document. ----------------
     const xref = new GlideRecord('x_335329_sn_hr_erp_emp_xref')
     xref.addQuery('user', String(req.getValue('subject_employee') || ''))
@@ -134,7 +180,11 @@ export function generate(requestSysId: string): void {
     // be reported AS A MAPPING GAP rather than surfacing later as a missing figure -- which is
     // a far less actionable sentence for the admin who has to fix it. T6-11 instruments the
     // outbound calls and requires ZERO of them on this path.
-    const required = parseRequirements(String(type.getValue('required_fields') || ''))
+    // The template's override REPLACES the document type's list where it is set, so "mandatory in
+    // Portugal, absent in Spain" is a row rather than a branch.
+    const required = parseRequirements(
+        String(template.requiredFieldsOverride || type.getValue('required_fields') || ''),
+    )
     const optional = parseRequirements(String(type.getValue('optional_fields') || ''))
     const objects = distinctObjects(required, String(type.getValue('required_objects') || ''))
 
@@ -220,25 +270,27 @@ export function generate(requestSysId: string): void {
         }
         context[required[i].field] = String(value)
     }
+    const defaults = parseDefaults(String(type.getValue('optional_defaults') || ''))
     for (let i = 0; i < optional.length; i++) {
         const row = rows[optional[i].object]
         const value = row ? row[optional[i].field] : undefined
         if (value !== undefined && value !== null && String(value) !== '') {
             context[optional[i].field] = String(value)
+        } else if (defaults[optional[i].field] !== undefined) {
+            // NV-42 D9. A permanent contract has NO end date, and that is a fact about the
+            // contract rather than a gap in the data -- so the letter says so in words. This
+            // applies to OPTIONAL fields only: the loop above already aborted for every required
+            // one, so a figure can never be defaulted into existence.
+            context[optional[i].field] = defaults[optional[i].field]
         }
     }
 
     // --- 7. Render. ------------------------------------------------------------------------
-    const tmpl = new GlideRecord('x_335329_sn_hr_erp_doc_tmpl')
-    tmpl.addQuery('document_type', type.getUniqueValue())
-    tmpl.addQuery('active', true)
-    tmpl.setLimit(1)
-    tmpl.query()
-    if (!tmpl.next()) {
-        fail(req, 'Cannot generate ' + typeName + ': no active template exists for this document type.')
-        return
-    }
-    const rendered = renderHtml(context, String(tmpl.getValue('body') || ''))
+    // The template was resolved at step 2c; re-querying here would be a second resolution that
+    // could disagree with the one the pre-flight validated against.
+    req.setValue('template_country', template.country)
+    req.setValue('template_language', template.language)
+    const rendered = renderHtml(context, template.body)
     if (!rendered.html) {
         fail(req, 'Cannot generate ' + typeName + ': ' + rendered.error + '.')
         return

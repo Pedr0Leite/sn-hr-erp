@@ -125,7 +125,12 @@ export function sendOnce(system: SystemConfig, map: ObjectMapConfig, params: Fet
         const msg = new RESTMessageV2()
 
         msg.setEndpoint(buildEndpoint(system, map, params))
-        msg.setHttpMethod(map.httpMethod === 'post' ? 'post' : 'get')
+        // NV-3: the write verbs. Anything unrecognised falls back to GET -- a bad configuration
+        // must not become an accidental write.
+        const verb = String(map.httpMethod || 'get')
+        msg.setHttpMethod(
+            verb === 'post' || verb === 'patch' || verb === 'put' ? verb : 'get',
+        )
         msg.setHttpTimeout(system.timeoutMs)
 
         // D21: a followed redirect can carry the Authorization header to a host that is not in
@@ -152,9 +157,18 @@ export function sendOnce(system: SystemConfig, map: ObjectMapConfig, params: Fet
         // matches the type — Phase 1's `ERP System Config Validation` business rule already
         // guarantees any saved row is internally consistent (D28). Duplicating it here would
         // create two sources of truth that will drift.
+        // OD45: `oauth2_client_credentials` and `oauth2_jwt` resolve to the SAME profile branch
+        // as `oauth2`, and `mutual_tls` behaves as `mutual` did. Without these three arms a system
+        // saved with a new choice value sent NO authentication at all and failed as a 401 that
+        // looked like bad credentials -- the values were added to the choice list before this
+        // branch knew about them.
         if (system.authType === 'basic') {
             msg.setAuthenticationProfile('basic', system.authProfileBasic)
-        } else if (system.authType === 'oauth2') {
+        } else if (
+            system.authType === 'oauth2' ||
+            system.authType === 'oauth2_client_credentials' ||
+            system.authType === 'oauth2_jwt'
+        ) {
             msg.setAuthenticationProfile('oauth2', system.authProfileOauth)
         }
 
@@ -167,7 +181,7 @@ export function sendOnce(system: SystemConfig, map: ObjectMapConfig, params: Fet
             msg.setMIDServer(system.midServerName)
         }
 
-        if (map.httpMethod === 'post' && params.body) {
+        if (verb !== 'get' && params.body) {
             msg.setRequestBody(params.body)
         }
 

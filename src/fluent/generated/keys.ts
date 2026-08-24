@@ -93,6 +93,18 @@ declare global {
                         table: 'sys_security_acl'
                         id: 'f4cf447c69824207ba4437437af80647'
                     }
+                    'acl-erp-exception-deny-category': {
+                        table: 'sys_security_acl'
+                        id: 'a5b2d21ec26242fb83470c5ac675f4de'
+                    }
+                    'acl-erp-exception-read': {
+                        table: 'sys_security_acl'
+                        id: '00f5ae61c4534cb0bb4e279b7c11054b'
+                    }
+                    'acl-erp-exception-write': {
+                        table: 'sys_security_acl'
+                        id: '09dc9a297ca7448cb5333678c53c1817'
+                    }
                     'acl-erp-system-create': {
                         table: 'sys_security_acl'
                         id: 'ee1e120a2888421fb6b81fb370dd1b82'
@@ -129,6 +141,30 @@ declare global {
                         table: 'sys_security_acl'
                         id: '6666d9e632d34a8f89edf4ad41a91354'
                     }
+                    'acl-erp-write-deny-ack': {
+                        table: 'sys_security_acl'
+                        id: 'cf2e09283e624212ad69b7497d2f648b'
+                    }
+                    'acl-erp-write-deny-approval': {
+                        table: 'sys_security_acl'
+                        id: 'd64062ce2ebd40fca6638d09c9445ab7'
+                    }
+                    'acl-erp-write-deny-first-sent': {
+                        table: 'sys_security_acl'
+                        id: 'd9b13b324775481bab7adb1c65c744d4'
+                    }
+                    'acl-erp-write-deny-idem': {
+                        table: 'sys_security_acl'
+                        id: 'e135de255af748bcbc8778a0973accfa'
+                    }
+                    'acl-erp-write-deny-state': {
+                        table: 'sys_security_acl'
+                        id: '21ef5b3f5fef425aae24768021f5a17f'
+                    }
+                    'acl-erp-write-read': {
+                        table: 'sys_security_acl'
+                        id: 'b3d719e965744394a2571dc55768fdb0'
+                    }
                     'acl-field-map-create': {
                         table: 'sys_security_acl'
                         id: '3be9e11456e048b8ac7827a82988a861'
@@ -144,6 +180,18 @@ declare global {
                     'acl-field-map-write': {
                         table: 'sys_security_acl'
                         id: '8113e33f01ad4bc0ba7652f59bc48fe7'
+                    }
+                    'acl-landscape-create': {
+                        table: 'sys_security_acl'
+                        id: 'd2e804c5b9754869b6ef0627def6b8ed'
+                    }
+                    'acl-landscape-read': {
+                        table: 'sys_security_acl'
+                        id: '6d91874773fb4e5c9661b69f7a4f36a8'
+                    }
+                    'acl-landscape-write': {
+                        table: 'sys_security_acl'
+                        id: '0d91b8680604417eb9e173840e4c8d13'
                     }
                     'acl-map-tmpl-create': {
                         table: 'sys_security_acl'
@@ -189,10 +237,34 @@ declare global {
                         table: 'sys_security_acl'
                         id: '19f3e553e6dd4c6482bb4ec42c796593'
                     }
+                    'acl-payroll-calendar-create': {
+                        table: 'sys_security_acl'
+                        id: '50c2b021e8874387a8af77ebac64af72'
+                    }
+                    'acl-payroll-calendar-read': {
+                        table: 'sys_security_acl'
+                        id: '87df98c108a34fd69f839e1609a61752'
+                    }
+                    'acl-payroll-calendar-write': {
+                        table: 'sys_security_acl'
+                        id: 'b0f8628851744cd397b33177dfe371f9'
+                    }
                     'acl-probe-protected-write-shape-a': {
                         table: 'sys_security_acl'
                         id: '75864fd439204b70b29e6d4d9c625793'
                         deleted: true
+                    }
+                    'acl-scope-grant-create': {
+                        table: 'sys_security_acl'
+                        id: '632b902b39c74e78bd06ef522c3df5f8'
+                    }
+                    'acl-scope-grant-read': {
+                        table: 'sys_security_acl'
+                        id: '03bc0a60753245bab7ec955cd629ca4d'
+                    }
+                    'acl-scope-grant-write': {
+                        table: 'sys_security_acl'
+                        id: '688db67b5f3643e0a1596ee3680ad70a'
                     }
                     'acl-staging-delete': {
                         table: 'sys_security_acl'
@@ -309,6 +381,38 @@ declare global {
                     'acl-sync-run-write-status': {
                         table: 'sys_security_acl'
                         id: '723d8a5d07c14061a498aff6511f45eb'
+                    }
+                    'acl-usage-event-read': {
+                        table: 'sys_security_acl'
+                        id: 'f7cf7692e3064fbbbe0c2f3eea56a19e'
+                    }
+                    'acl-usage-event-write': {
+                        table: 'sys_security_acl'
+                        id: '5aa0c6aba8cf40bb87a67b964e1dbae2'
+                    }
+                    'acl-vendor-onboarding-create': {
+                        table: 'sys_security_acl'
+                        id: '3a522ef8f4bd4e6fa4aeefbf7e860983'
+                    }
+                    'acl-vendor-onboarding-read': {
+                        table: 'sys_security_acl'
+                        id: 'df348789220b4bd3b22aad5a6013b35d'
+                    }
+                    'acl-vendor-onboarding-write': {
+                        table: 'sys_security_acl'
+                        id: '7298e6efdce2443db8f6013b417cfa90'
+                    }
+                    'acl-write-policy-deny-required': {
+                        table: 'sys_security_acl'
+                        id: 'd0bd9a670ae74adba91729cea78e47ff'
+                    }
+                    'acl-write-policy-read': {
+                        table: 'sys_security_acl'
+                        id: '38fce3e922b8405ab8a9af9d588f384a'
+                    }
+                    'acl-write-policy-write': {
+                        table: 'sys_security_acl'
+                        id: '73e94abeadc34b319a261215a42f6bbd'
                     }
                     'app-menu-sn-hr-erp': {
                         table: 'sys_app_application'
@@ -706,6 +810,66 @@ declare global {
                         table: 'sys_app_module'
                         id: '3f5e4c9cfd2d4cd28a56e6b040cd2007'
                     }
+                    'nv-doc-tmpl-annual-tax-statement': {
+                        table: 'x_335329_sn_hr_erp_doc_tmpl'
+                        id: '727c3a4500f84c5c93c2ab28b2c3bc77'
+                    }
+                    'nv-doc-tmpl-leave-balance-certificate': {
+                        table: 'x_335329_sn_hr_erp_doc_tmpl'
+                        id: '6d4e5d1eca3a42d582e6b370bdcf4fce'
+                    }
+                    'nv-doc-tmpl-pension-statement': {
+                        table: 'x_335329_sn_hr_erp_doc_tmpl'
+                        id: '37bcf543ec1649769724ea244ea7a888'
+                    }
+                    'nv-doc-tmpl-visa-support-letter': {
+                        table: 'x_335329_sn_hr_erp_doc_tmpl'
+                        id: '099418b8621e4106b542bb9cdb9ebf6b'
+                    }
+                    'nv-doc-type-annual-tax-statement': {
+                        table: 'x_335329_sn_hr_erp_doc_type'
+                        id: 'ed7806362ce742aeb464c7ae17236efd'
+                    }
+                    'nv-doc-type-leave-balance-certificate': {
+                        table: 'x_335329_sn_hr_erp_doc_type'
+                        id: '60218345c94a4422adf17b1a3058d7f8'
+                    }
+                    'nv-doc-type-pension-statement': {
+                        table: 'x_335329_sn_hr_erp_doc_type'
+                        id: 'e75fd56869f34ed5b6a24ce4f74c764a'
+                    }
+                    'nv-doc-type-visa-support-letter': {
+                        table: 'x_335329_sn_hr_erp_doc_type'
+                        id: '3cc5d620c71548deaa9f113b95691214'
+                    }
+                    'nv-policy-banking-iban': {
+                        table: 'x_335329_sn_hr_erp_write_approval_policy'
+                        id: '0c04c9a5a130458fa9645fd2ece027b0'
+                    }
+                    'nv-policy-compensation-change': {
+                        table: 'x_335329_sn_hr_erp_write_approval_policy'
+                        id: 'a8bf96ecc32b4b5fa1b39e29732b4e7e'
+                    }
+                    'nv-policy-compensation-salary': {
+                        table: 'x_335329_sn_hr_erp_write_approval_policy'
+                        id: '3f673b0dce6549b8a99da063cad0f080'
+                    }
+                    'nv-policy-doc-salary-certificate': {
+                        table: 'x_335329_sn_hr_erp_write_approval_policy'
+                        id: '46fec11fc5a444e790c42ed300342a18'
+                    }
+                    'nv-policy-doc-visa-support': {
+                        table: 'x_335329_sn_hr_erp_write_approval_policy'
+                        id: '02283e0869854f3a917e63f1957dbead'
+                    }
+                    'nv-policy-expense-claim': {
+                        table: 'x_335329_sn_hr_erp_write_approval_policy'
+                        id: 'd480432406fc4189a979ae5561800d6a'
+                    }
+                    'nv-policy-termination': {
+                        table: 'x_335329_sn_hr_erp_write_approval_policy'
+                        id: '9a6ada65ecc348e2becd423e734a42b5'
+                    }
                     package_json: {
                         table: 'sys_module'
                         id: 'ab1b6c76e2574558b55e6653b237f00d'
@@ -782,6 +946,10 @@ declare global {
                         table: 'sys_module'
                         id: '6ee6fc8cd34e4df0a0ae25c98f906da8'
                     }
+                    'src_server_connector_binary-client_ts': {
+                        table: 'sys_module'
+                        id: 'b16c362033814b2c81792a78f23946e1'
+                    }
                     'src_server_connector_call-log_ts': {
                         table: 'sys_module'
                         id: 'cfd22e1761344f82970b9cb0611f2d47'
@@ -846,6 +1014,10 @@ declare global {
                         table: 'sys_module'
                         id: '100ccbd73f8942f886632b273ec6add6'
                     }
+                    src_server_connector_throttle_ts: {
+                        table: 'sys_module'
+                        id: '38623c3dfaf84c358728aa388af175b7'
+                    }
                     src_server_connector_types_ts: {
                         table: 'sys_module'
                         id: 'd5e44b8e8b2d46d3aacd6bb1954f231c'
@@ -862,9 +1034,37 @@ declare global {
                         table: 'sys_module'
                         id: '72ae5722c8d3408eb223de03c92bd5f8'
                     }
+                    src_server_country_ts: {
+                        table: 'sys_module'
+                        id: '789250e6e4d04feabfdd8f606d0c7956'
+                    }
+                    src_server_ess_benefits_ts: {
+                        table: 'sys_module'
+                        id: 'a0c3e449b5b2408d86c45bf850864562'
+                    }
+                    src_server_ess_prefill_ts: {
+                        table: 'sys_module'
+                        id: '971ec1c6adac4bfcb4f1705934e9b26c'
+                    }
+                    'src_server_ess_read-service_ts': {
+                        table: 'sys_module'
+                        id: '866fc08160294e64837f85aa3bba3106'
+                    }
+                    src_server_governance_landscape_ts: {
+                        table: 'sys_module'
+                        id: 'ffb5309da4c54d608c45145db0197498'
+                    }
+                    src_server_hr_archive_ts: {
+                        table: 'sys_module'
+                        id: '35acba9a45684c398a46cfd519f832b7'
+                    }
                     src_server_hr_assemble_ts: {
                         table: 'sys_module'
                         id: '79523e7928db44f49517b596d41ad584'
+                    }
+                    'src_server_hr_release-gate_ts': {
+                        table: 'sys_module'
+                        id: '068a458f3f804a228948af027301184a'
                     }
                     src_server_hr_render_ts: {
                         table: 'sys_module'
@@ -873,6 +1073,10 @@ declare global {
                     src_server_hr_rules_ts: {
                         table: 'sys_module'
                         id: '0f221c086a814195afb89cd5f0194891'
+                    }
+                    'src_server_hr_template-resolver_ts': {
+                        table: 'sys_module'
+                        id: '4e011d82152a47f69c5c7c5ed4adcf05'
                     }
                     'src_server_mapping_apply-template_ts': {
                         table: 'sys_module'
@@ -902,9 +1106,61 @@ declare global {
                         table: 'sys_module'
                         id: 'f00137c489a346b097f0b7ddb7de2c25'
                     }
+                    src_server_telemetry_ts: {
+                        table: 'sys_module'
+                        id: 'b7d3af25372649f389deab4e6f5f2cb8'
+                    }
                     src_server_util_bool_ts: {
                         table: 'sys_module'
                         id: 'a81ec4bf209a455d8095bac857137fd2'
+                    }
+                    'src_server_write_approval-gate_ts': {
+                        table: 'sys_module'
+                        id: 'e1e90fd6f36e4d37b8f3b9eeae8971d7'
+                    }
+                    'src_server_write_compensation-change_ts': {
+                        table: 'sys_module'
+                        id: 'd2ed89b40ee1499d9514da04fed81840'
+                    }
+                    'src_server_write_country-check_ts': {
+                        table: 'sys_module'
+                        id: '48d8c1a3e3a640aa821542c07cc36e7d'
+                    }
+                    'src_server_write_create-write_ts': {
+                        table: 'sys_module'
+                        id: 'bc0157ed212b427899cea24fbd6c8022'
+                    }
+                    src_server_write_cutoff_ts: {
+                        table: 'sys_module'
+                        id: 'ebef965c3e014e14abbab1db1c5e9287'
+                    }
+                    src_server_write_dispatcher_ts: {
+                        table: 'sys_module'
+                        id: '0e6e200075d54dcdb1be087f57040265'
+                    }
+                    'src_server_write_exception-queue_ts': {
+                        table: 'sys_module'
+                        id: '3aeb17fc6e6a457daec92384b15d28f8'
+                    }
+                    'src_server_write_expense-claim_ts': {
+                        table: 'sys_module'
+                        id: 'b1575689b17e403f9ec5fac43b167185'
+                    }
+                    src_server_write_idempotency_ts: {
+                        table: 'sys_module'
+                        id: '2b61818bd1ff49179fdffe09788897fd'
+                    }
+                    src_server_write_identity_ts: {
+                        table: 'sys_module'
+                        id: '8691ba94e3b1430b81926458b91fb267'
+                    }
+                    src_server_write_offboarding_ts: {
+                        table: 'sys_module'
+                        id: '1af33bb01ab9492ebe73e7b041214b6e'
+                    }
+                    'src_server_write_personal-update_ts': {
+                        table: 'sys_module'
+                        id: '4ead038653544bc8b058c9ae65cc609d'
                     }
                     SyncEngine: {
                         table: 'sys_script_include'
@@ -998,6 +1254,10 @@ declare global {
                         table: 'x_335329_sn_hr_erp_map_tmpl'
                         id: '8d4ebe75e3b6436cabb3feb7ef3d96fd'
                     }
+                    'tmpl-salesforce-fixed-asset': {
+                        table: 'x_335329_sn_hr_erp_map_tmpl'
+                        id: '9ba381d22c2e4b0fa1972c9bafc11126'
+                    }
                     'tmpl-sap-ecc-backorder': {
                         table: 'x_335329_sn_hr_erp_map_tmpl'
                         id: 'ca33c42a378b43459fd18748ed2b58e1'
@@ -1066,6 +1326,10 @@ declare global {
                         table: 'x_335329_sn_hr_erp_map_tmpl'
                         id: '0e77df67e9764625a8ff306c2f7ac955'
                     }
+                    'tmpl-unit4-fixed-asset': {
+                        table: 'x_335329_sn_hr_erp_map_tmpl'
+                        id: 'db09abfa13204ca48ba39a2aab02d431'
+                    }
                     'tmpl-unit4-gl-summary': {
                         table: 'x_335329_sn_hr_erp_map_tmpl'
                         id: 'bab4dde200554620aea94637204a411a'
@@ -1097,6 +1361,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '005f69297bef477294d441f6f6f1c427'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'max_attachment_bytes'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '00853d72ee1640048705e611744d8068'
                         key: {
@@ -1117,6 +1389,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '012292bb95c8451bbd4e68c54e539482'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'external_id'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '015d447c242b4ea3a6ebe42f5900a799'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'effective_cycle'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '01cc63826b31437eb1869d1c5e27b1e4'
                         key: {
@@ -1126,11 +1415,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_index'
+                        id: '01d9a7d0bb834f2c8a525bc4a43a3cf5'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_doc_tmpl'
+                            col_name_string: 'document_type,country,language'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '0241f868ff5548fdb0a720afb66ff292'
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'use_mid_server'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0255d3ff9e7942eda5e021a01a2db210'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'change_type'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -1146,6 +1454,67 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '0309611370644608958c8c8fcd41b66c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'operation'
+                            value: 'read'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '033c8d099a764a3dab0e4eb30e1d291d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'rate_limit_per_min'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0362a5f368ca4fad9a5f48bc6febce06'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'leave_type_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '037747b7d5e645499a50d122e7b75543'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'state'
+                            value: 'sent'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '03de25c1e449434f9611594f3a56cc9d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'machine_downtime'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '0446d63c1a1546beb2e2da00bda84ed8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'country'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '04a63bc46b074018be1eca549cdeecff'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_req'
@@ -1153,6 +1522,15 @@ declare global {
                             value: 'pending'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '04a64cfececa494f8506b3a628b25486'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'occurred'
+                            language: 'en'
                         }
                     },
                     {
@@ -1180,6 +1558,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '06a3660bb6d54b4498269b52ed9edcb0'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'short_description'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: '06b8b96b17f1486a86e1d24da3ce9ce5'
+                        key: {
+                            sys_security_acl: '09dc9a297ca7448cb5333678c53c1817'
+                            sys_user_role: {
+                                id: '0d725b70d93647d1af7c843fa8da56ec'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.hr_viewer'
+                                }
+                            }
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '06f815a5d3934cd09fa2c1b6ec60de2e'
                         key: {
@@ -1202,6 +1602,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '06fcb61f52c6428ba8d5f96bf904af2c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'erp_write'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '0732b4b711844e239dafecbd077aaab6'
                         key: {
@@ -1218,6 +1627,26 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'source_note'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '07c4cbdf2ff04c84885f53090300585e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'source_note'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '07c8d63278364dc9bfeee1030bb72c5c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'machine_downtime'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -1280,12 +1709,39 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '08c5c5fd759b45a8bd346c952c2acd81'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'leave_request'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '08cdf97ca704470cb86001f5c0877276'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'source_record'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '090f4059c46543c1b379d232f97099c7'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'source_field'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '091e99c2bcc242e6989ce6e4cde785ce'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'expected_latency_ms'
                         }
                     },
                     {
@@ -1298,12 +1754,73 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '09e5d32a13324c3ca46bc58dfb4973b8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'elevated_sensitivity'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '09f4e015f79e4965adbad49cea91a2f4'
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'logical_object'
                             value: 'balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0a2503ff324a4be4bdaa3492f5b1c866'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'approver'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0a2821429bb54fea9fa2facfdfc8731f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'total_amount'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0a2f90144fa84ef2bbe241417d105be3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'backorder'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '0a37a9878c824e35a255c07d724c40a1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'operation'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0a417511eb5c4c208092e1b4e435cb63'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'income_statement'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -1338,6 +1855,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '0ade43b42c584c21ad4a39a0287a97b3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'compensation_change'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0b0a19ffe7c14b77ba9c985eafae01ca'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'requisition'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'ua_table_licensing_config'
                         id: '0b2bc50670f8469aaeb3c9498d122b09'
                         key: {
@@ -1365,6 +1904,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '0ba832887a9f4d79baa7213cf99982dc'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'state'
+                            value: 'resolved'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '0bc0b5ab9255425bbc41c5e3fe313aeb'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -1388,6 +1938,15 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_call_log'
                             element: 'started'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '0c58808875e549ec973e248abeb08b45'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'confirmed_at'
+                            language: 'en'
                         }
                     },
                     {
@@ -1428,6 +1987,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '0d276de036564e9ba6a811c8c2b1445c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'next_period_label'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '0d43bbc081394b968cbbdc8fe8fcd702'
                         key: {
@@ -1459,6 +2027,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '0d6eb7c91bad46489cfeed2f6d58b946'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'operation'
+                            value: 'create'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_user_role'
                         id: '0d725b70d93647d1af7c843fa8da56ec'
                         key: {
@@ -1472,6 +2051,22 @@ declare global {
                             name: 'x_335329_sn_hr_erp_doc_req'
                             element: 'source_call_ids'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '0dfdba2529e54715b58775c1b6e1281e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'source'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '0e31f30009b140fcaf0762bccedc642e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -1504,12 +2099,45 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '0ee8c992c8ec470ea50bcbfb436f0503'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'production_output'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0eef62250f824d28a5557ddbeb87528c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'authority'
+                            value: 'core_erp'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '0ef4212859684687816f8a5338f4dcee'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_request'
                             element: 'NULL'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0f0334b373924c8db9ca095600a09609'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'expense_claim'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -1521,10 +2149,38 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '0f9271a16af7497ca91227f6b1b751bc'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'deprecation_notice_days'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '0fc5fd6c0c8247608e52f37d9a4121ba'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'cutoff_datetime'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '0ff08fc33b5c4c81b6349df93e2c2e24'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'threshold'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0fffb010a02e49758b7513b1edade32d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'timesheet_entry'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -1561,6 +2217,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '1173c1a8d9ba4105a61e2b6b008dbc38'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'expected_latency_ms'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: '12431a2542a545108c38f1a070aeba75'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_usage_event'
+                            col_name_string: 'requirement_area'
+                        }
+                    },
+                    {
                         table: 'sys_ws_query_parameter_map'
                         id: '12a3546cd5aa4b82a24bf89708f9f683'
                         key: {
@@ -1579,11 +2252,48 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '12aa908fe9f2471f90d3cb3d9b00dbc2'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'vendor'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '12b1cf8e2b5d4fbd8426488d246839a9'
                         key: {
                             name: 'x_335329_sn_hr_erp_object_map'
                             element: 'mapping_verified'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '13192adb5c284b8fa3435fc1644459ef'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '1350c85287e84fd28171a261779b037b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'state'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '135b859334094439bf8d8bc28b4f4519'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'income_statement'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -1602,6 +2312,69 @@ declare global {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'logical_field'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '13c9a96ccb734ebc99e38033275c1d49'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'authority'
+                            value: 'none_identified'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '13e0990b62dc4cc5850c3b31f54d64d1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'action'
+                            value: 'view'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '13ea18fff77f4f63b327e32abe3246bc'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'D3'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '140fd572c39f4623a46bd496be29d09d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'D9'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1419869708b248588433359511d545fa'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'timesheet_entry'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '142b15e5272c449c9870e670765c0793'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'auth_exception_expires'
                         }
                     },
                     {
@@ -1624,12 +2397,44 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '147d899e553946a28f929da60934fb08'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'idempotency_mode'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '14a32c81e8914d03b70b3c1d91209b64'
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'endpoint_path_hint'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: '14c18b86de614fcd99e6c819c1420f1a'
+                        key: {
+                            sys_security_acl: '03bc0a60753245bab7ec955cd629ca4d'
+                            sys_user_role: {
+                                id: '11031a92b26c4e7ab34910721c4d2504'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.viewer'
+                                }
+                            }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '14f92d2bba3b44eb99a126dfef88d8c7'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'benefit_enrollment'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -1671,6 +2476,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '169f565088e849f5bb41f1480d3add7d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'R2'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '16b5fb369b4b442f8f76ce05deb57437'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -1693,6 +2509,33 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '175bd368dfe5478f9f102818fc8c9686'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'native_timesheet_workflow'
+                            value: 'yes'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '1764d9aed5f848358a0547cd61b8317b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'active'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '176bcb14fb224db4bcfda15dbbc5e910'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'state'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '177676aca0164d9eb55e210be691ac26'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -1711,11 +2554,48 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_security_acl_role'
+                        id: '17ab6298c3e148b3b2dc8f42b8194544'
+                        key: {
+                            sys_security_acl: 'df348789220b4bd3b22aad5a6013b35d'
+                            sys_user_role: {
+                                id: '11031a92b26c4e7ab34910721c4d2504'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.viewer'
+                                }
+                            }
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '17e20846a14245f78968d7117d0a5401'
                         key: {
                             name: 'x_335329_sn_hr_erp_object_map'
                             element: 'endpoint_path'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: '17e2a8b4d90a4f70b08655e4756547a7'
+                        key: {
+                            sys_security_acl: '7298e6efdce2443db8f6013b417cfa90'
+                            sys_user_role: {
+                                id: '875163d8147a4574bccc6c8814c8211f'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.admin'
+                                }
+                            }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '180f8eca5a85499e8f9f101bee5622df'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'zero_copy_connector'
+                            value: 'not_applicable'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -1733,6 +2613,28 @@ declare global {
                             name: 'x_335329_sn_hr_erp_sync_run'
                             element: 'object_map'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '18ad2f8e57bf4fb28935478cf20eddbf'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'D3'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '18b9982103ba44c4b965845e5b9ee651'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'state'
+                            value: 'confirmed'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -1755,12 +2657,42 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '1959d88175854777a324ac3b30434fec'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'document_reference'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '196ce864ee134f95a8e0ada30f0eb106'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'status'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '19b5376539d6442bb21528b21ef91095'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'work_order'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '19f460492b2a491f8870300072f3ecf4'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'approval_required'
                         }
                     },
                     {
@@ -1808,6 +2740,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '1c1782bfda414b98a88964b43ffdf331'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'source_record'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '1c263a592cc044dd90d0e7b1a242e446'
                         key: {
@@ -1841,6 +2782,56 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '1c6a04b12f1e45f0b89e8280a7a5a51b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'cost_centre_project_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '1c6e641aff69499aa9579d5f898b2511'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'auth_exception_ref'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1c9ab98be88342bbbf05f40171759e40'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'leave_request'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1cf2b8e5e2114f92bfe3f0ee57c9cd5d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                            value: 'rate_limited'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '1d0deb9c7cf64b18a0bef24ee88247ed'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'idempotency_header_name'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '1d1cac319dd7404d8ef4fd482cf35ca9'
                         key: {
@@ -1856,6 +2847,22 @@ declare global {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'field_map'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '1d4adef799a946b6ad9ad8192ea37ff3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'erp_system'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: '1d4bf8381e2a4bf39dc70fc863fc0a3a'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_erp_write'
+                            col_name_string: 'erp_system,idempotency_key'
                         }
                     },
                     {
@@ -1905,6 +2912,35 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '1e1822861d7f4b31bd43cc7d64fd4aa7'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'checklist_item'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1e717c3500214b01bcbd30cf5cd76622'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'asset_depreciation'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '1e7b42174ab04924b7eab34883d4334b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'max_attachment_bytes'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '1e928623bd9540c8ae129c9ca2a62196'
                         key: {
@@ -1916,11 +2952,64 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '1eb0aa53bf7d48f1b6d6c5815bbfc594'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'fixed_asset'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1ecf718496cd47b0a4d8c1afaf8110ad'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'production_output'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '1f1033fb477b448d945b723acd87081d'
                         key: {
                             name: 'x_335329_sn_hr_erp_object_map'
                             element: 'deep_link_path'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1f1ad0a4472b444b83a6d6b0adcc58d8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'end_date'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1f1fad92eca74d2d8f7d5332d2f7f62e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'native_timesheet_workflow'
+                            value: 'not_answered'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '1f278e365023421d92070f8f1e0ac927'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'erp_ack_ref'
+                            language: 'en'
                         }
                     },
                     {
@@ -1975,12 +3064,45 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '216b42c91dd74e9ca9d3bfbeb1e80208'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'erp_attachment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '21890f1d3d0048dd91dd6187519590b7'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'transform'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '2189374a6e2e441d833acb456de24b77'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'stock_item'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '21b2c40b496b4d14bec62d21baf207e8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'timesheet_entry'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -1993,6 +3115,28 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '22c4ed455125489bb84ed0ec8a3c06e7'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'payslip_document'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '23534a583d674702ac2f16d85ac9eac4'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'fixed_asset'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '23b297b68fe64ef49380e3f0256f6b69'
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
@@ -2000,6 +3144,40 @@ declare global {
                             value: 'dynamics_365_fo'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '23be8c3de09843428f41cded8bab7de1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'idempotency_key'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '23c3f3b64a01401fbca24ba5b1470343'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'deprecation_notice_days'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '23fa188a61384fd38cfc2d141daab5c8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_tmpl'
+                            element: 'language'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '241b6443a78b476db80ae057c54c12a0'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'source_table'
+                            language: 'en'
                         }
                     },
                     {
@@ -2026,6 +3204,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '24b47ea953344af0a6d6453ea785f410'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'gross_annual'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '24ecab1e89014afeaff4625fc6bc89ee'
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
@@ -2041,6 +3230,14 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'endpoint_path_hint'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '259a7c0b460a41388dd3f5f68efc2689'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'call_log_ids'
                         }
                     },
                     {
@@ -2064,6 +3261,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '266e6edf401e44799603afaeb7c0e3aa'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'address'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '268772673d384ee9bdcf5d739fa2a653'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -2071,6 +3279,26 @@ declare global {
                             value: 'performance'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '269a6fb56a9f4951889d22ca60784139'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'net_annual'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '269c785c55d04a58949ac078b2cb677a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'request_hash'
+                            language: 'en'
                         }
                     },
                     {
@@ -2084,11 +3312,78 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '26a7ac3d7f6a45409aba847dbdcf5be3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'benefit_enrollment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2735d87876174d9983ba62fa29149ac8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '275245bfb6814b198c01d912c687ff23'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'erp_system'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '277902eac99d426984446bc424bef11c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'auth_exception_expires'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '27a6c8d6a91e43a5b92a76f2c9034fae'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'outcome'
+                            value: 'success'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '27b3128f9c7a4b939afe94e219c155fb'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_run'
                             element: 'erp_category'
                             value: 'assets'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '27ee407dd5544119b8f8a30d9357e970'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'action'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '280b7d98a85d42908df01b4f19e57b90'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'operation'
+                            value: 'create'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -2105,6 +3400,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '284e0df216cc45c7a33e6fe9854341da'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'api_version'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '2883b0cd828d45f58f613b8073838979'
                         key: {
@@ -2118,6 +3422,14 @@ declare global {
                         key: {
                             logical_table_name: 'x_335329_sn_hr_erp_sync_run'
                             col_name_string: 'erp_system,logical_object,started'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '298d458e88774395bb15e24cd74f3dd7'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'max_throughput_bytes_per_min'
                         }
                     },
                     {
@@ -2163,6 +3475,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '2aec4bf0a3e34e2b834e950493c3bdef'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_emp_xref'
+                            element: 'linked_on'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '2b11f988538c4e9abe6101a28688afe5'
                         key: {
@@ -2171,6 +3492,22 @@ declare global {
                             value: 'basic'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2b401eb48849431bb7b14609ccaa906e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'effective_cycle'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2b85106ac9f14c35ae529c338cc96500'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'throughput_source_note'
                         }
                     },
                     {
@@ -2183,11 +3520,78 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '2bcf6a90621b4475aefeb454d9cbd2d8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'leave_type_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '2bdaa884562d4e50b3f579de1a966e83'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'logical_object'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '2c3584e7bef54f1c84ea492fe815e307'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'erp_role_or_scope'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '2c4913b0b8f4412b8d6da243f8adcfd8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'outcome'
+                            value: 'not_configured'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '2c73996358de4990a4fbc647e7811ef3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'balance_value'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '2c8e7fe3c7804b4ab783bba35a7a2b1b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'max_throughput_bytes_per_min'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2cc59eb3838547a6a527a33456e13491'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'request_hash'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2ce15af4a49d45b18a75373875e61a3a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'source_note'
                         }
                     },
                     {
@@ -2212,12 +3616,45 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '2d4b25b62bd4402fae0fd1e08da4b8ff'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'retrieval_path'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '2d59d181262b46ed9a31e6e808278f72'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_req'
                             element: 'output_format'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '2dfa99b1eb2341028382dedb9a7c5532'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'leave_request'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '2e1f19dfc9f349feab3551a29cdf1edd'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'unit'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -2262,11 +3699,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '2ef4b1b06c3f462080b40f4903af9777'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'entry_status'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '2f194e4d43694e59a1ef9d40c36e7636'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_req'
                             element: 'document_type'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2f2fa00f0dd74f63bec6b69c99505a5e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'vendor'
                         }
                     },
                     {
@@ -2285,6 +3741,14 @@ declare global {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'verified'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2f62470262fd423f8d50fdfd9cf1774a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'environment'
                         }
                     },
                     {
@@ -2310,6 +3774,41 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_index'
+                        id: '300808d7e9314eb9b8d62bbb02ae6d7c'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            col_name_string: 'erp_system,country,pay_period_label'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '303565ae69ac4eefa6bf8d2a44530f83'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'erp_write'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '30552c018b9840029ace4d9bd5a57295'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'state'
+                            value: 'blocked_cutoff'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '30dbd97041e54cbaabb5cc5a94aed8f6'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'native_timesheet_workflow'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '30de136dc03148b8bf626c6d11884274'
                         key: {
@@ -2323,6 +3822,36 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '316c6887611e4595bba35ee57b88d5b6'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '317ffbbd81d5459b991a95be1172684d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'R6'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '318d8daa83284af09c605baec86cb573'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'environment'
+                            value: 'production'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '318e4a3ba0674a85bf98945e99a8ddd8'
                         key: {
@@ -2333,6 +3862,15 @@ declare global {
                                     name: 'x_335329_sn_hr_erp.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '319c021a679447a58a9a192c11afd126'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'outcome'
+                            language: 'en'
                         }
                     },
                     {
@@ -2365,6 +3903,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '32892a124c4d4603abcb88b1ee877df7'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'expense_claim'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '32a3dc3f6e0c46e2bfb2dd502fe8c6cb'
                         key: {
@@ -2386,6 +3935,67 @@ declare global {
                             value: 'unit4'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '32fed660e0564b2593d907c99fe2a6b0'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'state'
+                            value: 'blocked_approval'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: '3314b33c279644edb339b474ff97b804'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_field_map'
+                            col_name_string: 'object_map,logical_field,country'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '3371804e92f4497a8b3854e3b1662256'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'maintenance_schedule'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '3389ea5329934c7a97e641fb79569653'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'idempotency_mode'
+                            value: 'header'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '33e7d057f8ff437d8100ca787c50a6ad'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'timesheet_entry'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '33fc83e031c74955b82f324b7b1a27fd'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'state'
+                            language: 'en'
                         }
                     },
                     {
@@ -2439,12 +4049,84 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '34af69a89dfd4563af9c3c522845c8be'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '3504e92e9bdf42279648d7c53dd6eea3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'policy_key'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '35562344265d436a9e0bf04af94584e9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '35961d6ce649421cbed5e15160f78c72'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'fetched_at'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '35a485d0dcd04713bba92156dc8b25a9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'error_message'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '36017fb4d7fc44189e8f0242fadce0c1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'assignment_group'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '361dcacef7da48348e2d7108c2621049'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'leave_balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '366cd1782cde4193b824511f57273e37'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'requested_by'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '367bd8c9da8a4eaca0c4c9f1893bc059'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'leave_balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -2467,6 +4149,22 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '3700e0d1c277463aa7d650bd525093a3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'checklist_item'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '3738f3af79574ff0ae189403235ac095'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'erp_system'
+                        }
+                    },
+                    {
                         table: 'ua_table_licensing_config'
                         id: '375364e98f32421d980aa6275d3fadd0'
                         key: {
@@ -2485,6 +4183,33 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '37e30be06d23499492d4a23fd9fe0636'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'source_table'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '3852fde1ffed4063aef08cc1be95dec9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'R3'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '38af7dd3273c4a9db9d355434f4de7d5'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'policy_key'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '38b4db737d6344d68d65ad673f65b87c'
                         key: {
@@ -2499,6 +4224,14 @@ declare global {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'legal_entity'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '38d333df55554c8f913dafa5d542b969'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'environment'
                         }
                     },
                     {
@@ -2548,6 +4281,26 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '3a3055c32a644c3385220910587d6499'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'operation'
+                            value: 'update'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '3aee256ff45d4a58bd20b28464b0039c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'confirm_timeout_ms'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '3b1e797ba3dd424fa1caa37122fb5f8e'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -2575,10 +4328,29 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '3bffd32fc08d4ae488314b9ba63f635f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'existence_check_path'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '3c350ecd12384d98b2005ba617e86794'
                         key: {
                             name: 'x_335329_sn_hr_erp_emp_xref'
                             element: 'erp_system'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '3c4cdd2c166f447997608b499fd407c7'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'D6'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -2597,6 +4369,15 @@ declare global {
                         id: '3c73b091aada42238d9e1b6667c1f690'
                         key: {
                             name: 'x_335329_sn_hr_erp/main.js.map'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '3c80c3feb21448d7a01035603062d594'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'source_note'
+                            language: 'en'
                         }
                     },
                     {
@@ -2633,6 +4414,28 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '3d6859111843418197811a4fcc575065'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'operation'
+                            value: 'update'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '3d7848fb8d3f4283900baae89a3e67ca'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'contribution_amount'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '3da42237c18c4a269d9c83cd1b0da923'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -2651,6 +4454,26 @@ declare global {
                             value: 'production_output'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '3ddbd164ff554ddc9b53c7e90401b4d4'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'compensation_change'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '3e0ee031d42c4de88c501bbc3312022c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'existence_check_path'
+                            language: 'en'
                         }
                     },
                     {
@@ -2685,11 +4508,33 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '3ee84ba8d6d84f73937135bdcdc88123'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'leave_request'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '3ef095e6cda04973871d4b968ec9252c'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_request'
                             element: 'erp_category'
                             value: 'assets'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '3f6535338e8c4e8b9723b8db6b664b66'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'payslip_document'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -2722,6 +4567,25 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '4054881628994b2a81dec7ae8d9826ce'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'attachment_limits_source_note'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '4055f764f0ee4591887f03233c13259c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'payroll_record'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '40b3cc713e3a4b82bae9ab01deb77192'
                         key: {
                             name: 'x_335329_sn_hr_erp_call_log'
@@ -2749,11 +4613,32 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_security_acl_role'
+                        id: '41803a6a935047b997f6b27804c5e16f'
+                        key: {
+                            sys_security_acl: '3a522ef8f4bd4e6fa4aeefbf7e860983'
+                            sys_user_role: {
+                                id: '875163d8147a4574bccc6c8814c8211f'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.admin'
+                                }
+                            }
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '418dfc427f004d22ae3d51d2de139109'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_type'
                             element: 'required_fields'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '418fdb4db5d147bd87b8bd4684af66e3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'country'
                         }
                     },
                     {
@@ -2764,11 +4649,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '41badeadf55045c9822e7e7a016e2e68'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'policy_key'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '41d45d79c3eb489e960bf7643cdde857'
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'mid_server'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '425b6d3c377948f2b884fe8519f00d72'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'confirm_timeout_ms'
                         }
                     },
                     {
@@ -2805,6 +4707,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '42e9cc1eeafe4751b10123c8844bd6f2'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'old_value'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '43071b5cb635478ca57f38aaa587290f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'gl_summary'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '431aba981abc4ab4a8a5b92abd85888c'
                         key: {
@@ -2832,6 +4756,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '4360188046514597905fd54755da276d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'expense_claim'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '4368a3f1d1d343b1acf778538c84c84c'
                         key: {
@@ -2853,6 +4788,25 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_call_log'
                             element: 'object_map'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '4386bda6bca14f89883cf25824c14680'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'cutoff_datetime'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '43954044b85642d3a4de7247e7f4c95b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'D10'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -2886,6 +4840,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_index'
+                        id: '449b8098ca77481785335bf51e0f5749'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_scope_grant'
+                            col_name_string: 'erp_system,logical_object,operation'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '45043ad3a4ac4460a99c955246fe2402'
                         key: {
@@ -2912,6 +4874,17 @@ declare global {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'vendor'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '45a245ed51574e36ac2ed077ddf38e45'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'cost_centre_project_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -2974,12 +4947,81 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '4705569d6b794f3b80774b2d0e2d31de'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'country'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '475f65bd8c73415caf9de46b53adaf0d'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'transform'
                             value: 'upper'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '483fda025b4544c6a08c1bdcc4ee8b99'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'balance_unit'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: '488c609b5c704631b4230501d6c8de7f'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            col_name_string: 'policy_key,country'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '48ab88797b824422a80ad9fae914a839'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'completed_on'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '48d29f483ea84af0b32adbbda25ea07c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'erp_attachment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '48df7b3bc81a4bbc9cc120dcb322cc90'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'D5'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '49c849e5af814b06b576d71c716a7855'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'payslip_document'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -2994,6 +5036,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '4a8fb81e8309466683be1a1709dc9df0'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'income_statement'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '4b2cfa2e554b422d95ef381b0a08340b'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
@@ -3001,6 +5054,14 @@ declare global {
                             value: 'production_output'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '4b40cf79dfb047b991950915a40ce0ae'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'erp_message'
                         }
                     },
                     {
@@ -3019,6 +5080,17 @@ declare global {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'logical_field'
                             value: 'sku'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '4ca45978f0aa4fcc9b51c89a0e17a984'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                            value: 'timeout'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -3043,6 +5115,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '4deea353559b4341b3ff701a7fdbb9a0'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '4df8a766ae5e4926ac336a56187252de'
                         key: {
@@ -3051,6 +5132,14 @@ declare global {
                             value: 'ratio_0_1'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '4e6d9b7971a442f384706d96de1f1bd8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'approved_by'
                         }
                     },
                     {
@@ -3071,6 +5160,15 @@ declare global {
                             value: 'revenue'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '4f8fc00b6c584793aa37acc54ed7db82'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'authority_system_name'
+                            language: 'en'
                         }
                     },
                     {
@@ -3097,6 +5195,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '4fe2efd555264fb992f7699980801c8f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'cost_centre_project_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '4fe67c8a6948485dba0048cab7a8ee46'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -3107,11 +5216,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '4ff4350d1e574fc497a8e4688d0763a7'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'new_value'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '500b81bb6f0549049324d8b6130ecd89'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_type'
                             element: 'optional_fields'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '501c71717dc7449d80b0f725f6b43ff2'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_emp_xref'
+                            element: 'payroll_country'
                         }
                     },
                     {
@@ -3137,6 +5265,37 @@ declare global {
                         id: '5102f6d5cb504c2e94dc7514cc3fd467'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_tmpl'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '5139505173a749fab1b84367e95c521c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_emp_xref'
+                            element: 'linked_by'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '519d90c11a7d4a6a8b7955e934b701f3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'expense_claim'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5207e532ba03402292f418b17a66411f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'vendor'
+                            value: 'salesforce'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -3194,6 +5353,28 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '53c012bba7d245d491a162fde090cea6'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'as_of_date'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5445d89b6cad4f7dab2ae22d49c23e97'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'compensation_change'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '547a4647fbde426eaaf59bdf1ba69cce'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -3212,6 +5393,28 @@ declare global {
                             value: 'backorder'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '54b67265bcd94cba94091c47f4005507'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'approval_ref'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: '54c0782cac65433383d39ff794d392df'
+                        key: {
+                            sys_security_acl: 'b3d719e965744394a2571dc55768fdb0'
+                            sys_user_role: {
+                                id: '0d725b70d93647d1af7c843fa8da56ec'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.hr_viewer'
+                                }
+                            }
                         }
                     },
                     {
@@ -3235,11 +5438,123 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '54e01cccbd40485ab980044bd9dc24ce'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'state'
+                            value: 'queued'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '554a8deb6bfc464990ebf863942876b8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'employee_profile'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '55814b2d4d0043ae823ecbf8e56eb625'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'purchase_order'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '55b0567e515e4cf7b5a8e9dc085d331e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'asset_depreciation'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '55d4297b82064cffb6f018cb59fadb00'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'stock_item'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: '55ef7a10b9a14bf38a050f97111d97c1'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_object_map'
+                            col_name_string: 'erp_system,logical_object,operation,country'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '560b1e98c6f74699a822fe0117e26412'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'issue_date'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '564f110a8b0f459d8e8d9a8b6a301ed1'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'logical_object'
                             value: 'vendor_invoice'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '566522cc854a46be80f4c861232a9795'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'erp_system'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '5673559641bf454d9f2cd5907bb2f747'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '569bab31568b4d01a826356610d001e5'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'timesheet_entry'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '56b42f67837d4dbb89940e4bc6f9c17c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'hrsd_advanced_integration'
+                            value: 'not_applicable'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -3253,11 +5568,59 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '572d4dfa08784ef4b1e5f14b570b111e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'invoice'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '57ad50026b824d2a89910213ac9184d4'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '57f3c43b71b54819b88789c74412dc92'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'native_timesheet_workflow'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '5846286caa9540ed98405c296337f7dc'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'erp_system'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '584eb17310ad412d907d17a93b9fda32'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'vendor_invoice'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '589286a311674d99bc9ebef6cb10b069'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'erp_system'
                         }
                     },
                     {
@@ -3277,6 +5640,23 @@ declare global {
                             value: 'line_name'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '591ca641caaa4c069d3449e9bcf5e014'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'completed_by'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '59243234ab7547a5adb69bbc8d45b6f1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_tmpl'
+                            element: 'country'
+                            language: 'en'
                         }
                     },
                     {
@@ -3320,6 +5700,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '5af5be79c437449e97a9c235cfbf9587'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'auth_type'
+                            value: 'oauth2_client_credentials'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '5b4759534250408bbebb0126673ec5fd'
                         key: {
@@ -3334,6 +5725,21 @@ declare global {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'NULL'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '5bda2c9c8745419d8b14d4cb71061fdb'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '5bde5948b055473b829c88965146d96c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
                         }
                     },
                     {
@@ -3356,11 +5762,44 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '5c93d38e8d2046b7be07f51fc614e39b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'D1'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5cff0de53879417d9b2b06a3229861b9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'period_label'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '5d1effa7184c4be6adf469a10e639ce6'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_run'
                             element: 'started'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5d672625e2054fed83deb94253575af6'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'erp_attachment'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -3375,12 +5814,50 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '5de7cfe670394cc999520d096f78b965'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'auth_exception_ref'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5e4e4c5f434b43a1bbef59227d7c60cd'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'action'
+                            value: 'submit'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5e7840a415b94a1eb606d891f40b96e9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'D4'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '5e8b1e62c8ef443b9f95fa479ebba604'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_type'
                             element: 'required_objects'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '5e8fa8bb9ebd4cbda386033b0e8eb527'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'active'
                         }
                     },
                     {
@@ -3398,6 +5875,28 @@ declare global {
                             name: 'x_335329_sn_hr_erp_object_map'
                             element: 'mapping_source'
                             value: 'template'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5ef6484ba0014e27837b50e5a67b048e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'R10'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5efaae643a3545249e8e6a259267e908'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'period_start'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -3444,6 +5943,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '600309f684174a9f98cb8600c4313d3a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'hrsd_advanced_integration'
+                            value: 'rejected'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '60373bbcc28c4cae971dda740738b5c9'
                         key: {
@@ -3485,6 +5995,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '60db8ceb1a744ccebb1de169c4091e67'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'idempotency_header_name'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '610b6ae81a5b4224906ed671e2804ef1'
                         key: {
@@ -3510,10 +6029,37 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '6156a052e93343798e980d09ab2c4417'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'country'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '61a5e10c7bd54f5f9c6161411c34cb5c'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_req'
                             element: 'number'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: '6256f69481a94018af8136a0d8fc7d24'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_emp_xref'
+                            col_name_string: 'erp_system,erp_employee_key'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '628eb84112c048e6a6bef056ed2b7a43'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'R5'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -3525,10 +6071,40 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '63523a4e6ec14dbc9daf8e5a0747746e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'pay_date'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '63ec33228d8f42e98b19ac9bed15ca60'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'auth_type'
+                            value: 'oauth2_jwt'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '64302838d8c74b25b9752c69cc5d6380'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_req'
                             element: 'subject_employee'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '64eab88e566246538f2cdfe10ecf6e47'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'leave_balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -3552,11 +6128,42 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '66bdaaf8ce544737a41231e0dfc8f09a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'purchase_order'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '67158ea2231e4344a3f951ab61ead505'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_run'
                             element: 'status'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '677f28f5ad194f208a534171c4765952'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'R7'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '678645ebe8b3404f95182a25cc40462e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'first_sent_at'
                             language: 'en'
                         }
                     },
@@ -3570,6 +6177,25 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '67b784b63c1a4e59a147f4e8c3d674b1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'claim_date'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '67d02ebc1e5e4f64be1f5b588b6d403e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'occurred'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '67dbe11a2ec1446e812e2a9e0ac96bf7'
                         key: {
@@ -3578,11 +6204,64 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '68007a3fc5f74b949664acf7aec3a7b4'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '683257e4ccec40619af5308bcac00b3f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'payroll_record'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '6938551860364ba68d2b786f4619f19f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'income_statement'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '69609406208546dbb03c27f933c4c368'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'label'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '69908a125c2d4fe3bf74ef51b44a1c61'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'authority'
+                            value: 'separate_hcm'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '69af664ceb63425d880aeade54afeaf9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'status'
+                            language: 'en'
                         }
                     },
                     {
@@ -3609,6 +6288,64 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '6a46557294cb4b0e82914ac36a4b2755'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'operation'
+                            value: 'update'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '6a732c125de6491e9438b0d0f09d4813'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'persona_role'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '6a9f4b79229f420fa77eaefe940057eb'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'plan_option'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '6b104571bd8e457498321e3b2eba3ef0'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'income_statement'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '6b8518271c634ee1a32a5a01e042d0ed'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'country'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '6b8d2b7fe3c14c49b3d8c12858b00314'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '6b903296961d457eb42ec7ccef91437c'
                         key: {
                             name: 'x_335329_sn_hr_erp_call_log'
@@ -3628,6 +6365,14 @@ declare global {
                     },
                     {
                         table: 'sys_choice_set'
+                        id: '6bd62ebaae51451c961ad0c45ccc59be'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
                         id: '6c0463e1728c4f0bbf0aa778a93d9cab'
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
@@ -3640,6 +6385,22 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_req'
                             element: 'requester'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '6c351e8776924ff391a1d310fa8ac867'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'status'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '6c95145a70ca4d3bb70d74bdfd74dcd9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
                         }
                     },
                     {
@@ -3693,11 +6454,42 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '6e81e4d3242d4cf4a4abcd6c246110e6'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'leave_request'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '6eb2de2f9a2d46fab4f0325fe217746d'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'logical_object'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '6eed244f750542158391c4ff1fd6660e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'state'
+                            value: 'open'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '6ef42be241e1459997c40d4cd51c904f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_emp_xref'
+                            element: 'payroll_country'
+                            language: 'en'
                         }
                     },
                     {
@@ -3719,6 +6511,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '6fa5014f10594ae2b68b58884204e585'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'D7'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '6fba7f823fa447ba90b5258d0448e5b5'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'parent_external_id'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sn_glider_source_artifact_m2m'
                         id: '6fc0d1f9c25f48778d313372dca9570b'
                         key: {
@@ -3735,12 +6549,34 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '70712c89efda402fba2382cb61e5a9c9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'leave_type_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '70b45ea8ccb0413c84f90d2a5b0a5920'
                         key: {
                             name: 'x_335329_sn_hr_erp_call_log'
                             element: 'error'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '70decded3ef24c2cae15cf4d315045ec'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'R5'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -3816,6 +6652,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '72f092ad5eeb46b4af36b2a2960ef983'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'operation'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '733a42e56bc64d50b5426e73fc6fd950'
                         key: {
@@ -3824,6 +6669,27 @@ declare global {
                             value: 'started_on'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '734ba9efb40a4d56b7c867b71517f543'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_type'
+                            element: 'optional_defaults'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: '73961035a13c412aaf70e2aba37b9c5e'
+                        key: {
+                            sys_security_acl: '6d91874773fb4e5c9661b69f7a4f36a8'
+                            sys_user_role: {
+                                id: '11031a92b26c4e7ab34910721c4d2504'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.viewer'
+                                }
+                            }
                         }
                     },
                     {
@@ -3858,10 +6724,66 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '74009598c1154954823a0b8481a803f2'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'pay_period_label'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '74092b8456ec43879bea8fd2b4781b81'
                         key: {
                             name: 'x_335329_sn_hr_erp_call_log'
                             element: 'status'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '7483ba03a55344bd812eb7139977e0ae'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '74c6c3005543446b9a99f9f838e2a078'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'outcome'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '74fa5ca0326241bc883f7cc2be5fa3d5'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'operation'
+                            value: 'read'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '755264c0315e4d449e8905c0d359b9ed'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'uploaded_by'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '7558a0c0dada4efa8c4e83a3e99e8531'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'state'
+                            value: 'blocked_readonly'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -3871,6 +6793,17 @@ declare global {
                             name: 'x_335329_sn_hr_erp_doc_type'
                             element: 'code'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '758fc247b3bd4e768cc5a17873c0e54b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'R9'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -3896,6 +6829,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '762c5a4552ed434d8cf345f5b07a27af'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_emp_xref'
+                            element: 'identity_mismatch'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '762cb96f38744ab98ad2fc1cc1b89013'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_user_role'
                         id: '76615979f2574cae8243969c09518e1c'
                         key: {
@@ -3914,11 +6864,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '76daf69dc6584de4993247986df37cd5'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'compensation_change'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sc_cat_item_category'
                         id: '7700a2659119494baa9de2a2a61bca4f'
                         key: {
                             sc_cat_item: '84ed5f41094747f58577f2e76d1d9bf1'
                             sc_category: '3eeeb63c71e1495aaab1fd597b597ccc'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '7700f32721364479b2f6d1441076b64f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
                         }
                     },
                     {
@@ -3935,6 +6903,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '7780877fec0441378c5bc67dc01c49d6'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'api_version'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '778406abbe5048ef90d94f31f5e75692'
                         key: {
@@ -3945,6 +6921,14 @@ declare global {
                                     name: 'x_335329_sn_hr_erp.viewer'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '778c18ae11704ee9a9af24236a48b904'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'operation'
                         }
                     },
                     {
@@ -3967,6 +6951,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: '77ada6e6fcc940fca9e519e5b700624c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '782b10b4266947de8e7f601f97ed7bed'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'work_order'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '78634bd6c67b40ef87b33c49a8389129'
                         key: {
@@ -3975,6 +6977,13 @@ declare global {
                             value: 'requester'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '786decbfe74041cda9af3c2419fa188b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
                         }
                     },
                     {
@@ -3998,6 +7007,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '7927e8dea76944cdb29987e5e64f900f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_tmpl'
+                            element: 'required_fields_override'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '796a8d3448ef41fb8f4d4aadd8ab9f8b'
                         key: {
@@ -4006,11 +7024,90 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '797a3c01dd4846b59d501c8e2ea75f6c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'rate_limit_per_min'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '7989e30603c64cfcb872a432386682fb'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'statutory_contributions'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '79e0afaa6b6d4c069f947253da088e5a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'document_type_category'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '7a0b9fbe8a1043f0ab72f983cfecd7a7'
                         key: {
                             name: 'x_335329_sn_hr_erp_call_log'
                             element: 'started'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '7a0caa7869ff40bb9c8d569c23fa88c2'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '7a18e4ae97304658a00dd7b5f03e40c7'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'period_end'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '7a4d8fe5bb9b428092beb3b5f5bb40d9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'operation'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '7a5c674327d44c4e94b97eecd172ed7b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'version_source_note'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '7a877d4eb5454db5b2595e21a4b4297e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'deprecation_policy_url'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '7aa16aebc8cd48a2b00c43e15ec672c4'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'rate_limit_safety_pct'
                             language: 'en'
                         }
                     },
@@ -4039,11 +7136,33 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '7b6011e193c94b58b50d40f445937ab7'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'backorder'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '7b64b916c47c4f31b1d6564d860a6410'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_run'
                             element: 'status'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '7bb41cbf27db4e3db738b8b1f797f58a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'employment_end_date'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -4064,6 +7183,33 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '7bf5bf8eb0db4edf91f99c814f9c1635'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'zero_copy_connector'
+                            value: 'adopted'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '7c3a65dd566d42318f89133285f0ec50'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'erp_ack_ref'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '7c650bce9af8438bb13ab5afb7b22180'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_emp_xref'
+                            element: 'linked_by'
+                        }
+                    },
+                    {
                         table: 'sn_glider_source_artifact_m2m'
                         id: '7c703b03237b4f94ac54c0ed66bfab0f'
                         key: {
@@ -4076,6 +7222,15 @@ declare global {
                         id: '7c7abe26416e4edbb406c34c2023eb6f'
                         key: {
                             name: 'x_335329_sn_hr_erp_object_map'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '7cbf33d120b040789ad1587b0fdf4394'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'allowed_mime_types'
+                            language: 'en'
                         }
                     },
                     {
@@ -4097,6 +7252,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '7d0068ac75da4ee6b95198b84867598a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '7db025db77814a13a90def466b3ec661'
                         key: {
@@ -4105,11 +7271,42 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '7dcdb5efc2544d139641904ed4b324db'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'idempotency_mode'
+                            value: 'existence_check'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '7df3ed15e8a64ec497fd9e9e2f152550'
                         key: {
                             name: 'x_335329_sn_hr_erp_emp_xref'
                             element: 'user'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '7dff4d6b23304cdaba9c78b587c6de37'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '7e38567086a04070a6662377c028ba46'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'work_order'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -4135,11 +7332,63 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '7f730c8c63984f629f1d5804278fb467'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'emergency_contact'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '7f7ddd4894cc4ae98bd74d0f2eef185c'
                         key: {
                             name: 'x_335329_sn_hr_erp_emp_xref'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '7fc2054ea740407eb4ba0c9eaa7aebb9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'source_note'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '800f6cf117364986979923d79fd57388'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'active'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '801a1c2721c647eb9a9798b646d774b4'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'D9'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '806047cfa873462cb07265b6b6511c5c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'document_available'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -4157,6 +7406,37 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '814feef27cac40c882673a88afb3e06d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'compensation_change'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '818c071a91fa4a75acc41ae04289ac43'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'idempotency_key'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '819cfbaaf19f486c807ec3e558a3c12a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'erp_attachment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '81cc637f0b3745de8dafa7deacee79dd'
                         key: {
                             name: 'x_335329_sn_hr_erp_object_map'
@@ -4164,6 +7444,31 @@ declare global {
                             value: 'offset'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '81e93708217647528df0aa865f134991'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'source'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '825606c80d7c45a594d53f17252adc11'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'operation'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '829c5e8498984479a51190f5c990f620'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'state'
                         }
                     },
                     {
@@ -4188,6 +7493,23 @@ declare global {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'code'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '82cb3c3048eb4ddd97b58bee8f0d969c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'zero_copy_connector'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '83041e8daca3476e8b958bbb721c4e29'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'confirmed_at'
                         }
                     },
                     {
@@ -4226,6 +7548,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '83881e6efd66496bafce33570ff0acf3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'authority'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '841afe2707204efcaf47f2be806a8b7f'
                         key: {
@@ -4258,6 +7588,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '84c4fb25218f4e2ab46e5226f214aa53'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '84f5581a98194f19b23c289b9702699f'
                         key: {
@@ -4268,6 +7606,15 @@ declare global {
                                     name: 'x_335329_sn_hr_erp.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '85214811a386406781cdb04890eeb08a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'active'
+                            language: 'en'
                         }
                     },
                     {
@@ -4317,6 +7664,15 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_run'
                             element: 'logical_object'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '861fd84e948042bc98069b21ef4bf747'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            language: 'en'
                         }
                     },
                     {
@@ -4388,6 +7744,34 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '888777aa8b5d47a0bf1762c1bc635922'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'allowed_mime_types'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '88981fbb88414fcbb6f2aa3899c6d101'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'required_groups'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '88b8a80673024d42a493d26b83c201ef'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'authority'
+                            value: 'separate_expense'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '88edeb4122cf4f9795c1cf095bd036fb'
                         key: {
@@ -4415,12 +7799,37 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: '89ad132d44514a4eb9936d4ecb4fc4a9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '89f99850abca4b3fb7f2f9047567b13f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'http_method'
+                            value: 'put'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '89fe504f8bea47c2b18120db20b3ac21'
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'auth_profile_basic'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '8a617758d9b64f149d01b1d594593d10'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
                         }
                     },
                     {
@@ -4455,12 +7864,83 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '8b4f8904b1d442f6933cb1f40c340857'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'auth_type'
+                            value: 'mutual_tls'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: '8b6faa82abf3446288915825fdc61042'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            col_name_string: 'erp_system,requirement_area'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8b7587c92515428c877ac1b357ffe48d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'gl_summary'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8bcd5e3f22694845aae3c73289e55fd9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'http_method'
+                            value: 'patch'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8c48a0d3c5ee4ce5a55a6d6dd42b9af5'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'cost_centre'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '8c761b1e5ec24997b135d8415496657b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'operation'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '8c85e683831f4b3e8ddcc0431ec638c0'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_type'
                             element: 'required_fields'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8c9997d619634bcfad1eaac58ae7d8a3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'code'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -4495,11 +7975,76 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '8d941f2c8f524afc94caa26b81143ab5'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'R10'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: '8dc3670ed63443a2922ab5101861ca58'
+                        key: {
+                            sys_security_acl: '688db67b5f3643e0a1596ee3680ad70a'
+                            sys_user_role: {
+                                id: '875163d8147a4574bccc6c8814c8211f'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.admin'
+                                }
+                            }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8dd8aeb7bac34e0ea6122e10c8bb986c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'file_name'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_number'
                         id: '8de0958c4ca542089e09a396526bfc9d'
                         key: {
                             category: 'x_335329_sn_hr_erp_doc_req'
                             prefix: 'HRDOC'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '8eaff98d07ad4f1b8fb06c2918d2e958'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'source_note'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8ee958847ae241beb4b0ae30bc2ccda1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'payslip_document'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8eec7995b8cd46d298cb34be5053e504'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'status'
+                            value: 'not_confirmed'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -4522,12 +8067,67 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_security_acl_role'
+                        id: '8f69b799cea943a9a903722c8042f137'
+                        key: {
+                            sys_security_acl: '73e94abeadc34b319a261215a42f6bbd'
+                            sys_user_role: {
+                                id: '875163d8147a4574bccc6c8814c8211f'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.admin'
+                                }
+                            }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8f6fa3d9a7f945ada878d85cc474dac3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'erp_request_reference'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '8f8498f6305b49399343f5fd4cd835e4'
                         key: {
                             name: 'x_335329_sn_hr_erp_object_map'
                             element: 'NULL'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '8fade48224c247c7a451870cc60868e7'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'deprecation_policy_url'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '906d9f3b18d84f8f8dcb2b67c3ce02a1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'authority'
+                            value: 'other_system'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '907fd589f1764f9d8513ced51cb071bc'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'approval_reference'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -4566,6 +8166,25 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_tmpl'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '914bd705f4cb4dfeb439042482e6ecda'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '91f17c5a6a4c40728ffc87e2a4f549fc'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'leave_balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -4644,6 +8263,34 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '94a0fa526ba644479d5302ab98a5f99e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '94f1307c58904b6d9d3bd49a0598e6a3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'source_record'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '951c093588f74697978bb05426e72d16'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'maintenance_schedule'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_index'
                         id: '951dbe92f18240cbac24589ba1db92ed'
                         key: {
@@ -4652,11 +8299,42 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '95367f637adc43f29b6e1a74ed912d8f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'benefit_type'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '958d435faeb043b08250958a8ab17c33'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_req'
                             element: 'status'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '95e9e8c55336416f9366cb665ae79485'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'operation'
+                            value: 'read'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '95ecd8ebf0b245f9a1277f11431c2c5f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'source_table'
+                            language: 'en'
                         }
                     },
                     {
@@ -4695,11 +8373,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '96b9bd30551944dc808a5dd7717e78e2'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'expense_claim'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '96c1bd98bb6c4d91bd729aa30c368e0e'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_request'
                             element: 'requested_at'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '96e92d89deb84328b449da227f01264a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'operation'
                         }
                     },
                     {
@@ -4709,6 +8406,25 @@ declare global {
                             name: 'x_335329_sn_hr_erp_object_map'
                             element: 'logical_object'
                             value: 'gl_summary'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '971c0b8c78f34a6daa1126839acef86c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_tmpl'
+                            element: 'required_fields_override'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '97375617ff5949be85d5189666339fcb'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'production_output'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -4725,6 +8441,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '979d4d9e9b3d4b219bc191b68206a577'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'entry_date'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '97a5a83511994c72baa772f8a293d5c1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'gl_summary'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '97aedb6cab5b4afb82e9c682cf48248a'
                         deleted: true
@@ -4735,12 +8473,79 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '97bbdcdc4a8e4a498ef9db458127958f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_req'
+                            element: 'template_language'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '982a0e04209249e6967c2c54d5e54b29'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'tax_withheld'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '98a44deeca504f498b8c9e2facf1d1e8'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_run'
                             element: 'logical_object'
                             value: 'production_output'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '991bc431dcca425c8119dfaa07db8d76'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'country'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '993008a690bd453f9a0146e3e142035f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'zero_copy_connector'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '9a25c6a1431e496e9e5477b577e80f5b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'hrsd_advanced_integration'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9a37d8cec59a4fccbf92435876e5fa7d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'hrsd_advanced_integration'
+                            value: 'adopted'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9ae9b88b2f0642b586a0e2f88f873f2c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'leave_type_ref'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -4776,11 +8581,82 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '9ba3a17251c94934969e00c34ffab0ad'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'machine_downtime'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '9bb7dd207d884e40a5b6d56812ccf5b6'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_run'
                             element: 'http_status'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9bba2472378f4f658fc97ffcc1302f6b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'outcome'
+                            value: 'failed'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '9c059f05001b475d9f92186340a69e77'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'authority'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '9c1bf733fe014345bb98bdb8f4bffa92'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'operation'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9c4f6708fac2448b88205fc578334124'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'benefit_enrollment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9c83d88a71af4cdd8ab8c9716ac1d315'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'income_statement'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9cadd0386fc54d6a8bb831efae58be7c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'payslip_document'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -4805,6 +8681,50 @@ declare global {
                                     name: 'x_335329_sn_hr_erp.viewer'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '9d1b270f304548ba9d44d86d4e58fd7a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'first_sent_at'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '9d3a5cc8eb804e5883cb223ca5334b16'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'build_vs_buy_note'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9d5304f90f29443d8388f7f2afaa45a8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'R1'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '9d5c0d98a6e04a5f91bd2badbaa81c05'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_tmpl'
+                            element: 'country'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '9d63b8c754cb448b95e2cba9e37cf1c1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'external_id'
+                            language: 'en'
                         }
                     },
                     {
@@ -4873,6 +8793,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '9f2fb19981b44283b03a3aaf8859e121'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                            value: 'unexpected_format'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '9f344aab164e4502a243dbfad26afb02'
                         key: {
@@ -4911,10 +8842,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'a093bbd485694db6960647d5baeb67e0'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'erp_message'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: 'a0c8e0980e8543d0bfe94a43f81d9ace'
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'a1467d1046eb4c9d8375d3fbfd54522d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'idempotency_mode'
+                            language: 'en'
                         }
                     },
                     {
@@ -4923,6 +8872,19 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'occurred_on'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: 'a1c6ad8cf8014aa7899854ba9c415fd5'
+                        key: {
+                            sys_security_acl: '00f5ae61c4534cb0bb4e279b7c11054b'
+                            sys_user_role: {
+                                id: '0d725b70d93647d1af7c843fa8da56ec'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.hr_viewer'
+                                }
+                            }
                         }
                     },
                     {
@@ -4956,6 +8918,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'a2fb178a84e94044bbec65067a109ccf'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'call_log_ids'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'a308ceaedfbf4311994b0cb89687f5de'
                         key: {
@@ -4972,6 +8943,14 @@ declare global {
                             value: 'machine_downtime'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'a344bb57327c46e6b2da3d95a9e69868'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'rate_limit_safety_pct'
                         }
                     },
                     {
@@ -5000,11 +8979,51 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'a408e068727a4c4f8bd2b925aafc2a85'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'D8'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'a40a5521764641eaba0dca416186f408'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'authority'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'a43ceca6d29749c9a70e02d4de89a53d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'erp_attachment_reference'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'a51745927eeb40669c7c30dee803f758'
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'timeout_ms'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'a54afaaf84a04a45880bdd365b295a42'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'pay_period_label'
+                            language: 'en'
                         }
                     },
                     {
@@ -5059,6 +9078,23 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: 'a6f63ad03a5848b7aa9c2d42d3b5742d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'mandatory'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'a6f8ac5cc02c4147ab8425d5a5a6a1e1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_tmpl'
+                            element: 'language'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: 'a78ebbe3fb9d458581cd92e09ebd73cc'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_tmpl'
@@ -5071,6 +9107,17 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'pagination_style_hint'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'a8268d46dfc44bfcab0f02a2410f8dea'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'R7'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -5096,11 +9143,35 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_index'
+                        id: 'a84f0fc3a6404b50b1d70a2408d9d5aa'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            col_name_string: 'vendor,checklist_item'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'a84f6a9b593243e5b9b20b771bef393c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'erp_system'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: 'a8c7cea3394f4e6b9c03515747889838'
                         key: {
                             name: 'x_335329_sn_hr_erp_object_map'
                             element: 'logical_object'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'a8d9385bcbcf465f82f41dc0080636ae'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'native_timesheet_workflow'
                         }
                     },
                     {
@@ -5117,6 +9188,17 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'code'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'a94932a7b7f24f059b04d20b01cffb92'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'hours'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -5175,6 +9257,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'aac1ccf5132c4355bd2cd3ab974c35f5'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'ab4a74c28a234da984f40e7606672fde'
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
@@ -5224,6 +9317,36 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'abf3300bdeca4daeb38ace005a92ea02'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'leave_request'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'abf623ae4fe3470f8cf201eec11e3365'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'employee_profile'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'ac45606080944fd18a540f6d39622a11'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'ac498da6bf4f4ebe941e5c2ca0d6b4ed'
                         key: {
@@ -5243,6 +9366,47 @@ declare global {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'vendor'
                             value: 'sap_s4'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'acb141d8113748bf9211e23d7743f715'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'state'
+                            value: 'in_progress'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'acefce70ac7044589fe1bf2ad905f874'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'short_description'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ad3a335a41194fa0914a614612b9415f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'D7'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ad8ee98a8cee4e90b63286f0eb29d2ea'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'income_statement'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -5279,6 +9443,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'ae2e03cfac8c48f18fa750d1b53aee25'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'source'
+                            value: 'erp'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'ae8f340f60f34555915c46a492040e2e'
                         key: {
@@ -5294,6 +9469,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'aec52e2ba2e644fb8b9bb402f024f3b9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'environment'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'aed0bff3f3ca4287ab960373de808f42'
                         key: {
@@ -5302,6 +9486,14 @@ declare global {
                             value: 'infor'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'af7141d513d940aea4995d06b0be6e0e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'outcome'
                         }
                     },
                     {
@@ -5315,6 +9507,26 @@ declare global {
                                     name: 'x_335329_sn_hr_erp.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'afb2d79fdeea4d51ad9eb5a682e01804'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'elevated_sensitivity'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'b04cd4f5ca8f41c68657fee0e2fdf8a0'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'R6'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -5364,6 +9576,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'b185ed52059e4f16a939c5026440b4cd'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'maintenance_schedule'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'b19f2065dbae4806a235049de1950157'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'leave_type_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'b1b38c6940d544d59a574a642deaeaeb'
                         key: {
@@ -5380,6 +9614,14 @@ declare global {
                             value: 'requisition'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'b1ec8190f74e4cb1a1708a7698862f1d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'erp_role_or_scope'
                         }
                     },
                     {
@@ -5414,6 +9656,64 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'b233c32175ea4ded885b4c2f8bc9eb9e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'state'
+                            value: 'failed'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'b23d4afb1cc9446981ab869427bad39b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'invoice'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'b2cbc7b561fc4571a521f8da30e1c85d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'status'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'b3493bbf50c14d548e415012afae688b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'hrsd_advanced_integration'
+                            value: 'not_assessed'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'b3cfc0094c594e38b2c76475e07a1d45'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'completed_by'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'b3e35831f73243f884ed59aca0a7c989'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'b40bfe25c2194559bcf01510b760b48b'
                         key: {
@@ -5430,6 +9730,38 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'b46e1cb93aea4bc5ab417806a4cb9d5e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'bank_account_iban'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: 'b48405b2154240f2ad55adcbb080dd58'
+                        key: {
+                            sys_security_acl: '632b902b39c74e78bd06ef522c3df5f8'
+                            sys_user_role: {
+                                id: '875163d8147a4574bccc6c8814c8211f'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.admin'
+                                }
+                            }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'b4ad60a6a4054f389a334b3bc77b5ecf'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'action'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'b4bbc43abead45459b0eb4fa90b5e8f7'
                         key: {
@@ -5439,11 +9771,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'b4f5a3de8527433db1433696456bfa99'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'D4'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'b5266d7c61694340bd508d1d2b706292'
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'response_root_hint'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'b53bed36ffd4441aa21b23ae5cb81677'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_req'
+                            element: 'template_language'
                         }
                     },
                     {
@@ -5461,6 +9812,17 @@ declare global {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'auth_type'
                             value: 'oauth2'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'b6c765ab89c44bd4872e69b88003444d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                            value: 'record_not_found'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -5487,6 +9849,14 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: 'b76e5079d80a41f580a9909a1e116826'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'source_table'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: 'b7a3a45887194e14979a40ff9f661c63'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
@@ -5502,6 +9872,27 @@ declare global {
                             value: 'work_order'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'b7fb743419444d3ea0dc93a4775c53c3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'attempts'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: 'b7fef07302db4f94901b7447dde5f418'
+                        key: {
+                            sys_security_acl: '50c2b021e8874387a8af77ebac64af72'
+                            sys_user_role: {
+                                id: '875163d8147a4574bccc6c8814c8211f'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.admin'
+                                }
+                            }
                         }
                     },
                     {
@@ -5533,6 +9924,33 @@ declare global {
                             value: 'negate'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'b881a8b86c6840009eadea5729e0e881'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'country'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'b8aa429a25294fd18ffc782e6852c698'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'cost_centre_project_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'b90bc358fdc54ad5b92173065e7c2a20'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -5585,6 +10003,21 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: 'b9f76e04eae24093b8b48fb14a219a2d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'b9f8b8c85897484e9ab02b46e21d691d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'ba5244eb9533407d9386288f5d2dd082'
                         key: {
@@ -5595,6 +10028,15 @@ declare global {
                                     name: 'x_335329_sn_hr_erp.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'ba5ab781d7a54d23b7788052aad22c2a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'hrsd_advanced_integration'
+                            language: 'en'
                         }
                     },
                     {
@@ -5636,6 +10078,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'badd8997de0e43daa955495cf6638112'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'timesheet_entry'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'bb20aea1342241cd88fa66f631c2b4fd'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_run'
@@ -5668,6 +10121,35 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'bc0b4366017b4249be09a6cf24c2792c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'D2'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'bc172cfc264f4ede8ca3784e9c25af8a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'bc1a2ad35dcb41f1b8b32731ce30a024'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'erp_system'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'bc46eb0430e446f88466786b0fab5416'
                         key: {
@@ -5678,6 +10160,17 @@ declare global {
                                     name: 'x_335329_sn_hr_erp.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'bc4732ea4c09426cbc6dcb5c6079a315'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'cost_centre_project_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -5719,6 +10212,22 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'bd3f449de8a14016b3b753dd9e63e14a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: 'bdbdc51053e8454ba2eb33a9af841299'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'bdfe386cd6d2499fa9a7335cb2e46b15'
                         key: {
@@ -5727,6 +10236,15 @@ declare global {
                             value: 'vendor_invoice'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'be17668e570d4d51bad5d12215ee70e8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'pay_date'
+                            language: 'en'
                         }
                     },
                     {
@@ -5783,6 +10301,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'bf6cdec58bc64655a8cbeb39b2e439cf'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'native_timesheet_workflow'
+                            value: 'no'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'bf796c499a9f40fe83129c10af31d765'
                         key: {
@@ -5815,6 +10344,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'c08cd24be78c43ba92920a3c7fb50145'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'benefit_enrollment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'c0a6f6ea61894fd3918a6bbb7b0cc3f8'
                         key: {
@@ -5834,6 +10374,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'c0fad1caaee94b3daa6a968b50f370f2'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'R1'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'c1846514ef664a13bda1526417030d65'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -5845,10 +10396,83 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: 'c184bd46040645caa67b1e81a440da9e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'period_start'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'c198ab74302b4df695a76b378dcd131c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'leave_balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'c1e573cc8ae34d8197ca24fa911fe81c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'operation'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'c26562ed8e834713a32b68f057f6d7c4'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'state'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: 'c2d2efdd7feb439c8436f0224ee2876b'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'logical_field'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'c2f40438689442af933bd03f884ba5ef'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'parent_entity_type'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'c2fa6fa9dc6848ceaf2809773689389b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'country'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'c3107e4370f04b8bbd167f647d11a377'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'c3acf09713c34c47b804210bd6576322'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'source_note'
                         }
                     },
                     {
@@ -5857,6 +10481,17 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_emp_xref'
                             element: 'erp_employee_key'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'c3d009dfa65f44e9955fb9ecd386e9be'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'leave_type_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -5894,6 +10529,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'c538c96da64143a1a885eade30c85e62'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'source'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'c58beda145a64032a0c574c90311eb33'
                         key: {
@@ -5919,6 +10563,26 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'c65997575f294d18a9062d90d17ccf53'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'c6618ac2bd474e6db3b11f4ea9bbef09'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'D8'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'c662d6c96ad44eecb748c81f7928be2e'
                         key: {
@@ -5932,11 +10596,44 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'c6c2ef6a2f704f169d475e9148587fa4'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'expense_claim'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_index'
                         id: 'c7b6c03e9fde436c924622ee108d47d5'
                         key: {
                             logical_table_name: 'x_335329_sn_hr_erp_map_tmpl'
                             col_name_string: 'vendor,logical_object'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'c803d7b6b3bc470caea4e1a706a84c0a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'expense_claim'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'c820d73c258b42cc853deadbd98a7eb1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'R8'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -5961,6 +10658,28 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'c8807d93bc71447cbcab8a391fce0566'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'phone'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'c8f734ced0f543e6bd9533db6a52f938'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                            value: 'conflict_duplicate'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'c91687f0177b4f48b439332137d94d59'
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
@@ -5978,6 +10697,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'c96634f8c1ad4a43860fa74a3f098fa8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'attempts'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'c97213decaad41f5ab6015dc6041b474'
                         key: {
@@ -5986,6 +10714,15 @@ declare global {
                             value: 'partial'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'c9b6381ed5254afb9bee9fe7ec0d9575'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'action'
+                            language: 'en'
                         }
                     },
                     {
@@ -6004,6 +10741,26 @@ declare global {
                             name: 'x_335329_sn_hr_erp_sync_run'
                             element: 'logical_object'
                             value: 'purchase_order'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'ca3f0c3b9c424bfdaaa3829d6181798d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'caa71695fea044df80b52d0fa0704d4d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'vendor_invoice'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -6030,6 +10787,47 @@ declare global {
                                     name: 'x_335329_sn_hr_erp.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'caeb98f9c8454b72b0739211d3ebd470'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'label'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'cb22083b9d564817be9e307df8598314'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'logical_object'
+                            value: 'compensation_change'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'cb2ce41ddd104677ada7e7cad7dc30b3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'call_log_ids'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'cb3db5f43c7c4d398c0d583ac29b97ce'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'D5'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -6092,11 +10890,31 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'cce83ee2d00849a68d5d2149d4ac9a13'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'timesheet_entry'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'cceebbd121be4b94b32f106928934c5e'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'note'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'cd14aa82582a4f13b92bbc93e9a9e43c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'build_vs_buy_note'
+                            language: 'en'
                         }
                     },
                     {
@@ -6129,6 +10947,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'cece41e374de4c30b3f45891ed37b5e3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'mime_type'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'ced9236a245d42e0b87d45bb25789be6'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
@@ -6136,6 +10965,63 @@ declare global {
                             value: 'manufacturing'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'cf3451ef2ef143d182a9a080f8e4caaa'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'R8'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'cf83511878a24752accec4b233c83cab'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_type'
+                            element: 'optional_defaults'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: 'cf9f57168bd54358834abdf6c950d721'
+                        key: {
+                            sys_security_acl: '87df98c108a34fd69f839e1609a61752'
+                            sys_user_role: {
+                                id: '11031a92b26c4e7ab34910721c4d2504'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.viewer'
+                                }
+                            }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'cfa491c403c54bd0b1db8b25d43877df'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_emp_xref'
+                            element: 'linked_on'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: 'cfab7f6b8eab4aaca70e047491993c68'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_erp_exception'
+                            col_name_string: 'state'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'cffa6e7d08ee44c4b308b6278bedd6b8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'requested_by'
                         }
                     },
                     {
@@ -6161,6 +11047,45 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'd13da559f7b445f1b051f5f46530d804'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'operation'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'd19b6c79b5f14994a29386e1884d6360'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'requisition'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'd1f3206f0ec74b6d87aa1da384b51767'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'payroll_record'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd2043288c0414dadac05394349446747'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'completed_on'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'd2a44dec8aeb43e8b475f5aa36c44b50'
                         key: {
@@ -6181,6 +11106,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'd2ff53751cde49c5b90b94744eab0fa6'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_emp_xref'
+                            element: 'identity_mismatch'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'd35b9adac1af4a66b6e5c00bb845d0dc'
                         key: {
@@ -6192,11 +11126,35 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_db_object'
+                        id: 'd37aed8daefd4fc6be7684ac6332ed97'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'd3852fd02ac449e1b5f2ee7acfde2685'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'operation'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'd3df0a0ca93144eaa95b4b3e0b733e4c'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd3e9e90f5e1f4804ac8dcb1757fea8f1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'approved_by'
                             language: 'en'
                         }
                     },
@@ -6231,6 +11189,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_security_acl_role'
+                        id: 'd4b6ed7b91804d64bca78461bdfcc266'
+                        key: {
+                            sys_security_acl: '38fce3e922b8405ab8a9af9d588f384a'
+                            sys_user_role: {
+                                id: '11031a92b26c4e7ab34910721c4d2504'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.viewer'
+                                }
+                            }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd4f86ed6e4bc4a5c9d412a3039be1f09'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'approval_required'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'item_option_new'
                         id: 'd50d6f9bf9424fd3b28bf6308c0a1065'
                         key: {
@@ -6246,6 +11226,23 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_acltest'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd56433d9142a4d95a12e0b8814367ba9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_req'
+                            element: 'template_country'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'd5d5abd7dc0947578f9235dd50bc9bcf'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'authority_system_name'
                         }
                     },
                     {
@@ -6270,6 +11267,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'd66b0e854fc44cb3947c6ff02bc3461f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'leave_request'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'd6b43c6b9d7d4071b6bbd399f3a4fb65'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
@@ -6277,6 +11285,15 @@ declare global {
                             value: 'invoice'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd6d430cc4a484bdc90fbc252045e1dfb'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'throughput_source_note'
+                            language: 'en'
                         }
                     },
                     {
@@ -6288,6 +11305,37 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'd6fef236e5d44194bfaba05e06318e67'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'start_date'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'd708c72f72ec46569210bd95a667ec45'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'uploaded_date'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd711c593822245eea51f97e2291ad12b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'active'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'd71f256c0adf454dac00d969dc8978be'
                         key: {
@@ -6296,11 +11344,52 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'd744661726ba4f92b6fa07d88ef7f86c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'leave_balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: 'd76826579a80441c98711eff16ddce9c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                        }
+                    },
+                    {
                         table: 'sys_index'
                         id: 'd799a1b3366049b197b906293904e91a'
+                        deleted: true
                         key: {
                             logical_table_name: 'x_335329_sn_hr_erp_object_map'
                             col_name_string: 'erp_system,logical_object'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'd7cff38386d7477fbd523539b16d0927'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                            value: 'permission_denied'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'd82a1356cdd64cb1956bbe535a308a2e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'backorder'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -6322,6 +11411,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'd9858c5fb49d424888907d2e8f1563fb'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'R9'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_index'
                         id: 'd999a0f87c0f4991baf907a793ea2d6b'
                         key: {
@@ -6330,11 +11430,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'd99d29fe524d466da6d88c7593efe3ae'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'cost_centre_project_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'd9ac47f124314b869bca421e7a608e25'
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'auth_profile_mutual'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'd9e687d8c1c44c5ebbed923bfc579f57'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'hrsd_advanced_integration'
                         }
                     },
                     {
@@ -6350,10 +11469,29 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: 'da4f8a97a45045f79869960fafc0b941'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: 'daa2fa6b550b42fc87bc6ab577de039b'
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'read_only'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'dac2a0846b564450a95dca4ab9a28a35'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'idempotency_mode'
+                            value: 'none'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -6363,6 +11501,17 @@ declare global {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'logical_field'
                             value: 'qty'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'db0cce1a43cd407b9795eb9bafa7f39b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'contract_type'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -6382,6 +11531,17 @@ declare global {
                             name: 'x_335329_sn_hr_erp_object_map'
                             element: 'pagination_style'
                             value: 'none'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'db202b9548a04d90af584580db0ea24c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                            value: 'erp_unavailable'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -6408,10 +11568,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'dbc5b2d1eb334d218ec8a9e22f0ec584'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'benefit_enrollment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'dbc696a780494b4387b902ce985f2807'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_type'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'dbea24ec427542f89b28cfeb6e9bc668'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
                             element: 'NULL'
                             language: 'en'
                         }
@@ -6423,6 +11603,22 @@ declare global {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'occurred_on'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'dc111448cedd4e8e93294dcbf3a337e6'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_doc_req'
+                            element: 'template_country'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'dc1970f024114696afc9979f4ec2eb34'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'erp_system'
                         }
                     },
                     {
@@ -6448,6 +11644,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: 'dce0f607d8fd4552a88c3ddde36d34a6'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'dd0b40ba72b5453b912e2e649c8b7685'
                         key: {
@@ -6461,11 +11665,74 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: 'dda08ad6acb64192b34741b01cf9a97e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'operation'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'dda8973f20f741b297fd2fb6530d61b9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'operation'
+                            value: 'create'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ddc87b03bc6a487caa81136f8bc3d695'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'stock_item'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'de039b75c635494986ea09d1de9f2cfb'
                         key: {
                             name: 'x_335329_sn_hr_erp_call_log'
                             element: 'duration_ms'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'de0c48dd46db4ccaab8c2d91cae0f20f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'tax_year'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'de119ab0b21a41b9b30e96520717571c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'leave_type'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'de39f8d486f845fd93c3c1db4c599a5b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'D2'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -6518,11 +11785,124 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'e002fa525d814dc984110016b9195cce'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'D1'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: 'e0096e8129354ab0a032a6d37d124142'
+                        deleted: true
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_object_map'
+                            col_name_string: 'erp_system,logical_object,operation'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e01af8c675b14da49e83e3426d4f1318'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'asset_depreciation'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e05f6264827b42afa6f1b98a2dcc761f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_call_log'
+                            element: 'logical_object'
+                            value: 'erp_attachment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e06f34afe8dc498097a6f536c5601b65'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'outcome'
+                            value: 'blocked_approval'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e08451c29ae14b3587947de1e00e3a19'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'benefit_enrollment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_index'
                         id: 'e1105d40818b464e90fdbc295dcbc2ff'
+                        deleted: true
                         key: {
                             logical_table_name: 'x_335329_sn_hr_erp_field_map'
                             col_name_string: 'object_map,logical_field'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e1439216a668473fa6bd566e557929ab'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'R3'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: 'e17a3a90c1fd49d494747c19741e2356'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_erp_write'
+                            col_name_string: 'state'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e188aa745df943d8b2dfa56ab7c2b39d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'R4'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'e19c28a16ea549c5afbdf13895e46ac1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'e1c3f6254da840268c20fd2ec02d3071'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'assignment_group'
+                            language: 'en'
                         }
                     },
                     {
@@ -6536,6 +11916,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'e210b2004fa3475289fbd2e434a7d741'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'requisition'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'e219f9627ea24c6d9fc7fe12bf47c1b6'
                         key: {
                             name: 'x_335329_sn_hr_erp_sync_run'
@@ -6543,6 +11934,45 @@ declare global {
                             value: 'not_configured'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e24030a9f29e4f9cb991442d2ece2f0f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'zero_copy_connector'
+                            value: 'not_assessed'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'e241635523de4b88b9d328791cc998ab'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'mandatory'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e25984fd36a4454f88a1b4f24fe4736c'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'purchase_order'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'e2bf63a59c1340fca013e0cfee38c685'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'source_record'
                         }
                     },
                     {
@@ -6563,11 +11993,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'e31b42d2be9442808d93ace205645654'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'e36928e2323a47838897f05264ac3d29'
                         key: {
                             name: 'x_335329_sn_hr_erp_object_map'
                             element: 'oee_input_scale'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'e37de56a71024c1398b59e65326f2c85'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_emp_xref'
+                            element: 'terminated'
+                            language: 'en'
                         }
                     },
                     {
@@ -6587,6 +12035,15 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'e406659cfe4042b1b813e76154397c71'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'persona_role'
+                            language: 'en'
                         }
                     },
                     {
@@ -6632,12 +12089,42 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'e4df916f21b14999b57031932ecd1a02'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_emp_xref'
+                            element: 'terminated'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e4fc2d0c927948aaa1223b24873483b6'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'zero_copy_connector'
+                            value: 'rejected'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'e53dcf5a98b14258877b77be1c3d777c'
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'source_note'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e57b7b22016f464990c5016c2dc66110'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'operation'
+                            value: 'create'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -6660,6 +12147,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'e626dc1102654a67b7f942c55e1a56ec'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'idempotency_mode'
+                            value: 'natural_key'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e6a84821f4b24d07a9c0f522dac62cfc'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_object'
+                            value: 'benefit_enrollment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'e6eb87a9baf2416fb008969cedaefd7a'
                         key: {
@@ -6677,11 +12186,35 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'e7051994139b4ffbb17af0b433ca5bef'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'fixed_asset'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'e7310c05403b4dcb83d5c5bbac1db82b'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'object_map'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: 'e745a516b37c4903b574d8dba5949a7b'
+                        key: {
+                            sys_security_acl: '0d91b8680604417eb9e173840e4c8d13'
+                            sys_user_role: {
+                                id: '875163d8147a4574bccc6c8814c8211f'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.admin'
+                                }
+                            }
                         }
                     },
                     {
@@ -6705,6 +12238,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'e7b2887a695c497b936fa4fcdcf05296'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'employee_profile'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'e7dff9f1595b4cad8fc09c39d723789e'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -6723,12 +12267,42 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: 'e8f45bf62a6042ba9d54a167b5fdb1ea'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'state'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'e92e3cfe65ee489ca76d04cb08044fd9'
                         key: {
                             name: 'x_335329_sn_hr_erp_call_log'
                             element: 'duration_ms'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e946d48935784f8a92244725f8c9fd81'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'R2'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e965aca2e3ab43f2a6e66c2a224340ee'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'vendor'
+                            value: 'salesforce'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -6740,6 +12314,49 @@ declare global {
                             value: 'period_end'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'eab3f3e4cc0e4a0eaef6349320af2008'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'source_note'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: 'eae9b8b1a2d14d42b28b481d34f7e3af'
+                        key: {
+                            sys_security_acl: 'd2e804c5b9754869b6ef0627def6b8ed'
+                            sys_user_role: {
+                                id: '875163d8147a4574bccc6c8814c8211f'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.admin'
+                                }
+                            }
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: 'eaf235d4b97d4faf9b219bd05ec25d6b'
+                        key: {
+                            sys_security_acl: 'f7cf7692e3064fbbbe0c2f3eea56a19e'
+                            sys_user_role: {
+                                id: '11031a92b26c4e7ab34910721c4d2504'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.viewer'
+                                }
+                            }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'eafffe9554704e138561b3fbe06eaa01'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'approval_ref'
                         }
                     },
                     {
@@ -6786,12 +12403,42 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: 'ebd0f742fb77457a9cfd5ee7fb2ca6e2'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'zero_copy_connector'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ec2f2dbb1dc04752945bfff83e694291'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'effective_date'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'ec6f75be622e40a4a37d78540bd00a38'
                         key: {
                             name: 'x_335329_sn_hr_erp_staging'
                             element: 'erp_category'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ec91b30f8b8a4b8587dac679d9257413'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'status'
+                            value: 'confirmed_absent'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -6806,11 +12453,33 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'ed0f61aaf1f24e81bc91149c8a00554f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'leave_type_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'ed1280d6d64d42619376208078137674'
                         key: {
                             name: 'x_335329_sn_hr_erp_doc_req'
                             element: 'generated_on'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ed2657b0a65b4d0f8ac8ebac48277d24'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_map_tmpl'
+                            element: 'logical_object'
+                            value: 'erp_attachment'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -6842,6 +12511,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: 'edd3198af6be4d768724d2747d4664e2'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'eddafdfd9c394d7483c230d08f2c519c'
                         key: {
@@ -6858,6 +12534,36 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ede0f512a949483ba0306c5ea797263f'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'R4'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'ede21b8a5d834c689be6b083012527f4'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_object_map'
+                            element: 'idempotency_mode'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ee4d25a9df3d4c2386e8649d11e52529'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'vendor_invoice'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -6892,11 +12598,35 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_security_acl_role'
+                        id: 'ef453a799dcb449eadddcb332d870f3a'
+                        key: {
+                            sys_security_acl: 'b0f8628851744cd397b33177dfe371f9'
+                            sys_user_role: {
+                                id: '875163d8147a4574bccc6c8814c8211f'
+                                key: {
+                                    name: 'x_335329_sn_hr_erp.admin'
+                                }
+                            }
+                        }
+                    },
+                    {
                         table: 'sys_index'
                         id: 'ef7ae16a7e02415cb2b777219ed91345'
                         key: {
                             logical_table_name: 'x_335329_sn_hr_erp_doc_type'
                             col_name_string: 'code'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ef9275c6880543c0a649bed767fdd08d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'payslip_document'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -6919,6 +12649,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'efcfb62238c745b8908f35248ee7daef'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'efd36a087a894fcf9d5d1a8fea8dfd05'
                         key: {
@@ -6938,6 +12677,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_db_object'
+                        id: 'f01ffc488be94b57bff0028b617099e3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f036df9522ed4403ba8589e5a44735a2'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'leave_balance'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'f05bca37066646049d9b6d048854dfbe'
                         key: {
@@ -6946,6 +12703,15 @@ declare global {
                             value: 'invoice'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'f08d1a72e8c349f09776c342cd277d99'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'error_message'
+                            language: 'en'
                         }
                     },
                     {
@@ -6993,6 +12759,17 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'f1bd36154f89498fb4255a72f50b85f3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'invoice'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'f21cbc4fe5aa41c3a06dfe0a6fe3b5b6'
                         key: {
@@ -7011,6 +12788,44 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'f243ee480a5c4092b34ceb4b5999eb59'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'required_groups'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f2501468a69e4782a12eb7356a24aeb4'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'operation'
+                            value: 'read'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'f25a284803304813b9c03aadc582ae21'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'period_end'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f2d91735c0db4fdf98ff861ca8fbf0e1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'source'
+                            value: 'manual'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'f309652f8c7146a1ac67e988f189ba31'
                         key: {
@@ -7019,6 +12834,25 @@ declare global {
                             value: 'procurement'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f35fef6a9c0f41ce9175304b7eec9cac'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'action'
+                            value: 'download'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'f37a8eecb15546cfb8d62db8610d075a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'next_period_label'
                         }
                     },
                     {
@@ -7047,6 +12881,50 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'f4900ae7db6b4adc982a469cae7cdb1a'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'operation'
+                            value: 'update'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f4b9abaf00de4c26986ef3536766c08d'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'requirement_area'
+                            value: 'D6'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f57912ccd02346f3baa071a2339b26b9'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_vendor_onboarding'
+                            element: 'status'
+                            value: 'confirmed'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f57d46c50ad74fbab74216949aa89b34'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'category'
+                            value: 'validation_failure'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'f5cd8723f19f4c8abae29154f1093348'
                         key: {
                             name: 'x_335329_sn_hr_erp_object_map'
@@ -7062,6 +12940,43 @@ declare global {
                         key: {
                             name: 'x_335329_sn_hr_erp_erp_system'
                             element: 'auth_profile_basic'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'f62ecaa5fab14a38883f3098fe2bb224'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'attachment_limits_source_note'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f6ea6cc7f93e4f41b02330d643763d45'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'cost_centre_or_project_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'f75da8fca3d449e8b66e83bc5a3b4a01'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'f7687adee6684f50a853334fdd6ffac3'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'policy_key'
+                            language: 'en'
                         }
                     },
                     {
@@ -7124,11 +13039,62 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'f8334318dfec47f2a08c43ef729d06b1'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'submitted_date'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f85043525d204c709008992588aed124'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'environment'
+                            value: 'sandbox'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'f86d9e67283c44a7b55aa01c1f1f6518'
                         key: {
                             name: 'x_335329_sn_hr_erp_call_log'
                             element: 'logical_object'
                             value: 'payroll_record'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'f88f96dda84946e49b2e053591ce7e7b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_payroll_calendar'
+                            element: 'period_start'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'f8c2f29492bb49379e653f67eb3b65db'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'erp_system'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f92edbed59d44bddb4a5810304662fbd'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                            element: 'requirement_area'
+                            value: 'D10'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -7147,6 +13113,25 @@ declare global {
                             name: 'x_335329_sn_hr_erp_sync_run'
                             element: 'logical_object'
                             value: 'gl_summary'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_index'
+                        id: 'fa69a05135bc4fa49bdb60bdfa48c6e0'
+                        key: {
+                            logical_table_name: 'x_335329_sn_hr_erp_usage_event'
+                            col_name_string: 'outcome'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'fa6fc11b849349cfb5f4353ea6840337'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'outcome'
+                            value: 'blocked_cutoff'
                             language: 'en'
                             dependent_value: 'NULL'
                         }
@@ -7210,11 +13195,76 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'fbb6970234544f628f42df7da4afb7fc'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'source_note'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'fbcc8104fb194ff09d210c2df9d49f74'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'call_log_ids'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'fbe61d1fe50141619158fc21e03d12ba'
                         key: {
                             name: 'x_335329_sn_hr_erp_map_tmpl'
                             element: 'vendor'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'fbe6ac598a6d499f9753fd82b82f4441'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_system'
+                            element: 'version_source_note'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'fc819c9263f0476889ff8820f66fdc5b'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_usage_event'
+                            element: 'erp_system'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: 'fcb72739b4b44517bf8a7863b25dfd99'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'fcc00ac33d7b49a49f48c465c15e4298'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_write'
+                            element: 'logical_object'
+                            value: 'compensation_change'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'fcd75a395b8b4389b431bb97fb3a6c37'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_field_map'
+                            element: 'logical_field'
+                            value: 'erp_claim_reference'
+                            language: 'en'
+                            dependent_value: 'NULL'
                         }
                     },
                     {
@@ -7228,6 +13278,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'fd2644e03c2d4ef6b03066bfedca20ba'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'cost_centre_project_ref'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'fd8cfcb40a234dd0a180b702df581825'
                         key: {
                             name: 'x_335329_sn_hr_erp_field_map'
@@ -7235,6 +13296,26 @@ declare global {
                             value: 'none'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'fdded19d313a4f1d90ddd70b753434f8'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_scope_grant'
+                            element: 'logical_object'
+                            value: 'erp_attachment'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'fe3f0bf3dc6a4165b304f720381faa2e'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_erp_exception'
+                            element: 'erp_system'
+                            language: 'en'
                         }
                     },
                     {
@@ -7263,6 +13344,13 @@ declare global {
                             value: 'none'
                             language: 'en'
                             dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: 'fed75efcadfe49dc8f1b31dcf28b0275'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_landscape_discovery'
                         }
                     },
                     {
@@ -7311,6 +13399,17 @@ declare global {
                             name: 'x_335329_sn_hr_erp_field_map'
                             element: 'logical_field'
                             value: 'product'
+                            language: 'en'
+                            dependent_value: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ffcd431b96a2458dba4cee31f4bc0110'
+                        key: {
+                            name: 'x_335329_sn_hr_erp_write_approval_policy'
+                            element: 'logical_object'
+                            value: 'payslip_document'
                             language: 'en'
                             dependent_value: 'NULL'
                         }

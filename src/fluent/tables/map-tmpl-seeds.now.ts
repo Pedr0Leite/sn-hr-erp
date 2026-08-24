@@ -647,6 +647,27 @@ Record({
     },
 })
 
+// The FIRST vendor template for any ASSETS object. L1-D5 withheld one because nobody on this
+// project had seen a real fixed-asset payload -- and that reasoning was about invented FIELD
+// names, which this row does not carry. Its endpoint is verified on the Unit4 Developer Portal,
+// its field_map is empty, so it hands an admin correct plumbing and a `not_configured` tile that
+// names what to map. See docs/unit4-integration.md.
+Record({
+    $id: Now.ID['tmpl-unit4-fixed-asset'],
+    table: 'x_335329_sn_hr_erp_map_tmpl',
+    data: {
+        vendor: 'unit4',
+        logical_object: 'fixed_asset',
+        field_map: '{}',
+        endpoint_path_hint: '/v1/objects/asset-objects',
+        response_root_hint: '',
+        pagination_style_hint: 'offset',
+        date_format_hint: '',
+        verified: false,
+        source_note: 'Added 2026-08-17 (OD38). Endpoint VERIFIED on the Unit4 Developer Portal (Accounting > Asset Objects). Structural hints only: no Unit4 property name is reachable in public documentation, so field_map is empty by design. Set query_template to companyId=<your company>. Read your tenant schema with Accept: application/schema+json before mapping.',
+    },
+})
+
 Record({
     $id: Now.ID['tmpl-netsuite-invoice'],
     table: 'x_335329_sn_hr_erp_map_tmpl',
@@ -727,3 +748,20 @@ Record({
     },
 })
 
+
+
+Record({
+    $id: Now.ID['tmpl-salesforce-fixed-asset'],
+    table: 'x_335329_sn_hr_erp_map_tmpl',
+    data: {
+        vendor: 'salesforce',
+        logical_object: 'fixed_asset',
+        field_map: '{"erp_id":{"source":"Id","transform":"none"},"name":{"source":"Name","transform":"none"},"asset_tag":{"source":"SerialNumber","transform":"none"},"value":{"source":"Price","transform":"none"},"status":{"source":"Status","transform":"none"},"eol_on":{"source":"UsageEndDate","transform":"none"}}',
+        endpoint_path_hint: '/services/data/v67.0/query',
+        response_root_hint: 'records',
+        pagination_style_hint: 'none',
+        date_format_hint: 'yyyy-MM-dd',
+        verified: false,
+        source_note: 'Added 2026-08-18 (OD39). Asset field API names VERIFIED against the Salesforce Object Reference, read 2026-08-14; never run against a live org. Set query_template to q=SELECT+Id,Name,SerialNumber,Price,Status,UsageEndDate+FROM+Asset+LIMIT+2000 and confirm the API version with GET /services/data. Set zero_is_meaningful on value by hand. currency and lifecycle_stage have no honest source. pagination none is a hard 2000-row ceiling. See docs/salesforce-integration-design.md.',
+    },
+})

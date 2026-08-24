@@ -85,11 +85,17 @@ export interface FieldMapEntry {
      * Phase 1 rule.
      */
     zeroIsMeaningful: boolean
+    /** NV-51. '' = applies to every country. */
+    country: string
+    /** NV-51. True => an absent value makes the read `partial` and names this field. */
+    mandatory: boolean
 }
 
 /** One `object_map` row, flattened. */
 export interface ObjectMapConfig {
     sysId: string
+    /** NV-51. The country this map was resolved FOR. '' = the jurisdiction-neutral default. */
+    country: string
     /**
      * The logical object name. The COLUMN is `logical_object` in this app (L1 §4.1); this
      * property keeps the sibling's name `object` deliberately, so that nothing downstream
@@ -140,6 +146,17 @@ export interface FetchParams {
     extraQuery?: string
     headers?: { [name: string]: string }
     body?: string
+    /**
+     * OD51. Which `object_map` row to resolve: 'read' (default), 'create' or 'update'. A write
+     * that leaves this unset would resolve the READ map and be sent with the read verb -- which
+     * drops the body and turns the read's own response into a false acknowledgement.
+     */
+    operation?: string
+    /**
+     * NV-51. Which country's `object_map` row to resolve. Omitted resolves the country-agnostic
+     * row, which is correct for a single-jurisdiction deployment and for every system-side job.
+     */
+    country?: string
     /**
      * L3 ADDITION (L3-D10), additive and off by default — every existing caller is unchanged.
      *
