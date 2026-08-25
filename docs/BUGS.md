@@ -451,6 +451,76 @@ Nothing here has been verified at runtime — no connector call has ever execute
 
 ---
 
+# B-L2-1 — the gate's own success case carries an error code, and the gate does not look
+
+**Found:** 2026-08-25, in the first L2 gate run ever executed on this instance.
+**Severity:** low as a runtime defect, **high as a test defect**.
+**Status:** open, not fixed.
+
+## What was observed
+
+GATE-1 is the canonical "one successful live call". It passed. The `call_log` row it asserted on:
+
+```
+#1{obj=invoice,status=success,http=200,dur=887,rows=-,map=set,verified=0,err=RESPONSE_UNPARSEABLE}
+```
+
+`status=success`, `http=200`, `dur=887` — and `rows=-` with `err=RESPONSE_UNPARSEABLE`.
+
+## Why
+
+`l2-fixtures.now.ts` sets `response_root: 'args'` on the System A `invoice` map. postman-echo's
+`/get` returns `args` as a JSON **object** of query parameters — deliberately, because the fixture
+is built so `field-mapper.ts` reads named fields out of it and the source field names are
+intentionally unlike the logical ones.
+
+But `response_root` is overloaded. `erp-connector.ts` `countRows()` walks the same path and
+requires an **array** at the end of it:
+
+```
+if (Object.prototype.toString.call(node) === '[object Array]') {
+    return { rows: node.length, errorCode: null }
+}
+return { rows: null, errorCode: 'RESPONSE_UNPARSEABLE' }
+```
+
+An object is not an array, so the happy path can never produce a row count. `rows_fetched` is
+`null` on every successful call against this fixture.
+
+## Why the gate did not catch it
+
+`T2-19` asserts `okRows[0].status === 'success' && okRows[0].httpCode === '200' &&
+okRows[0].durationMs > 0`. It never reads `rows_fetched` and never reads `error_code`. A row that
+is simultaneously `success` and `RESPONSE_UNPARSEABLE` satisfies every clause.
+
+## The part that is genuinely reassuring
+
+`countRows()` returning `RESPONSE_UNPARSEABLE` rather than `0` is **correct and deliberate** —
+`field-mapper.ts:62` states the reason: *"the path was wrong" and "there are no rows" are
+different*. The four-state contract held. A tile fed from this would resolve to `failed`, not to a
+fabricated `0`. **This is the rule working, discovered by accident.**
+
+## What to decide
+
+Whether `response_root` should stay overloaded at all. Two paths need two different things: field
+extraction wants the object, row counting wants the array. Candidate fixes, none chosen:
+
+1. Split the column — `response_root` for extraction, `row_count_root` for counting.
+2. Let `countRows()` treat a non-array object at the root as one row, which is arguably what a
+   single-record endpoint means.
+3. Leave the runtime alone and fix only the fixture, accepting that the gate's happy path then
+   stops exercising a single-record shape.
+
+**Do not "fix" this by making `countRows()` return `0` for a non-array.** That converts a refusal
+into a fabricated absence and breaks the one rule the observation just confirmed is working.
+
+## Also required
+
+`T2-19` should assert on `error_code` being empty. A test that calls a row `success` while it
+carries an error code is a test that cannot fail for the thing it is named after.
+
+---
+
 # Notes on what was checked and not reported
 
 - `state-renderer.ts` is clean against the four-state rule. `hasFigure()` uses
