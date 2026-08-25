@@ -521,6 +521,79 @@ carries an error code is a test that cannot fail for the thing it is named after
 
 ---
 
+# B-L2-2 — the L2 drivers share System A and destroy each other's evidence
+
+**Found:** 2026-08-25, first multi-driver run.
+**Severity:** high **as a test defect**. No product defect is implied by it.
+**Status:** open, not fixed.
+
+## What happened
+
+Three drivers were started close together and ran on three scheduler workers with overlapping
+windows:
+
+| Thread | Job | Window |
+|---|---|---|
+| `glide.scheduler.worker.6` | L2 DRIVER ADMIN | 13:20:25 -> 13:21:16 |
+| `glide.scheduler.worker.1` | L2 DRIVER VIEWER | 13:20:30 -> 13:20:32 |
+| `glide.scheduler.worker.2` | L2 CONNECTOR HARNESS | 13:20:34 |
+
+Result: **89 PASS, 9 FAIL** — and all nine failures are explained by the overlap.
+
+## Why they collide
+
+Every driver targets **System A** (`ECHO-PRIMARY`), and `test-driver-util.ts` scopes both setup
+helpers to a system, not to a run:
+
+```
+export function clearCallLog(systemSysId: string): number {
+    const gr = new GlideRecord(T_CALL_LOG)
+    gr.addQuery('erp_system', systemSysId)
+```
+
+`clearBreaker()` is the same shape. So a second driver's setup deletes the first driver's rows and
+resets its `circuit_open_until` **mid-assertion**.
+
+| Failure | Cause |
+|---|---|
+| `T15 exactly one call_log row \| observed: 3` | Foreign rows in the window |
+| `T21 exactly 3 rows \| observed: 4` | Same |
+| `T19b refused with MAP_INACTIVE \| observed: MAP_INACTIVE` | Observed **equals** expected; the assertion spans all rows and a foreign `balance/503` row was among them |
+| `T16b success, rows empty, error empty \| observed: err=HTTP_503` | Foreign row read as this test's |
+| `T31 viewer logged 6 attempt rows \| observed: 1` | Admin driver's `clearCallLog` deleted them |
+| `T31 viewer WROTE circuit_open_until \| observed: ""` | Admin driver's `clearBreaker` wiped it |
+| `T2-8 substitutionDisabled=false` | Call never completed (`http=null`) — another driver had the breaker open, so nothing reached the wire to inspect |
+
+## The part that matters most
+
+**The 89 passes are void too.** A contaminated environment produces accidental passes as readily as
+accidental failures. The whole run is unusable as evidence, and should not be recorded as a result
+anywhere.
+
+## Fix options, none chosen
+
+1. **Operational only** — document "one driver at a time" and wait for the `===== END =====` line.
+   Done: `docs/MANUAL-TEST-SCENARIOS.md` Rule 0. Costs nothing, relies on the operator.
+2. Give each driver its own fixture system, so `clearCallLog(system)` is naturally run-scoped.
+3. Add a run token to `call_log` and scope both helpers to `(system, run)`.
+
+Option 1 is in place. It is not a fix — it is a warning label on a sharp edge.
+
+## Not yet known
+
+Whether **T2-8** and **T31** also fail under serial execution. Both have a reading in which they
+are real:
+
+- **T2-8** — `rest-client.ts:144` does call `disableForcedVariableSubstitution()`. If it fails
+  again *with a real `http_code`*, a literal `${x}` in a mapped endpoint is being rewritten before
+  it reaches the ERP, which is a data-corruption path.
+- **T31** — the test expects the viewer to be *able* to write `erp_system`. A clean run still
+  showing `""` means either the expectation is wrong or a deny is firing silently (trap 4).
+
+Serial re-run is Scenario 1 of `docs/MANUAL-TEST-SCENARIOS.md`.
+
+---
+
 # Notes on what was checked and not reported
 
 - `state-renderer.ts` is clean against the four-state rule. `hasFigure()` uses

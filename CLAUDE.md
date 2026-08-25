@@ -87,6 +87,7 @@ applies" is the four-state rule's failure in a new costume: an absence read as a
 |---|---|
 | `docs/SESSION-RESUME.md` | Cold-start state. Read first. |
 | `docs/TODO.md` | What is left, ordered by what it is worth. Read second. |
+| `docs/MANUAL-TEST-SCENARIOS.md` | Operator test scenarios. **Rule 0: one driver at a time** — concurrent drivers void the whole run. |
 | `docs/DEFERRED.md` | Everything blocked or unverified, and who has to unblock it. |
 | `docs/decision-log.md` | D1–D19, per-layer decisions, OD1–OD53 — each with its rejected alternative. OD42–OD46 govern the write path; OD47–OD53 came out of the NV build and the bug pass. |
 | `docs/BUGS.md` | Known defects and their fix status. |

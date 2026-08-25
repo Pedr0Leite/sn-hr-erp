@@ -351,6 +351,7 @@ wrong `object_map` row, and every audit row sharing one blank idempotency key un
 |---|---|
 | `CLAUDE.md` | Working rules, commands, and the trap list for anyone (or anything) editing this repo |
 | `docs/TODO.md` | What is left, in the order it is worth doing |
+| `docs/MANUAL-TEST-SCENARIOS.md` | What to click, in what order, and what each result means |
 | `docs/USER-GUIDE.md` | What an operator can do and how — read the hub, connect an ERP, run a sync, generate a document, diagnose |
 | `docs/SESSION-RESUME.md` | Cold-start state of the instance and the build |
 | `docs/DEFERRED.md` | Everything blocked, unverified, or postponed |
