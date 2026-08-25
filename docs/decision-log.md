@@ -1480,3 +1480,36 @@ be back to the state this decision exists to end.
 **Rejected alternative: fall back to a "nearest" country (same language, same region).** Every
 version of this is a guess about law. Portugal's wording is not Brazil's, and an employee holding a
 certificate that cites the wrong statute has a worse problem than one holding no certificate.
+
+## OD54 — OQ-16 / OD40 answered: the employee surface is the existing BYOUI page
+
+**Date:** 2026-08-25.
+
+**The question.** Every NV UI surface was blocked on where it renders: HRSD catalog items, plain
+Service Catalog, or the existing BYOUI hub. HRSD is not installed on `dev296062` and cannot be,
+so the choice was left open and twenty surfaces waited on it.
+
+**The decision.** Build on the **existing BYOUI React SPA**, at `?view=me`.
+
+**Why this is not a corner cut.** The schema already anticipated it. `erp_write.source_table` /
+`source_record` is a **polymorphic pair, not a reference** — chosen at NV-3 precisely so a later
+HRSD swap is a *data change* (V1/OD40). Nothing in this decision forecloses HRSD; it declines to
+wait for it.
+
+**The rejected alternative.** Waiting for an HRSD-licensed instance. Rejected because it makes the
+entire employee-facing half of the application contingent on a licence the target deployment may
+never buy, when the read path (`ess/read-service.ts`) is vendor- and surface-agnostic already.
+
+**A separate view, not a sixth tab.** The five hub tabs are a finance dashboard read by analysts.
+The employee surface answers "what am I owed" for somebody who will never open the others. Merging
+them would put an employee one mis-click from a procurement figure they hold no role for, and make
+the tab strip mean two things at once. The branch is made at the mount point in `main.tsx`, not as
+an early return inside `App`, so the hook order cannot depend on the URL.
+
+**What was deliberately NOT drawn.** Every write entry point. Banking updates, expense claims,
+leave submission and personal updates all have complete server modules — and the write path has
+never completed a real call. OD51's map resolution and `create-write.ts`'s idempotency key are
+guarded by `npm run check` rules 8a/8b and confirmed by nothing. Drawing "Update my bank account"
+before Scenario 5 of `docs/MANUAL-TEST-SCENARIOS.md` passes would be a button whose decision has
+never been shown to commit. The page says this in plain words rather than hiding it.
+

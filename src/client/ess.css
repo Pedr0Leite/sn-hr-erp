@@ -1,0 +1,271 @@
+/* NV — the employee-services surface.
+ *
+ * EXTENDS app.css, NEVER FORKS IT. Every colour below resolves through a token already defined
+ * there, so a customer theme still reaches this surface and the dark blocks in app.css govern it
+ * without being repeated. No literal colour is introduced that app.css does not already own.
+ *
+ * THE SIGNATURE, AND THE REASON FOR IT. Where a figure would render, an ABSENCE renders at the
+ * same size — `.ess-absent` shares the type scale of `.ess-figure`. Every instinct says to shrink
+ * an empty state into small grey italics. That instinct is what this application exists to
+ * correct: nobody investigates a number, so the sentence explaining why there is no number has to
+ * be at least as loud as the number would have been. This is the four-state contract expressed as
+ * type, and it is the one place the surface spends its boldness.
+ *
+ * THE STATE RAIL. Each card carries a left rail whose PATTERN, not merely its colour, encodes
+ * state: solid = live, dashed = not configured, double = failed, dotted = stale. Printed in
+ * greyscale, or with this whole file deleted, the state is still legible from the card's own
+ * sentence — the rail is reinforcement, never the carrier. */
+
+.ess {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: var(--hub-space-lg) var(--hub-space);
+}
+
+.ess-head {
+    margin-bottom: var(--hub-space-xl);
+}
+
+.ess-eyebrow {
+    /* Names the data's origin, because "where did this come from" is the first question an
+       employee asks about their own salary. It is content, not decoration. */
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--hub-faint);
+    margin: 0 0 var(--hub-space-xs);
+}
+
+.ess-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 650;
+    color: var(--hub-text);
+    margin: 0;
+}
+
+.ess-sub {
+    margin: var(--hub-space-sm) 0 0;
+    color: var(--hub-muted);
+    font-size: 0.9375rem;
+    max-width: 44rem;
+}
+
+.ess-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--hub-space);
+}
+
+@media (min-width: 56rem) {
+    .ess-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    /* The first card spans both columns: payslips are the reason an employee opens this page,
+       and the layout should say so before any copy does. */
+    .ess-card:first-child {
+        grid-column: 1 / -1;
+    }
+}
+
+.ess-card {
+    position: relative;
+    background: var(--hub-surface-raised);
+    border: 1px solid var(--hub-border);
+    border-radius: var(--hub-radius-lg);
+    box-shadow: var(--hub-shadow);
+    padding: var(--hub-space-lg);
+    padding-left: calc(var(--hub-space-lg) + 0.5rem);
+    overflow: hidden;
+}
+
+/* The rail. `border-left-style` is the carrier of the distinction; the colour merely agrees. */
+.ess-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    border-left: 5px solid var(--hub-border-strong);
+}
+
+.ess-card[data-st='live']::before {
+    border-left-style: solid;
+    border-left-color: var(--hub-positive);
+}
+.ess-card[data-st='not_configured']::before {
+    border-left-style: dashed;
+    border-left-color: var(--hub-accent);
+}
+.ess-card[data-st='failed']::before {
+    border-left-style: double;
+    border-left-width: 6px;
+    border-left-color: var(--hub-critical);
+}
+.ess-card[data-st='stale']::before,
+.ess-card[data-st='partial']::before {
+    border-left-style: dotted;
+    border-left-color: var(--hub-warning);
+}
+
+.ess-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--hub-space-sm);
+    margin-bottom: var(--hub-space-md);
+}
+
+.ess-card-title {
+    font-size: 1rem;
+    font-weight: 620;
+    letter-spacing: -0.01em;
+    color: var(--hub-text);
+    margin: 0;
+}
+
+.ess-chip {
+    flex: none;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.1875rem 0.5rem;
+    border-radius: var(--hub-radius-pill);
+    background: var(--hub-chip-bg);
+    color: var(--hub-muted);
+    border: 1px solid var(--hub-border);
+    white-space: nowrap;
+}
+
+/* The figure and the absence share a scale. That is the point of the design. */
+.ess-figure,
+.ess-absent {
+    font-size: clamp(1.5rem, 3.2vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.ess-figure {
+    font-weight: 660;
+    font-variant-numeric: tabular-nums;
+    color: var(--hub-text);
+}
+
+.ess-unit {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--hub-muted);
+    margin-left: 0.375rem;
+    letter-spacing: 0;
+}
+
+.ess-absent {
+    font-weight: 500;
+    color: var(--hub-text);
+    text-wrap: balance;
+}
+
+.ess-detail {
+    margin: var(--hub-space-md) 0 0;
+    color: var(--hub-muted);
+    font-size: 0.875rem;
+}
+
+.ess-age {
+    display: inline-block;
+    margin-top: var(--hub-space-sm);
+    font-size: 0.8125rem;
+    color: var(--hub-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.ess-list {
+    list-style: none;
+    margin: var(--hub-space) 0 0;
+    padding: 0;
+    border-top: 1px solid var(--hub-border);
+}
+
+.ess-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--hub-space);
+    padding: var(--hub-space-md) 0;
+    border-bottom: 1px solid var(--hub-border);
+}
+
+.ess-row-main {
+    font-size: 0.9375rem;
+    color: var(--hub-text);
+    min-width: 0;
+}
+
+.ess-row-meta {
+    flex: none;
+    font-size: 0.8125rem;
+    color: var(--hub-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.ess-more {
+    margin: var(--hub-space-md) 0 0;
+    font-size: 0.8125rem;
+    color: var(--hub-faint);
+}
+
+.ess-skeleton {
+    height: 6.5rem;
+    border-radius: var(--hub-radius-lg);
+    border: 1px solid var(--hub-border);
+    background: linear-gradient(90deg, var(--hub-band-from), var(--hub-band-to), var(--hub-band-from));
+    background-size: 200% 100%;
+    animation: ess-shimmer 1.4s linear infinite;
+}
+
+@keyframes ess-shimmer {
+    to {
+        background-position: -200% 0;
+    }
+}
+
+/* Quality floor, not decoration. */
+@media (prefers-reduced-motion: reduce) {
+    .ess-skeleton {
+        animation: none;
+    }
+}
+
+.ess-back {
+    display: inline-block;
+    margin-bottom: var(--hub-space);
+    font-size: 0.875rem;
+    color: var(--hub-accent);
+    text-decoration: none;
+    border-radius: var(--hub-radius-sm);
+}
+
+.ess-back:hover {
+    text-decoration: underline;
+}
+
+.ess-back:focus-visible,
+.ess-card:focus-visible {
+    outline: 2px solid var(--hub-accent);
+    outline-offset: 2px;
+}
+
+.ess-note {
+    margin-top: var(--hub-space-xl);
+    padding: var(--hub-space);
+    border: 1px dashed var(--hub-border-strong);
+    border-radius: var(--hub-radius);
+    color: var(--hub-muted);
+    font-size: 0.875rem;
+    background: var(--hub-chip-bg);
+}

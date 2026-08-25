@@ -478,6 +478,10 @@ declare global {
                         table: 'sys_ws_query_parameter'
                         id: '0f7d84c1c308400882ad2a891adbff3d'
                     }
+                    'hub-route-me': {
+                        table: 'sys_ws_operation'
+                        id: 'c462d8ba57344a10a3a7cb21e1f4729e'
+                    }
                     'hub-route-refresh': {
                         table: 'sys_ws_operation'
                         id: '35fa6f1d2359428c85137d451c09f0e3'
@@ -1049,6 +1053,10 @@ declare global {
                     'src_server_ess_read-service_ts': {
                         table: 'sys_module'
                         id: '866fc08160294e64837f85aa3bba3106'
+                    }
+                    src_server_ess_routes_ts: {
+                        table: 'sys_module'
+                        id: 'bc00c8c82f9b45bab07183f1b30d89d3'
                     }
                     src_server_governance_landscape_ts: {
                         table: 'sys_module'

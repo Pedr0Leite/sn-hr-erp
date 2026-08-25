@@ -1,5 +1,6 @@
 import { RestApi } from '@servicenow/sdk/core'
 import { getData, postRefresh } from '../../server/api/routes'
+import { getEss } from '../../server/ess/routes'
 
 // L4-6 and L4-8. ONE SERVICE, TWO ROUTES. docs/l4-api-design.md §2.
 //
@@ -51,6 +52,17 @@ export const hubApi = RestApi({
                         'financial | procurement | inventory | assets | manufacturing. Missing or unrecognised is a 400 naming the value -- never a 200 with an empty body.',
                 },
             ],
+        },
+        {
+            $id: Now.ID['hub-route-me'],
+            name: 'me',
+            method: 'GET',
+            path: '/me',
+            script: getEss,
+            authentication: true,
+            produces: 'application/json',
+            shortDescription:
+                "Every employee-services read area for the SIGNED-IN user in ONE response, each carrying st. There is deliberately no employee parameter: the employee is the session user, so no query string can address somebody else's payslip.",
         },
         {
             $id: Now.ID['hub-route-refresh'],

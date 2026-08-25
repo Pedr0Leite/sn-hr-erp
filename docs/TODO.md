@@ -89,7 +89,8 @@ fires them on record events does not exist. There is no `src/fluent/business-rul
 
 # 3. UI surfaces — all gated on one human decision
 
-**Nothing in this section can start until OQ-16 / OD40 is answered.** HRSD is not installed on
+**OQ-16 / OD40 is ANSWERED — see OD54.** The surface is the existing BYOUI SPA at `?view=me`; the
+five read areas are built and deployed. What remains below is the rest. HRSD is not installed on
 dev296062, so the surface these stories render into is undecided: HRSD catalog items, plain Service
 Catalog, or the existing BYOUI hub. Building against the wrong one is a rewrite, not a refactor.
 
