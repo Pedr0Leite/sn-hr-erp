@@ -42,18 +42,65 @@ Every tile, every tab, resolves to exactly one of: **live · not configured · f
 
 ---
 
+## The write path — five rules that outrank convenience
+
+Everything under `src/server/write/` pushes changes into a payroll system. These are not style
+preferences.
+
+> **Every write goes through `erp-connector.fetch()`.** A dispatcher issuing its own
+> `RESTMessageV2` is shorter and forfeits retry classification, backoff, the circuit breaker,
+> `Retry-After` and `call_log`. A second HTTP path in this app is a defect, not a shortcut (OD42).
+>
+> **A write resolves its OWN `object_map` row** (OD51). `object_map` is keyed
+> `(erp_system, logical_object, operation)`. A write that resolves the read map is sent with the
+> read's verb, `rest-client` drops the body, and `extractAck()` reads an `id` out of the read's own
+> response — reporting `confirmed` for a request that never left the instance. `npm run check`
+> rule 8a fails any `fetch()` passing a `body` without an `operation`.
+>
+> **Every `erp_write` row is created by `write/create-write.ts`**, which sets the idempotency key
+> **at insert**. The unique index is on `(erp_system, idempotency_key)`; a row inserted with a
+> blank key collides with every other blank one. Rule 8b fails a module that inserts its own.
+>
+> **A 2xx is never success on its own.** No confirmable identifier in the body means `failed`,
+> never `confirmed`. "The ERP accepted my request" and "the ERP recorded my change" are different
+> claims and only the second is worth telling an employee.
+>
+> **The three `blocked_*` states stay distinct.** `blocked_readonly` is a configuration choice,
+> `blocked_cutoff` a timing outcome, `blocked_approval` a governance outcome. Collapsing them into
+> one `blocked` destroys the only thing the employee and the auditor need — the reason.
+>
+> **The approval gate is two-layer, and the second layer is not a business rule** (OD44). Trap 5
+> means a `before` rule that throws is swallowed and the record saves; the dispatcher re-checks
+> independently, immediately before the call, because that layer cannot be swallowed.
+>
+> **No payload value is ever stored.** `erp_write` keeps `request_hash`, never the body. An audit
+> row carrying the salary or the IBAN recreates the shadow database D2 exists to prevent.
+
+An **absent payroll calendar refuses the write.** Treating "no calendar configured" as "no cut-off
+applies" is the four-state rule's failure in a new costume: an absence read as a permission.
+
+---
+
 ## Read before changing anything
 
 | File | Why |
 |---|---|
 | `docs/SESSION-RESUME.md` | Cold-start state. Read first. |
-| `docs/DEFERRED.md` | Everything blocked or unverified. Read second. |
-| `docs/decision-log.md` | D1–D19, per-layer decisions, OD1–OD36 — each with its rejected alternative. |
+| `docs/TODO.md` | What is left, ordered by what it is worth. Read second. |
+| `docs/DEFERRED.md` | Everything blocked or unverified, and who has to unblock it. |
+| `docs/decision-log.md` | D1–D19, per-layer decisions, OD1–OD53 — each with its rejected alternative. OD42–OD46 govern the write path; OD47–OD53 came out of the NV build and the bug pass. |
 | `docs/BUGS.md` | Known defects and their fix status. |
 | `docs/api-contract.md` | The binding L4↔L5 payload shape. |
 | `docs/SN-HR-ERP-master-kickoff-prompt.md` | The normative spec. §7 four-state rule, §9 traps. |
 | `docs/USER-GUIDE.md` | What an operator can actually do, and how. Written from live ground truth. |
-| `docs/vendor-integration-research.md` | Per-vendor profiles. §2.2.6 and §2.3.5 carry supersede banners — read those first. |
+| `docs/vendor-integration-research.md` | Per-vendor profiles. §2.2.2, §2.2.6 and §2.3.5 carry supersede banners — read those first. |
+| `docs/unit4-integration.md` | Unit4 ERPx runbook. The only vendor with implementation-grade evidence behind it. |
+| `docs/salesforce-integration-design.md` | Salesforce as the live test target. §1 is the list of things only a human can do. |
+| `docs/noviq-brd-trd-alignment.md` | The Noviq BRD/TRD vs this app. §6 carries three conflicts to settle before either goes to v2. |
+| `docs/noviq/stories.md` | 52 `NV-*` stories with falsifiable ACs. The Noviq backlog. |
+| `docs/noviq/architecture.md` | §0 is the verification pass — 15 findings the story coverage matrix hid. |
+| `docs/noviq/story-validation.md` | Second-brain prior-art pass. §2 carries the 30s-vs-240s timeout bug. |
+| `docs/noviq/BUILD-LOG*.md` | What of the NV backlog is actually built, per session. Read before adding to it. |
 
 Do not relitigate a logged decision. If you disagree, add a new `OD` with the reasoning.
 
@@ -63,6 +110,7 @@ Do not relitigate a logged decision. If you disagree, add a new `OD` with the re
 
 ```bash
 npm run build                      # now-sdk build — ALWAYS before install
+npm run check                      # contract + NV logic + data minimisation + Store readiness
 npx now-sdk install -a dev         # deploy (install does NOT build)
 npx now-sdk query <table> -a dev -q "<encoded query>"
 ```
@@ -119,6 +167,22 @@ it, use it inline, **never write it to a file and never commit it**.
     is UNTESTED.** `map_tmpl.source_note` is String(500). Over-length literals were shortened
     pre-emptively rather than probed. If you need to know, probe it — do not assume either way.
 
+### Binary payloads — read this before touching `binary-client.ts`
+
+15. **`getBody()` is unusable on a response saved as an attachment.** The `RESTResponseV2` docs say
+    so explicitly. This is the whole reason `src/server/connector/binary-client.ts` exists as a
+    separate file rather than a branch inside `rest-client.ts`: the JSON path and the binary path
+    cannot share a response reader without one of them being silently wrong.
+16. **Scoped `getContent()` supports CSV, JSON and TXT only.** It is **not** a way to read PDF
+    bytes. The `%PDF-` magic-byte check reads `getContentStream()` through `GlideTextReader`.
+    Written the obvious way, that check mis-reads every PDF and fails **open** — which is worse
+    than no check, because a check that is trusted and wrong is how HTML gets delivered as PDF.
+17. **A new `auth_type` choice value does not authenticate itself.** `oauth2_client_credentials`
+    and `oauth2_jwt` were added to the choice list (OD45) before `rest-client.ts` knew about them,
+    and a system saved with either sent **no authentication at all** — surfacing as a 401 that
+    looks exactly like bad credentials. Adding a choice value means auditing every branch that
+    switches on it.
+
 ### Fluent / `.now.ts` syntax
 
 - `var` is rejected — `const` only.
@@ -141,8 +205,26 @@ docs/              spec, designs, decisions, build reports
 ```
 
 **L0** scaffold · **L1** control tower · **L2** connector · **L3** staging + sync ·
-**L4** hub API · **L5** BYOUI SPA · **L6** HR documents. **L7** (write-back) is deferred by D3 —
-no Approve/Reject control is rendered anywhere.
+**L4** hub API · **L5** BYOUI SPA · **L6** HR documents.
+
+**NV — the Noviq employee-services increment** (`docs/noviq/`) sits on top of those six. It is the
+first thing in this repo that **writes to an ERP**, and it exists because OD42 reversed D3 for
+that scope only.
+
+```
+src/fluent/tables/noviq-tables.now.ts    erp_scope_grant · erp_write · erp_exception
+                                         payroll_calendar · write_approval_policy · vendor_onboarding
+src/fluent/security/noviq-acls.now.ts    21 rules. Every deny is Shape A with adminOverrides false
+src/server/write/                        dispatcher · approval-gate · cutoff · idempotency
+                                         identity · exception-queue
+src/server/ess/read-service.ts           the ONE read path every employee-facing widget uses
+src/server/connector/binary-client.ts    PDF in/out, spool-and-shred (OD43)
+src/server/connector/throttle.ts         vendor-stated limits only, 80% margin
+```
+
+**D3 is reversed narrowly, not generally.** Tab 2's requisition write-back stays deferred and
+stays unrendered — no Approve/Reject control is drawn anywhere in the hub. Un-deferring the
+capability was not permission to draw that button.
 
 ---
 
@@ -152,11 +234,24 @@ All six layers are **deployed**. Almost none of the code has ever **executed**: 
 rows, `erp_staging` and `sync_run` are empty, no layer gate has been run, and no test has been
 executed. **A clean build proves nothing. A passing happy-path fixture proves nothing.**
 
-All 11 scheduled jobs ship `on_demand` + `active: false`. "Nothing happened" is the designed
+All 10 scheduled jobs ship `on_demand` + `active: false`. "Nothing happened" is the designed
 default, not a fault.
 
+**All 52 NV stories are built or explicitly deferred.** Schema, ACLs, the governed write path, the
+shared employee read path, document generation and the governance gates compile clean and pass four
+static suites. Still outstanding: the business-rule layer for **NV-1, NV-2, NV-3, NV-4 and NV-9**
+(there is no `src/fluent/business-rules/nv-rules.now.ts`), and **every UI surface**, blocked on the
+OQ-16 / OD40 surface decision. `docs/TODO.md` is the ordered list; `docs/noviq/BUILD-LOG*.md` is the
+per-story state — trust those over this paragraph.
+
+**Two write-path repairs are guarded but unconfirmed.** OD51 (a write resolving its own
+`object_map` row) and `create-write.ts` (the idempotency key set at insert) each fixed a defect
+that reported success for a write that never happened. Rules 8a and 8b fail a regression; neither
+proves the fix works. Only a live call does.
+
 **There is a deploy backlog.** Everything since the `payload.k` envelope fix — the styling and
-theme work, nine bug fixes, and the OD37 seed corrections — is built clean but **not installed**.
+theme work, nine bug fixes, the OD37 seed corrections and the entire NV increment — is built clean
+but **not installed**.
 The SDK credential store is empty (`now-sdk auth --list` → "No credentials found") and re-adding
 it needs a real terminal, because the masked prompt defeats both `printf` piping and a `script`
 pseudo-TTY:

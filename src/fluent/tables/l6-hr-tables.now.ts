@@ -55,8 +55,43 @@ export const x_335329_sn_hr_erp_emp_xref = Table({
             hint: 'The ERP-side employee id (PERNR, EmployeeNumber, ...). An identifier, not a profile.',
         }),
         active: BooleanColumn({ label: 'Active', default: true }),
+        // ---- NV-10 -------------------------------------------------------------------------
+        // EXTENDED, NOT REPLACED. The Noviq backlog originally specified a new
+        // `x_..._employee_link` table; this one already existed with the right unique index
+        // (architect finding V3). Two identity tables would have produced no error and no
+        // warning -- just two answers to "which ERP employee is this user?".
+        //
+        // Still a join key and nothing more. Not one column below could hold HR content: the
+        // story L6-1 dictionary scan must keep returning nothing.
+        payroll_country: StringColumn({
+            label: 'Payroll country',
+            maxLength: 2,
+            hint: 'ISO 3166-1 alpha-2, resolved FROM THE ERP -- never from the ServiceNow user location (NV-51). A secondee\'s payroll jurisdiction and their desk are routinely different places. Drives payroll_calendar and template resolution.',
+        }),
+        // NV-10 AC6: a terminated employee's key is RETAINED and never reassigned. Reuse would
+        // silently point a new joiner at a leaver's payroll record.
+        terminated: BooleanColumn({
+            label: 'Terminated',
+            default: false,
+            hint: 'Set at offboarding. The row and its key are kept -- reassignment to another user is refused.',
+        }),
+        // NV-10 AC5: an identity mismatch BLOCKS reads as well as writes. A read against the
+        // wrong employee is a data-protection incident, not a cosmetic error.
+        identity_mismatch: BooleanColumn({
+            label: 'Identity mismatch',
+            default: false,
+            hint: 'Set when the ERP returns a different key for this user. Blocks every read and write until an hr_admin resolves it.',
+        }),
+        linked_on: DateTimeColumn({ label: 'Linked on' }),
+        linked_by: ReferenceColumn({ label: 'Linked by', referenceTable: 'sys_user' }),
     },
-    index: [{ name: 'idx_emp_xref_user_system', unique: true, element: ['user', 'erp_system'] }],
+    index: [
+        { name: 'idx_emp_xref_user_system', unique: true, element: ['user', 'erp_system'] },
+        // NV-10: the key must be unique PER SYSTEM in the other direction too, so one ERP
+        // employee cannot be bound to two ServiceNow users. Enforced at the database -- a script
+        // guard loses the race.
+        { name: 'idx_emp_xref_key_system', unique: true, element: ['erp_system', 'erp_employee_key'] },
+    ],
 })
 
 // ---------------------------------------------------------------------------------------
@@ -96,6 +131,12 @@ export const x_335329_sn_hr_erp_doc_type = Table({
             label: 'Optional fields',
             maxLength: 1000,
             hint: 'Rendered when present, omitted WITH their surrounding sentence when not -- never left as a blank line.',
+        }),
+        optional_defaults: StringColumn({
+            label: 'Optional field defaults',
+            maxLength: 1000,
+            hint:
+                'NV-42 D9. Comma-separated `field=literal` pairs used ONLY for fields listed in optional_fields, and ONLY when the ERP returned nothing. Lets a permanent contract print "Permanent -- no end date" instead of a blank. NEVER applies to a required field: a defaulted salary is a fabricated figure.',
         }),
         active: BooleanColumn({
             label: 'Active',
@@ -140,8 +181,34 @@ export const x_335329_sn_hr_erp_doc_tmpl = Table({
             maxLength: 1000,
             hint: 'The declared contract, validated against `body` and against the document type in both directions.',
         }),
+        // NV-43. A SECOND JURISDICTION MUST BE A ROW, NOT A RELEASE. Both are blank on the
+        // country-agnostic default; resolution order is documented in hr/template-resolver.ts and
+        // NEVER falls back to another country's row -- the wrong legal wording is worse than no
+        // document.
+        country: StringColumn({
+            label: 'Country',
+            maxLength: 2,
+            hint: 'ISO-3166 alpha-2, resolved FROM THE ERP (emp_xref.payroll_country), never from the ServiceNow user. Blank = the country-agnostic default.',
+        }),
+        language: StringColumn({
+            label: 'Language',
+            maxLength: 5,
+            hint: 'ISO-639-1, optionally with a region (pt, pt-BR). Blank = applies to every language for this country.',
+        }),
+        required_fields_override: StringColumn({
+            label: 'Required fields override',
+            maxLength: 1000,
+            hint: 'NV-43 AC4. Comma-separated object.field pairs. When set, this REPLACES doc_type.required_fields for this template, so a field mandatory in one jurisdiction and absent in another is data rather than code. Blank = use the document type.',
+        }),
         active: BooleanColumn({ label: 'Active', default: false }),
     },
+    index: [
+        {
+            name: 'idx_doc_tmpl_type_country_lang',
+            unique: true,
+            element: ['document_type', 'country', 'language'],
+        },
+    ],
 })
 
 // ---------------------------------------------------------------------------------------
@@ -210,6 +277,14 @@ export const x_335329_sn_hr_erp_doc_req = Table({
             maxLength: 200,
             hint: 'What the RUNTIME probe found, recorded per generation. OD2 is closed with instance evidence, not with a plugin list.',
         }),
+        // NV-43 AC1 and AC5 -- WHICH template produced this document, recorded on the request.
+        // Without it, "why does this letter say that?" has no answer six months later.
+        template_country: StringColumn({
+            label: 'Template country',
+            maxLength: 2,
+            hint: 'The country whose template was resolved. Blank means the country-agnostic default was used -- which is different from "no country was known".',
+        }),
+        template_language: StringColumn({ label: 'Template language', maxLength: 5 }),
     },
     index: [{ name: 'idx_doc_req_status', unique: false, element: ['status'] }],
 })

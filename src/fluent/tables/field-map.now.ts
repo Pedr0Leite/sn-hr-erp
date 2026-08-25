@@ -76,6 +76,19 @@ export const x_335329_sn_hr_erp_field_map = Table({
             default: false,
             hint: 'When false, a 0 / empty / null value from the ERP is treated as UNAVAILABLE, not as zero (story L6-4).',
         }),
+        // ---- NV-51 -------------------------------------------------------------------------
+        // A field mandatory in one jurisdiction and absent in another, AS DATA. Both columns are
+        // resolved by the shared country rule in `country.ts`.
+        country: StringColumn({
+            label: 'Country',
+            maxLength: 2,
+            hint: 'Blank = this mapping applies to every country. A country-specific row wins over the blank one for that country, and another country\'s row is never used.',
+        }),
+        mandatory: BooleanColumn({
+            label: 'Mandatory in this jurisdiction',
+            default: false,
+            hint: 'When true and the ERP returns no value, the read is `partial` and NAMES this field. It is never rendered as blank and never as 0 -- an absent mandatory field is a finding, not an empty cell.',
+        }),
         note: StringColumn({
             label: 'Note',
             maxLength: 255,
@@ -86,7 +99,7 @@ export const x_335329_sn_hr_erp_field_map = Table({
         {
             name: 'idx_field_map_map_field',
             unique: true,
-            element: ['object_map', 'logical_field'],
+            element: ['object_map', 'logical_field', 'country'],
         },
     ],
 })

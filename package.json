@@ -1,6 +1,6 @@
 {
     "name": "sn-hr-erp",
-    "version": "0.0.1",
+    "version": "0.0.7",
     "description": "",
     "license": "UNLICENSED",
     "imports": {
@@ -9,8 +9,10 @@
     "scripts": {
         "build": "now-sdk build",
         "deploy": "now-sdk install",
+        "tosn": "npm version patch --no-git-tag-version && npm run build && npm run deploy",
         "transform": "now-sdk transform",
-        "types": "now-sdk dependencies"
+        "types": "now-sdk dependencies",
+        "check": "node scripts/check-contract.mjs && node scripts/check-nv-logic.mjs && node scripts/check-minimisation.mjs && node scripts/check-store-readiness.mjs"
     },
     "dependencies": {
         "react": "18.2.0",

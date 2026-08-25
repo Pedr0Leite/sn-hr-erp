@@ -1,5 +1,6 @@
 import { GlideDateTime, GlideRecord } from '@servicenow/glide'
 import { isTrue } from './util.ts'
+import { countryOrder } from '../country.ts'
 import type { FieldMapEntry, ObjectMapConfig, SystemConfig } from './types.ts'
 
 /**
@@ -110,57 +111,102 @@ export function loadSystem(erpSystemSysId: string): LoadSystemResult {
  * rejected caching the resolved mapping — a cached mapping is a mapping that can be stale, and
  * kickoff §9 records what a cached empty ERP response cost.
  */
-function loadFields(objectMapSysId: string): FieldMapEntry[] {
+function loadFields(objectMapSysId: string, country: string): FieldMapEntry[] {
     const out: FieldMapEntry[] = []
     if (!objectMapSysId) {
         return out
     }
 
-    const gr = new GlideRecord(T_FIELD_MAP)
-    gr.addQuery('object_map', objectMapSysId)
-    gr.orderBy('logical_field')
-    gr.query()
-
-    while (gr.next()) {
-        out.push({
-            logicalField: gr.getValue('logical_field') || '',
-            sourceField: gr.getValue('source_field') || '',
-            transform: gr.getValue('transform') || 'none',
-            // RULE 1 again, and this one is the expensive column: at L6 a wrong reading here
-            // is a salary certificate with a 0 on it (R2-5).
-            zeroIsMeaningful: isTrue(gr.getValue('zero_is_meaningful')),
-        })
+    // NV-51 AC2. The SAME rule as everywhere else, applied per field: a row for this country wins
+    // over the blank row for the same logical field, and another country's row is never loaded.
+    // Walking the order backwards means the country-specific row overwrites the blank one, so the
+    // precedence is expressed once rather than as a comparison at every insert.
+    const order = countryOrder(String(country || ''))
+    const byField: { [logicalField: string]: FieldMapEntry } = {}
+    for (let i = order.length - 1; i >= 0; i--) {
+        const gr = new GlideRecord(T_FIELD_MAP)
+        gr.addQuery('object_map', objectMapSysId)
+        gr.addQuery('country', order[i])
+        gr.orderBy('logical_field')
+        gr.query()
+        while (gr.next()) {
+            const name = gr.getValue('logical_field') || ''
+            byField[name] = {
+                logicalField: name,
+                sourceField: gr.getValue('source_field') || '',
+                transform: gr.getValue('transform') || 'none',
+                // RULE 1 again, and this one is the expensive column: at L6 a wrong reading here
+                // is a salary certificate with a 0 on it (R2-5).
+                zeroIsMeaningful: isTrue(gr.getValue('zero_is_meaningful')),
+                country: order[i],
+                mandatory: isTrue(gr.getValue('mandatory')),
+            }
+        }
     }
-
+    for (const name in byField) {
+        if (Object.prototype.hasOwnProperty.call(byField, name)) {
+            out.push(byField[name])
+        }
+    }
     return out
 }
 
-/**
- * §4.1 — resolve one (system, logical object) pair into a flat mapping config.
- *
- * TWO queries: one on `object_map`, one on `field_map` filtered to the resolved map's sys_id.
- * The `object` argument is matched against the `logical_object` COLUMN (L1 §4.1); the returned
- * property keeps the name `object` so nothing downstream changes (§2.1).
- */
-export function loadMap(erpSystemSysId: string, object: string): ObjectMapConfig | null {
+export function loadMap(
+    erpSystemSysId: string,
+    object: string,
+    operation?: string,
+    country?: string,
+): ObjectMapConfig | null {
     if (!erpSystemSysId || !object) {
         return null
     }
+    // Reads are the overwhelming majority of callers and every one of them predates OD51, so
+    // `read` is the default rather than a required argument at 20 call sites.
+    const op = String(operation || 'read')
 
-    const gr = new GlideRecord(T_OBJECT_MAP)
-    gr.addQuery('erp_system', erpSystemSysId)
-    gr.addQuery('logical_object', object)
-    gr.setLimit(1)
-    gr.query()
+    // NV-51: this country's row, then the blank one, then nothing. THE SHARED RULE -- never a
+    // third step, and never another country's row.
+    const order = countryOrder(String(country || ''))
+    for (let i = 0; i < order.length; i++) {
+        const gr = new GlideRecord(T_OBJECT_MAP)
+        gr.addQuery('erp_system', erpSystemSysId)
+        gr.addQuery('logical_object', object)
+        gr.addQuery('operation', op)
+        gr.addQuery('country', order[i])
+        gr.setLimit(1)
+        gr.query()
+        if (gr.next()) {
+            return mapFrom(gr, order[i])
+        }
+    }
 
-    if (!gr.next()) {
+    // OD51 BACK-COMPATIBILITY, AND ONLY FOR READS. A map configured before the `operation` column
+    // existed carries '' and served reads, so a read falls back to it. A WRITE gets no such
+    // fallback: inheriting a read row is precisely the defect that column fixes, and a write with
+    // no map of its own must render `not configured` naming the map to create.
+    if (op !== 'read') {
         return null
     }
+    const legacy = new GlideRecord(T_OBJECT_MAP)
+    legacy.addQuery('erp_system', erpSystemSysId)
+    legacy.addQuery('logical_object', object)
+    legacy.addQuery('operation', '')
+    legacy.setLimit(1)
+    legacy.query()
+    if (!legacy.next()) {
+        return null
+    }
+    return mapFrom(legacy, '')
+}
+
+/** One place builds the config object, so the two lookups above cannot drift apart. */
+function mapFrom(gr: GlideRecord<'x_335329_sn_hr_erp_object_map'>, country: string): ObjectMapConfig {
 
     const sysId = gr.getUniqueValue()
 
     return {
         sysId: sysId,
+        country: country,
         object: gr.getValue('logical_object') || '',
         endpointPath: gr.getValue('endpoint_path') || '',
         httpMethod: (gr.getValue('http_method') || 'get').toLowerCase(),
@@ -173,7 +219,7 @@ export function loadMap(erpSystemSysId: string, object: string): ObjectMapConfig
         // L3 addition (OD7). Empty is a MEANINGFUL value here -- it is what makes the Tab 5
         // tile render not_configured naming the column rather than guessing a scale.
         oeeInputScale: gr.getValue('oee_input_scale') || '',
-        fields: loadFields(sysId),
+        fields: loadFields(sysId, country),
         mappingSource: gr.getValue('mapping_source') || '',
         // RULE 1 again.
         mappingVerified: isTrue(gr.getValue('mapping_verified')),

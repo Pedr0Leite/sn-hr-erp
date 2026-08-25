@@ -46,39 +46,92 @@ export interface MappedRecord {
 const NUMERIC_TRANSFORMS = ['abs', 'negate', 'percent_to_ratio', 'ratio_to_percent']
 
 /**
- * Walk a dotted path (`object_map.response_root`, e.g. `d.results` or `args`) into a parsed
- * body. Returns null when any segment is missing — the caller turns that into
+ * One path segment: a property name, optionally followed by an array predicate.
+ *   `results`                     -> name only
+ *   `relatedValues[relationId=A2]` -> name + match one array element on a key
+ */
+const SEGMENT = /^([^[\]]+)(?:\[([^=\]]+)=([^\]]*)\])?$/
+
+function isArray(value: unknown): boolean {
+    return Object.prototype.toString.call(value) === '[object Array]'
+}
+
+/**
+ * Walk a path (`object_map.response_root`, e.g. `d.results`; or a `field_map.source_field`) into
+ * a parsed body. Returns null when any segment is missing — the caller turns that into
  * RESPONSE_UNPARSEABLE rather than into an empty list, because "the path was wrong" and "there
  * are no invoices" are different answers and must not render the same way.
+ *
+ * THREE SYNTAXES, ONE WALKER, because they are all "reach into this JSON":
+ *
+ *   `d.results`                          dots     — SAP OData V2, and every response_root shipped
+ *   `invoice/currencyCode`               slashes  — Unit4 ERPx, which writes its property paths
+ *                                                   with `/` in both `select` and its documented
+ *                                                   field mappings
+ *   `relatedValues[relationId=A2]/description`     — Unit4 again. `relatedValues` is an ARRAY of
+ *                                                   {relationId, relatedValue, description}, and
+ *                                                   the useful element is picked by key, not by
+ *                                                   index. Without this a Unit4 currency or
+ *                                                   bonus-type mapping resolves to nothing, the
+ *                                                   field goes absent, and the tile quietly
+ *                                                   drops a column nobody asked about.
+ *
+ * Dots and slashes are interchangeable separators; no vendor uses both to mean different things,
+ * and an ERP field name containing either is not something this app can express anyway.
+ *
+ * A predicate that matches nothing returns null — the same answer as a missing property, which
+ * is correct: "no element carries relationId=A2" and "there is no relatedValues" are both
+ * UNAVAILABLE, and neither may become a zero.
  */
 export function walkPath(parsed: unknown, path: string): unknown {
     if (!path) {
         return parsed
     }
-    const segments = path.split('.')
+    const segments = String(path).split(/[./]/)
     let cursor: unknown = parsed
     for (let i = 0; i < segments.length; i++) {
+        if (!segments[i]) {
+            continue // a leading, trailing or doubled separator addresses nothing
+        }
         if (cursor === null || cursor === undefined || typeof cursor !== 'object') {
             return null
         }
-        cursor = (cursor as { [k: string]: unknown })[segments[i]]
+        const parts = SEGMENT.exec(segments[i])
+        if (!parts) {
+            return null
+        }
+        cursor = (cursor as { [k: string]: unknown })[parts[1]]
+        if (parts[2] !== undefined) {
+            if (!isArray(cursor)) {
+                return null
+            }
+            const list = cursor as { [k: string]: unknown }[]
+            let hit: unknown = null
+            for (let j = 0; j < list.length; j++) {
+                if (list[j] && String(list[j][parts[2]]) === parts[3]) {
+                    hit = list[j]
+                    break
+                }
+            }
+            cursor = hit
+        }
     }
     return cursor === undefined ? null : cursor
 }
 
 /**
- * Read a possibly-dotted source field out of one ERP record. `field_map.source_field` permits
- * dotted paths for nested JSON (L1 §4.2), so this is walkPath applied to a record.
+ * Read a source field out of one ERP record. `field_map.source_field` permits nested paths
+ * (L1 §4.2) in any of walkPath's three syntaxes, so this is walkPath applied to a record.
  */
 function readSource(record: { [k: string]: unknown }, sourceField: string): unknown {
     if (!sourceField) {
         return null
     }
-    if (sourceField.indexOf('.') === -1) {
-        const direct = record[sourceField]
-        return direct === undefined ? null : direct
+    if (/[./[]/.test(sourceField)) {
+        return walkPath(record, sourceField)
     }
-    return walkPath(record, sourceField)
+    const direct = record[sourceField]
+    return direct === undefined ? null : direct
 }
 
 /**

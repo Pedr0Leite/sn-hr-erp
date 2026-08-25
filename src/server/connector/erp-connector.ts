@@ -167,7 +167,7 @@ export function fetch(erpSystemSysId: string, object: string, params?: FetchPara
         return refuse(erpSystemSysId, object, 'not_configured', 'SYSTEM_INACTIVE', t0, NO_MAPPING)
     }
 
-    const map: ObjectMapConfig | null = loadMap(erpSystemSysId, object)
+    const map: ObjectMapConfig | null = loadMap(erpSystemSysId, object, p.operation, p.country)
 
     // §4.2 row 2.
     if (!map) {
