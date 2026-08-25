@@ -252,12 +252,20 @@ proves the fix works. Only a live call does.
 **There is a deploy backlog.** Everything since the `payload.k` envelope fix — the styling and
 theme work, nine bug fixes, the OD37 seed corrections and the entire NV increment — is built clean
 but **not installed**.
-The SDK credential store is empty (`now-sdk auth --list` → "No credentials found") and re-adding
-it needs a real terminal, because the masked prompt defeats both `printf` piping and a `script`
-pseudo-TTY:
+The SDK credential store **is now populated** — `now-sdk auth --list` returns the `dev` alias
+(basic, `admin`), so deploying no longer needs an interactive terminal. If it is ever empty again,
+re-adding it does, because the masked prompt defeats both `printf` piping and a `script` pseudo-TTY:
 
 ```
 npx now-sdk auth --add https://dev296062.service-now.com --type basic --alias dev
 ```
+
+**Live L1 state, verified 2026-08-25:** 6 `erp_system` rows (`ECHO-PRIMARY`, `ECHO-SAP-DE`,
+`ECHO-SAP-FR`, `ECHO-SECOND-ODATA`, `HAPPY-PATH`, `BROKEN-FIXTURE`), 14 `object_map`, 22
+`field_map`. All six are `read_only = true` and point at `postman-echo.com` or
+`erp-invalid.invalid`. `sync_run` and `call_log` are 0 rows.
+
+Querying `erp_staging` with `-q "sys_id!=x"` returns an error — use a business-field filter, per
+the rule above.
 
 The highest-value unblock is running the L2 gate driver once — see `docs/DEFERRED.md` §1.

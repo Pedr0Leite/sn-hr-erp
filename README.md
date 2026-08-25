@@ -90,6 +90,147 @@ Roles: `viewer`, `finance_viewer`, `hr_viewer`, `admin` — **none implies any o
 
 ---
 
+## How it works
+
+Two diagrams. The first is what connects to what; the second is the only part that changes data in
+somebody else's system, and is drawn separately because refusing correctly is the point of it.
+
+### System context
+
+```mermaid
+flowchart LR
+    subgraph browser["Browser"]
+        SPA["BYOUI page<br/>React 18.2.0 SPA<br/>x_335329_sn_hr_erp_hub.do"]
+    end
+
+    subgraph sn["ServiceNow instance"]
+        subgraph app["Scoped app — x_335329_sn_hr_erp"]
+            API["L4 · Scripted REST API<br/>/api/x_335329_sn_hr_erp/hub<br/>GET /data · POST /refresh"]
+            ESS["ess/read-service.ts<br/>the ONE employee read path"]
+            L3["L3 · staging + sync engine<br/>erp_staging · sync_run"]
+            L1["L1 · control tower<br/>erp_system · object_map<br/>field_map · map_tmpl"]
+            L2["L2 · connector<br/>rest-client · binary-client<br/>retry · backoff · breaker · throttle"]
+            L6["L6 · document assembly<br/>doc_type · doc_tmpl · doc_req"]
+            NV["NV · write path<br/>dispatcher · approval-gate<br/>cutoff · idempotency"]
+            LOG["call_log<br/>per-attempt telemetry"]
+        end
+
+        subgraph plat["Platform — outside the app scope"]
+            AUTH["sys_auth_profile_basic<br/>OAuth profiles"]
+            ATT["sys_attachment<br/>spool-and-shred"]
+            PDF["PDFGenerationAPI<br/>probed at generation, may be absent"]
+            APPR["sysapproval_approver<br/>sys_user_group"]
+            MID["MID Server<br/>optional, per erp_system"]
+        end
+
+        HRSD["HRSD<br/>NOT INSTALLED on dev296062<br/>blocks every UI surface — OQ-16 / OD40"]
+    end
+
+    subgraph erp["External systems — REST only"]
+        U4["Unit4 ERPx<br/>best-evidenced"]
+        SAP["SAP S/4HANA<br/>OData V2"]
+        ORA["Oracle Fusion ERP"]
+        D365["Dynamics 365 F&O<br/>needs cross-company=true"]
+        SF["Salesforce<br/>live test target — OD39<br/>data source, not an ERP shape"]
+        NS["NetSuite<br/>AUTH DOES NOT FIT — OD35"]
+        ECHO["postman-echo.com<br/>erp-invalid.invalid<br/>L2 gate fixtures"]
+    end
+
+    SPA -->|"fat GET per tab, batched IN queries"| API
+    API --> L3
+    API --> ESS
+    ESS -->|"live, never staged"| L2
+    L6 --> ESS
+    L6 --> PDF
+    L6 --> ATT
+    NV --> L2
+    L3 --> L2
+    L1 -->|"resolves object_map + field_map"| L2
+    L2 --> AUTH
+    L2 --> LOG
+    L2 -.->|"when use_mid_server"| MID
+    NV --> APPR
+
+    L2 --> U4
+    L2 --> SAP
+    L2 --> ORA
+    L2 --> D365
+    L2 --> SF
+    L2 --> ECHO
+    L2 -.-x NS
+
+    HRSD -.->|"undecided surface"| SPA
+
+    classDef blocked stroke-dasharray: 5 5
+    class NS,HRSD,MID blocked
+```
+
+**Everything crosses one boundary.** `erp-connector.fetch()` is the only way out of this app. A
+dispatcher issuing its own `RESTMessageV2` would be shorter and would forfeit retry
+classification, backoff, the circuit breaker, `Retry-After` and `call_log` — so a second HTTP path
+is a defect, not a shortcut (OD42). `npm run check` rule 8a fails one on sight.
+
+The connector carries **no vendor knowledge**. Which endpoint to call and which field means what
+both come from `object_map` + `field_map` rows, which is why the L2 gate can run entirely against
+`postman-echo.com` and why adding a vendor is a data change, not a code change.
+
+`binary-client.ts` is a separate file rather than a branch, because `getBody()` is unusable on a
+response saved as an attachment — the JSON path and the binary path cannot share a response reader
+without one of them being silently wrong.
+
+### The write path — what has to be true before a request leaves
+
+```mermaid
+flowchart TD
+    REQ["Employee submits a change"] --> CW["write/create-write.ts<br/>the ONE erp_write creator<br/>idempotency key set AT INSERT"]
+    CW --> BR["Layer 1 · before business rule<br/>gives the employee the message"]
+    BR --> DISP["write/dispatcher.ts · preflight"]
+
+    DISP --> S1{"Scope granted?<br/>erp_scope_grant"}
+    S1 -->|no| X1["blocked_readonly"]
+    S1 -->|yes| S2{"Own object_map row<br/>for this operation?"}
+
+    S2 -->|no| X2["not configured<br/>NAMES the map to create"]
+    S2 -->|yes| S3{"Payroll calendar exists<br/>AND before cut-off?"}
+
+    S3 -->|"absent"| X3["REFUSED<br/>no calendar is not 'no cut-off'"]
+    S3 -->|"past cut-off"| X4["blocked_cutoff"]
+    S3 -->|yes| S4{"Layer 2 · dispatcher re-checks approval<br/>independently, immediately before the call"}
+
+    S4 -->|no| X5["blocked_approval"]
+    S4 -->|yes| SEND["erp-connector.fetch<br/>with operation + country"]
+
+    SEND --> ACK{"2xx AND a confirmable<br/>identifier in the body?"}
+    ACK -->|"2xx, no identifier"| FAIL["failed<br/>NOT confirmed"]
+    ACK -->|yes| OK["confirmed"]
+    ACK -->|"non-2xx"| FAIL
+
+    X1 --> Q["erp_exception queue"]
+    X3 --> Q
+    X4 --> Q
+    X5 --> Q
+    FAIL --> Q
+
+    classDef refuse stroke-dasharray: 4 3
+    class X1,X2,X3,X4,X5,FAIL refuse
+```
+
+Four things in that diagram are load-bearing:
+
+- **The approval gate is checked twice, and layer 2 is not a business rule.** A `before` rule that
+  throws is silently swallowed on this platform and the record saves — a crashed rule is
+  indistinguishable from an approving one. Layer 2 sits outside the rule engine, so a crash cannot
+  lift it (OD44).
+- **The three `blocked_*` states never collapse into one `blocked`.** Read-only is a configuration
+  choice, cut-off is a timing outcome, approval is a governance outcome. The reason is the only
+  part the employee and the auditor actually need.
+- **A 2xx is not success.** "The ERP accepted my request" and "the ERP recorded my change" are
+  different claims, and only the second is worth telling somebody.
+- **No payload value is ever stored.** `erp_write` keeps a `request_hash`. A salary or an IBAN in
+  the audit table recreates the shadow database this application exists to prevent.
+
+---
+
 ## Getting started
 
 ```bash
@@ -182,9 +323,15 @@ this one.
 **All 10 scheduled jobs ship `on_demand` + `active: false`.** Nothing runs until a human runs it.
 "Nothing happened" is the designed default, not a fault — and a driver must never be left armed.
 
-**There is a deploy backlog.** Recent work — the styling and theme pass, nine bug fixes, and the
-OD37 seed corrections — is built clean but not installed, because the SDK credential store is
-empty and re-adding it needs an interactive terminal.
+**There is a deploy backlog**, but it is no longer blocked. The SDK credential store now holds the
+`dev` alias, so `npm run build && npx now-sdk install -a dev` can run. Everything since the
+`payload.k` envelope fix — the styling and theme pass, nine bug fixes, the OD37 seed corrections
+and the entire NV increment — is built clean and still not installed.
+
+The L1 control tower is populated on the instance: **6 `erp_system` rows, 14 `object_map` rows and
+22 `field_map` rows**, with the three L2 gate fixtures intact and every system pointed at
+`postman-echo.com` or a deliberately invalid host. `sync_run` and `call_log` are **0 rows** — the
+wiring is there and has never been used.
 
 `docs/DEFERRED.md` is the authoritative list of what is blocked, unverified, or postponed —
 including the items that need a human at a browser. `docs/BUGS.md` carries known defects and their

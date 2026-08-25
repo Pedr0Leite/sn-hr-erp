@@ -19,15 +19,20 @@ Everything in §1 is worth more than everything in §2–§5 combined.
 
 Nothing here is hard. It is blocked on a terminal and about a minute of somebody's attention.
 
-### 1.1 Repopulate the SDK credential store — **blocks every other deploy item**
+### 1.1 ~~Repopulate the SDK credential store~~ — **done**
+
+`now-sdk auth --list` returns the `dev` alias (basic, `admin`). **This no longer blocks anything.**
+
+If it is ever empty again, re-adding it needs a **real interactive terminal** — the masked prompt
+defeats both `printf` piping and a `script` pseudo-TTY:
 
 ```bash
 npx now-sdk auth --add https://dev296062.service-now.com --type basic --alias dev
 ```
 
-`now-sdk auth --list` currently returns *"No credentials found"*. This needs a **real interactive
-terminal**: the masked prompt defeats both `printf` piping and a `script` pseudo-TTY. It cannot be
-done from an agent session.
+**Live instance state, verified 2026-08-25:** 6 `erp_system` rows with the three L2 gate fixtures
+intact and their sys_ids matching `l2-fixtures.now.ts`; 14 `object_map`; 22 `field_map`; `sync_run`
+and `call_log` both **0 rows**. The control tower is configured and has never dialled.
 
 ### 1.2 Clear the deploy backlog
 
