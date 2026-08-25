@@ -391,7 +391,7 @@ Stated so a green run is not mistaken for coverage it does not have.
 
 | Not testable | Reason | Consequence |
 |---|---|---|
-| Anything requiring the live instance | `now-sdk auth --list` → `No credentials found`; the credential store is empty and re-adding it needs a real terminal | **Every test in this plan is currently unrun.** A clean build proves nothing (D19) |
+| ~~Anything requiring the live instance~~ | **No longer true.** The credential store holds the `dev` alias and the app is deployed as of 2026-08-25. Read-only queries run from a shell; a *write* still needs a browser or an inline password | **Every test in this plan is still unrun**, but nothing structural blocks them now. A clean build proves nothing (D19) |
 | A real ERP write | No ERP endpoint accepts writes from this instance | Phase 5 gate needs either a vendor sandbox (NV-15) or a fixture host; `postman-echo.com` is the approved fallback (D12) |
 | A real PDF from a generated document | No callable PDF API (OD2) | Every "assert `%PDF-`" on a **generated** document is `BLOCKED` until a human installs the Store app (OQ-20) |
 | MID Server routing | `ecc_agent` has zero rows | Reviewed structurally, recorded **REVIEWED**, never **PASS** (OD14 precedent) |
