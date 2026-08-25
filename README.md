@@ -102,6 +102,16 @@ Then open `https://<instance>.service-now.com/x_335329_sn_hr_erp_hub.do`.
 
 `now-sdk install` does **not** build. Always `build && install`.
 
+```bash
+npm run check     # contract + NV logic + data minimisation + Store readiness
+```
+
+Four static suites, run against a stubbed Glide. Three of their rules exist because each caught a
+real, shipped defect: a write that resolved the *read* `object_map` row and reported `confirmed`
+for a request that never left the instance; every audit row inserted with a blank idempotency key
+under a unique index; and three divergent country-fallback rules where there should be one. **None
+of them are style rules — do not suppress one to make a build pass.**
+
 ### Connecting an ERP
 
 1. Create an `erp_system` record — vendor, base URL, auth type, pagination style, date format,
@@ -159,10 +169,15 @@ absence is never read as a permission — the same rule as `0` never standing in
 All six build layers are **deployed**. **Almost none of the code has ever executed**: `call_log`
 is 0 rows, `erp_staging` and `sync_run` are empty, and no layer gate or test has been run.
 
-The **NV increment is under construction and is roughly a third built** — six tables, 21 ACLs, the
-dispatcher and nine server modules compile clean; business rules, seed data and every UI surface
-are outstanding. `docs/noviq/BUILD-LOG-21-30.md` is the honest per-story state; trust it over any
-summary, including this one.
+**All 52 `NV` stories are built or explicitly deferred** — schema, ACLs, the governed write path,
+the shared employee read path, document generation and the governance gates all compile clean and
+pass four static check suites. What is *not* built is the business-rule layer for five of the early
+stories, and every UI surface — the latter blocked on one undecided question (OQ-16 / OD40): HRSD
+is not installed on this instance, so the surface these stories render into is not settled.
+
+`docs/TODO.md` is the ordered list of what remains and what each item is worth.
+`docs/noviq/BUILD-LOG*.md` is the honest per-story state; trust those over any summary, including
+this one.
 
 **All 10 scheduled jobs ship `on_demand` + `active: false`.** Nothing runs until a human runs it.
 "Nothing happened" is the designed default, not a fault — and a driver must never be left armed.
@@ -177,7 +192,9 @@ fix status.
 
 A clean build proves nothing. A passing happy-path fixture proves nothing. The most valuable next
 action is running `HRERP L2 GATE (temporary)` once: it is the first real proof the connector
-works, and it takes about a minute.
+works, and it takes about a minute. Two of the riskiest repairs in the repo — a write resolving the
+wrong `object_map` row, and every audit row sharing one blank idempotency key under a unique index
+— are fixed, guarded against regression, and **still unconfirmed against a live call**.
 
 ---
 
@@ -186,6 +203,7 @@ works, and it takes about a minute.
 | File | Contents |
 |---|---|
 | `CLAUDE.md` | Working rules, commands, and the trap list for anyone (or anything) editing this repo |
+| `docs/TODO.md` | What is left, in the order it is worth doing |
 | `docs/USER-GUIDE.md` | What an operator can do and how — read the hub, connect an ERP, run a sync, generate a document, diagnose |
 | `docs/SESSION-RESUME.md` | Cold-start state of the instance and the build |
 | `docs/DEFERRED.md` | Everything blocked, unverified, or postponed |

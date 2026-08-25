@@ -86,8 +86,9 @@ applies" is the four-state rule's failure in a new costume: an absence read as a
 | File | Why |
 |---|---|
 | `docs/SESSION-RESUME.md` | Cold-start state. Read first. |
-| `docs/DEFERRED.md` | Everything blocked or unverified. Read second. |
-| `docs/decision-log.md` | D1–D19, per-layer decisions, OD1–OD46 — each with its rejected alternative. OD42–OD46 govern the write path. |
+| `docs/TODO.md` | What is left, ordered by what it is worth. Read second. |
+| `docs/DEFERRED.md` | Everything blocked or unverified, and who has to unblock it. |
+| `docs/decision-log.md` | D1–D19, per-layer decisions, OD1–OD53 — each with its rejected alternative. OD42–OD46 govern the write path; OD47–OD53 came out of the NV build and the bug pass. |
 | `docs/BUGS.md` | Known defects and their fix status. |
 | `docs/api-contract.md` | The binding L4↔L5 payload shape. |
 | `docs/SN-HR-ERP-master-kickoff-prompt.md` | The normative spec. §7 four-state rule, §9 traps. |
@@ -236,13 +237,21 @@ executed. **A clean build proves nothing. A passing happy-path fixture proves no
 All 10 scheduled jobs ship `on_demand` + `active: false`. "Nothing happened" is the designed
 default, not a fault.
 
-**The NV increment is being built now** and is at roughly a third: six tables, 21 ACLs, the
-dispatcher and nine server modules compile clean; the business rules, seeds and every UI surface
-are outstanding. `docs/noviq/BUILD-LOG-21-30.md` is the current state — trust it over this
-paragraph.
+**All 52 NV stories are built or explicitly deferred.** Schema, ACLs, the governed write path, the
+shared employee read path, document generation and the governance gates compile clean and pass four
+static suites. Still outstanding: the business-rule layer for **NV-1, NV-2, NV-3, NV-4 and NV-9**
+(there is no `src/fluent/business-rules/nv-rules.now.ts`), and **every UI surface**, blocked on the
+OQ-16 / OD40 surface decision. `docs/TODO.md` is the ordered list; `docs/noviq/BUILD-LOG*.md` is the
+per-story state — trust those over this paragraph.
+
+**Two write-path repairs are guarded but unconfirmed.** OD51 (a write resolving its own
+`object_map` row) and `create-write.ts` (the idempotency key set at insert) each fixed a defect
+that reported success for a write that never happened. Rules 8a and 8b fail a regression; neither
+proves the fix works. Only a live call does.
 
 **There is a deploy backlog.** Everything since the `payload.k` envelope fix — the styling and
-theme work, nine bug fixes, and the OD37 seed corrections — is built clean but **not installed**.
+theme work, nine bug fixes, the OD37 seed corrections and the entire NV increment — is built clean
+but **not installed**.
 The SDK credential store is empty (`now-sdk auth --list` → "No credentials found") and re-adding
 it needs a real terminal, because the masked prompt defeats both `printf` piping and a `script`
 pseudo-TTY:
